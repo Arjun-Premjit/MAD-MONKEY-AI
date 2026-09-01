@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Mad Monkey AI — Stop Scrolling. Start Building.</title>
+  <meta name="description"
+    content="Put a signal out into the world—and real human power lands on your doorstep within 24 to 72 hours. One Spark connects you, and every Spark earns.">
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Host+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Main Glassmorphism Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+  <!-- LAYER 0 & 1: LIVE CLOUD BACKGROUND VIDEO & VOLUMETRIC SKY ATMOSPHERE -->
+  <div class="sky-background">
+    <!-- Layer 0: Continuous Ultra-Slow Cloud Video (Autoplay, Muted, Loop, Playsinline) -->
+    <video class="cloud-video-bg" id="cloudVideo" autoplay loop muted playsinline preload="auto">
+      <source src="Clouds video.mp4" type="video/mp4">
+      <source src="Clouds%20video.mp4" type="video/mp4">
+      <source src="clouds%20video.mp4" type="video/mp4">
+    </video>
+
+    <!-- Layer 1: Volumetric White Soft Blurs -->
+    <div class="cloud-blur cloud-1"></div>
+    <div class="cloud-blur cloud-2"></div>
+    <div class="cloud-blur cloud-3"></div>
+
+    <!-- Soft Cloud Atmosphere Overlays -->
+    <div class="cloud-drift-container">
+      <div class="cloud-layer cloud-layer-back"></div>
+      <div class="cloud-layer cloud-layer-mid"></div>
+      <div class="cloud-layer cloud-layer-front"></div>
+    </div>
+  </div>
+
+  <!-- LAYER 5: TOP HEADER NAVIGATION BAR (Z-INDEX 1000) -->
+  <div class="top-header-wrapper" id="topHeader">
+
+    <!-- Official Mad Monkey AI Logo -->
+    <a href="#" class="brand-logo-outer">
+      <img src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" class="brand-logo-img-lg">
+    </a>
+
+    <!-- Glass Capsule Header (Home to Directors Alone) -->
+    <header class="ios-glass-nav-pill">
+      <ul class="nav-links-menu">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#how-spark-works">How Spark Works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+
+        <!-- Clubs Dropdown Menu (Triggers on Hover or Click) -->
+        <li class="dropdown-nav-item">
+          <a class="dropdown-toggle fw-bold text-dark" href="#" role="button" id="clubsDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Clubs <i class="bi bi-chevron-down ms-1" style="font-size: 0.72rem;"></i>
+          </a>
+          <ul class="dropdown-menu-glass" aria-labelledby="clubsDropdown">
+            <li>
+              <a class="dropdown-item" href="venture_club.html">
+                <i class="bi bi-rocket-takeoff text-dark me-1"></i> Venture Club
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="junior_founder.php">
+                <i class="bi bi-backpack text-dark me-1"></i> High School-Junior Founders
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="foundingmembers.html">Founding Members</a></li>
+        <li><a href="directors.html">Directors</a></li>
+      </ul>
+    </header>
+
+    <!-- Clean Solid White Download App Button (Inspired by Reference Design) -->
+    <a href="#download" class="glass-btn-white">
+      Download App
+    </a>
+
+  </div>
+
+  <!-- LAYER 2, 3, 4: MAIN SCROLL VIEWPORT & THREE-COLUMN STAGE TRACK -->
+  <main class="scroll-viewport">
+    <div class="pinned-stage" id="pinnedStage">
+
+      <!-- LAYER 3: 3D PHONE CONTAINER (Entire Phone & UI Fully Visible, Starts Below Header) -->
+      <div class="phone-perspective-container" id="phoneContainer">
+        <div class="phone-3d-body" id="phoneBody">
+
+          <div class="phone-notch">
+            <div class="notch-camera"></div>
+          </div>
+
+          <div class="phone-screen">
+
+            <!-- SCREEN 1: SPARK FEED & MASCOT (Stage 1 - Replicating Reference Design) -->
+            <div class="app-screen-layer active" id="screenDashboard">
+
+              <!-- 1. Header Top Bar -->
+              <div class="spark-screen-topbar">
+                <button class="icon-btn-circle"><i class="bi bi-list"></i></button>
+                <div class="spark-brand-title">MAD MONKEY AI</div>
+                <div class="topbar-right-actions">
+                  <button class="icon-btn-circle"><i class="bi bi-search"></i></button>
+                  <button class="icon-btn-circle"><i class="bi bi-person"></i></button>
+                </div>
+              </div>
+
+              <!-- 2. Spark Title & Subtitle -->
+              <div class="spark-header-section">
+                <div class="spark-main-title">Spark ⚡</div>
+                <div class="spark-subtitle">Find people to build with or hang with.</div>
+              </div>
+
+              <!-- 3. Build / Fun Tab Switcher -->
+              <div class="spark-tab-pill-box">
+                <div class="tab-pill-option active">Build</div>
+                <div class="tab-pill-option">Fun</div>
+              </div>
+
+              <!-- 4. Input Spark Card -->
+              <div class="spark-input-card">
+                <div class="input-prompt-row">
+                  <i class="bi bi-stars text-primary fs-6"></i>
+                  <span class="prompt-placeholder">What do you want to spark?</span>
+                </div>
+                <div class="spark-action-buttons-row">
+                  <button class="btn-spark-sub action-build"><i class="bi bi-plus-lg me-1"></i> Build Spark</button>
+                  <button class="btn-spark-sub action-fun"><i class="bi bi-stars me-1 text-primary"></i> Fun
+                    Spark</button>
+                </div>
+              </div>
+
+              <!-- 5. Feed Post Card: Smart Irrigation System by Rahul Krishnan -->
+              <div class="spark-feed-post-card">
+                <div class="post-user-row">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="post-avatar-box">RK</div>
+                    <div>
+                      <div class="post-user-name">Rahul Krishnan</div>
+                      <div class="post-user-sub">VIT Chennai · 2h</div>
+                    </div>
+                  </div>
+                  <i class="bi bi-three-dots text-muted"></i>
+                </div>
+
+                <div class="post-category-tag">PROJECT</div>
+                <div class="post-title">Smart Irrigation System</div>
+                <div class="post-desc">
+                  Building a low-cost irrigation system using soil sensors and an ESP32 to automatically control water
+                  usage.
+                </div>
+
+                <div class="post-tags-row">
+                  <span class="tag-pill">IoT</span>
+                  <span class="tag-pill">Agritech</span>
+                  <span class="tag-pill">ESP32</span>
+                  <span class="tag-pill">Python</span>
+                </div>
+
+                <div class="post-stats-row">
+                  <span>⚡ 24 interested</span>
+                  <span>🤝 8 collaborators</span>
+                  <span>♡ 12 saves</span>
+                </div>
+
+                <div class="post-preview-sketch">
+                  <div class="sketch-header">
+                    <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+                  </div>
+                  <div class="sketch-body-title">Smart Irrigation System</div>
+                </div>
+              </div>
+
+              <!-- 6. Bottom Navigation Bar -->
+              <div class="spark-bottom-nav">
+                <div class="nav-item-bottom active">
+                  <i class="bi bi-house-door-fill"></i>
+                  <span>HOME</span>
+                </div>
+                <div class="nav-item-bottom">
+                  <i class="bi bi-search"></i>
+                  <span>DISCOVER</span>
+                </div>
+                <div class="nav-fab-center">
+                  <i class="bi bi-plus-lg"></i>
+                </div>
+                <div class="nav-item-bottom">
+                  <i class="bi bi-chat-square-dots"></i>
+                  <span>MONKEY TALK</span>
+                </div>
+                <div class="nav-item-bottom">
+                  <i class="bi bi-tag"></i>
+                  <span>DEALS</span>
+                </div>
+              </div><!-- end spark-bottom-nav -->
+            </div><!-- end screenDashboard -->
+
+            <!-- SCREEN 2: DISCOVER PHOTO — Full Bleed (Stage 3: Built for Builders) -->
+            <div class="app-screen-layer app-screen-photo" id="screenSendMoney">
+              <img src="DISCOVER PHOTO.png" alt="Discover — Mad Monkey AI">
+            </div>
+
+            <!-- SCREEN 3: ONE BUTTON PHOTO — Full Bleed (Stage 4: How Spark Works) -->
+            <div class="app-screen-layer app-screen-photo" id="screenEarning">
+              <img src="ONE BUTTON PHOTO.png" alt="One Button — Mad Monkey AI">
+            </div>
+
+            <!-- SCREEN 4: REWARDS & VENTURE CLUB (Stage 5) -->
+            <div class="app-screen-layer" id="screenCrypto">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="fw-bold text-dark fs-6">Monkey Cash Rewards</div>
+                <i class="bi bi-gift-fill text-dark fs-6"></i>
+              </div>
+
+              <div class="bg-white p-3 rounded-4 border mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="text-muted" style="font-size: 0.68rem;">Redeem Gift Cards</span>
+                  <span class="badge bg-success" style="font-size: 0.65rem;">Amazon · Swiggy · Netflix</span>
+                </div>
+                <svg class="spline-svg" viewBox="0 0 200 100" fill="none">
+                  <path d="M0,80 Q30,20 60,60 T120,30 T180,70 T200,40" stroke="#334155" stroke-width="3" fill="none" />
+                  <circle cx="120" cy="30" r="5" fill="#64748b" />
+                </svg>
+              </div>
+
+              <div class="transactions-list">
+                <div class="tx-row">
+                  <div class="tx-left">
+                    <div class="tx-icon-box"><i class="bi bi-award-fill"></i></div>
+                    <div>
+                      <div class="tx-name">Venture Club Graduate</div>
+                      <div class="tx-time">Build in Public</div>
+                    </div>
+                  </div>
+                  <div class="text-success fw-bold" style="font-size: 0.8rem;">Graduate ↗</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <!-- LAYER 4: FLOATING INSIGHT CARDS (Actual Phone App Widgets Orbiting Outer Frame) -->
+        <!-- Widget 1: Spark Project Post Card (Rahul Krishnan - Smart Irrigation) -->
+        <div class="floating-stat-badge badge-visitors-green" id="badgeVisitors1">
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <div class="post-avatar-box">RK</div>
+            <div>
+              <div class="fw-bold text-dark" style="font-size: 0.74rem;">Rahul Krishnan</div>
+              <div class="text-muted" style="font-size: 0.60rem;">VIT Chennai · Project</div>
+            </div>
+          </div>
+          <div class="fw-bold text-dark" style="font-size: 0.76rem; line-height: 1.2;">Smart Irrigation System</div>
+          <div class="d-flex gap-2 mt-1" style="font-size: 0.60rem; color: #10b981; font-weight: 700;">
+            <span>⚡ 24 Interested</span>
+            <span>🤝 8 Builders</span>
+          </div>
+        </div>
+
+        <!-- Widget 2: Brain Rot Meter / Screen Time Shield -->
+        <div class="floating-stat-badge badge-btc-perf" id="badgeBtcPerf">
+          <i class="bi bi-shield-check text-success fs-5"></i>
+          <div>
+            <div class="text-muted fw-medium" style="font-size: 0.62rem;">Brain Rot Meter</div>
+            <div class="fw-bold text-dark" style="font-size: 0.82rem;">Screen Time Shield</div>
+            <div class="text-success fw-bold" style="font-size: 0.64rem;">+100K Reclaimed</div>
+          </div>
+        </div>
+
+        <!-- Widget 3: Monkey Cash Rewards Card -->
+        <div class="floating-stat-badge badge-visitors-coral" id="badgeVisitors2">
+          <i class="bi bi-gift-fill text-dark fs-5"></i>
+          <div>
+            <div class="fw-bold text-dark" style="font-size: 0.82rem;">Monkey Cash 🪙</div>
+            <div class="text-muted fw-semibold" style="font-size: 0.64rem;">Amazon · Swiggy · Netflix</div>
+          </div>
+        </div>
+
+        <!-- Widget 4: Builder Crew / Active Applicants Matching Widget -->
+        <div class="floating-stat-badge badge-donut-chart" id="badgeDonut">
+          <div class="d-flex justify-content-between align-items-center w-100 mb-1">
+            <span class="badge-title-sm mb-0">Builder Crew</span>
+            <span class="badge bg-success" style="font-size: 0.58rem; padding: 2px 6px;">24-72h</span>
+          </div>
+          <div class="d-flex gap-1 align-items-center my-1">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=60&q=80"
+              style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" title="Olivia (AI)">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=60&q=80"
+              style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" title="Alex (Growth)">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=60&q=80"
+              style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" title="Henry (Design)">
+          </div>
+          <div class="fw-bold text-dark" style="font-size: 0.68rem;">Team Assembled</div>
+        </div>
+
+        <!-- Widget 5: Spark Action Box -->
+        <div class="floating-stat-badge badge-exchange-rate" id="badgeExRate">
+          <i class="bi bi-stars text-primary fs-5"></i>
+          <div>
+            <div class="fw-bold text-dark" style="font-size: 0.78rem;">What to Spark?</div>
+            <div class="d-flex gap-1 mt-1">
+              <span class="badge bg-light text-dark" style="font-size: 0.6rem; padding: 2px 6px;">⚡ Build</span>
+              <span class="badge bg-light text-muted" style="font-size: 0.6rem; padding: 2px 6px;">✨ Fun</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Widget 6: Venture Club Graduate -->
+        <div class="floating-stat-badge badge-tx-limit" id="badgeTxLimit">
+          <i class="bi bi-award-fill text-warning fs-5"></i>
+          <div>
+            <div class="fw-bold text-dark" style="font-size: 0.78rem;">Venture Club</div>
+            <div class="text-success fw-bold" style="font-size: 0.68rem;">Graduate ↗</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- LAYER 2: STAGE CONTENT WRAPPER -->
+      <div class="stage-wrapper">
+
+        <!-- STAGE 1: HERO (STANDALONE TITLE LEFT, SUBTEXT IN SMALLER FONT ALIGNED MUCH BELOW DOWNLOAD APP BUTTON LEVEL) -->
+        <div class="stage-panel active" id="hero">
+          <!-- Standalone Title Left -->
+          <div class="hero-title-container-left">
+            <h1 class="hero-title-slim">
+              <span>Stop</span>
+              <span>Scrolling.</span>
+              <span>Start Building.</span>
+            </h1>
+          </div>
+
+          <!-- Standalone Description Right (Much Smaller Font, Positioned Below Download App Level) -->
+          <div class="hero-desc-container-right">
+            <p class="hero-desc-right-slim">
+              Put a signal out into the world—and real human power lands on your doorstep within 24 to 72 hours. From
+              finding your ultimate weekend crew to assembling your startup's core founding team, <span
+                class="text-slim-black">one Spark connects you, and every Spark earns.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- STAGE 2: STATEMENT TRANSITION -->
+        <div class="stage-panel statement-panel" id="about">
+          <h2 class="statement-text">
+            You don't have to choose between <span class="gradient-text">fun and ambition.</span> Most platforms ask you
+            to pick a lane. Mad Monkey is the first where both lanes are the same road — and every step forward earns
+            you something real.
+          </h2>
+        </div>
+
+        <!-- STAGE 3: BUILT FOR SIMPLICITY -->
+        <div class="stage-panel" id="features">
+          <div></div> <!-- Space reserved for Phone -->
+          <div class="simplicity-right">
+            <h2 class="section-heading">Built for Builders.<br>Designed for Action.</h2>
+            <p class="section-subtext">Whether you need a workout partner or a technical co-founder, Spark brings your
+              vision to life in 24 to 72 hours.</p>
+
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bi bi-people-fill"></i></div>
+                <div class="feature-title">For the Social Ones</div>
+                <div class="feature-desc">Life is better when you do it together. You don’t need a business plan to post
+                  a Spark.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bi bi-tools"></i></div>
+                <div class="feature-title">For the Builders</div>
+                <div class="feature-desc">The best teams are built in hours, not years. Spark your vision and find your
+                  team.</div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+                <div class="feature-title">24-72 Hour Delivery</div>
+                <div class="feature-desc">Put a signal out and human power lands on your doorstep faster than cold DMs.
+                </div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon"><i class="bi bi-gift-fill"></i></div>
+                <div class="feature-title">Monkey Cash Rewards</div>
+                <div class="feature-desc">Every Spark you post, join, or complete earns gift cards for Amazon, Swiggy,
+                  and Netflix.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGE 4: HOW SPARK WORKS / TIMELINE -->
+        <div class="stage-panel" id="how-spark-works">
+          <div class="finance-left">
+            <h2 class="section-heading">One Button.<br>Infinite <span class="gradient-text">Spark</span> Possibilities.
+            </h2>
+
+            <div class="accordion-list">
+              <div class="accordion-item-glass active">
+                <div class="accordion-header-row">
+                  <span>01. Describe Your Need</span>
+                  <i class="bi bi-chevron-down text-dark"></i>
+                </div>
+                <div class="accordion-body-text">
+                  AI structures your request into a clear, discoverable brief that attracts the right builders.
+                </div>
+              </div>
+
+              <div class="accordion-item-glass">
+                <div class="accordion-header-row">
+                  <span>02. People Apply</span>
+                  <i class="bi bi-chevron-right text-muted"></i>
+                </div>
+                <div class="accordion-body-text">
+                  Builders discover your Spark from campus, city, or globally — and apply to join.
+                </div>
+              </div>
+
+              <div class="accordion-item-glass">
+                <div class="accordion-header-row">
+                  <span>03. Pick Your Team</span>
+                  <i class="bi bi-chevron-right text-muted"></i>
+                </div>
+                <div class="accordion-body-text">
+                  Review applicants, check profiles, and select the collaborators that fit your vision.
+                </div>
+              </div>
+
+              <div class="accordion-item-glass">
+                <div class="accordion-header-row">
+                  <span>04. Build Together</span>
+                  <i class="bi bi-chevron-right text-muted"></i>
+                </div>
+                <div class="accordion-body-text">
+                  Launch your venture. What started as a Spark becomes a real company with real momentum.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div></div> <!-- Space reserved for Phone -->
+        </div>
+
+        <!-- STAGE 5: DOWNLOAD APP & GET STARTED -->
+        <div class="stage-panel" id="download">
+          <div class="future-top">
+            <h2 class="section-heading">Don't search for help.<br><span class="gradient-text">Spark it</span></h2>
+            <p class="section-subtext mb-0">Your next co-founder, collaborator, or opportunity is one Spark away.</p>
+
+            <!-- Frosted Glass Action Buttons at Bottom -->
+            <div class="action-row">
+              <a href="https://apps.apple.com/in/app/mad-monkey-ai/id6737187047" target="_blank"
+                class="glass-btn glass-btn-brand py-3 px-4 fs-6">Download App <i
+                  class="bi bi-arrow-down-circle-fill ms-1"></i></a>
+              <a href="venture_club.html" class="glass-btn py-3 px-4 fs-6">Join Venture Club</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- SECTION 6: FOOTER & ECOSYSTEM -->
+  <footer class="footer-section">
+    <div class="footer-container">
+
+      <!-- Social Media Bar -->
+      <div class="social-links-bar">
+        <a href="#" class="social-link-item"><i class="bi bi-instagram me-2"></i> INSTAGRAM</a>
+        <a href="#" class="social-link-item"><i class="bi bi-twitter-x me-2"></i> TWITTER</a>
+        <a href="#" class="social-link-item"><i class="bi bi-linkedin me-2"></i> LINKEDIN</a>
+        <a href="#" class="social-link-item"><i class="bi bi-youtube me-2"></i> YOUTUBE</a>
+      </div>
+
+      <div class="footer-content-grid">
+        <div>
+          <p class="text-muted small mb-4" style="line-height: 1.7; max-width: 280px;">The social network that builds
+            companies. Built for the next generation of founders worldwide.</p>
+
+          <div class="newsletter-box">
+            <div class="fw-bold text-dark small mb-1">Never miss startup grants & demo days</div>
+            <div class="newsletter-input-wrapper">
+              <input type="email" placeholder="Your Email Address">
+              <a href="#" class="glass-btn glass-btn-brand py-2 px-3" style="font-size: 0.78rem;">Subscribe ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">PRODUCT</div>
+          <ul class="footer-links-list">
+            <li><a href="#how-spark-works">How Spark Works</a></li>
+            <li><a href="venture_club.html">Venture Club</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#">iOS App</a></li>
+            <li><a href="#">Android App</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">COMMUNITY</div>
+          <ul class="footer-links-list">
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="foundingmembers.html">Founding Members</a></li>
+            <li><a href="applydirectorintern.html">Campus Directors</a></li>
+            <li><a href="directors.html">City Directors</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">COMPANY</div>
+          <ul class="footer-links-list">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Investors</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="d-flex gap-3">
+          <a href="#" class="text-muted text-decoration-none">Privacy Policy</a>
+          <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+        </div>
+        <div>© 2026 Mad Monkey AI Inc. All rights reserved.</div>
+      </div>
+
+    </div>
+
+    <!-- Translucent Watermark Logo -->
+    <div class="watermark-logo">mad monkey ai</div>
+  </footer>
+
+  <!-- BOOTSTRAP & GSAP ANIMATION LOGIC -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Smooth Native Hardware Accelerated Cloud Video Playback (1.0x Full 60fps Speed)
+    const cloudVideo = document.getElementById("cloudVideo");
+    if (cloudVideo) {
+      cloudVideo.playbackRate = 1.0; // Native 60fps smooth video playback
+      cloudVideo.play().catch(function (err) {
+        console.log("Cloud video play:", err);
+      });
+    }
+
+    // Initialize Lenis Smooth Scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 2
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Register GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Connect Lenis to ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0, 0);
+
+    // Header Disappear Completely on Scroll Down Past Threshold Height
+    const topHeader = document.getElementById("topHeader");
+    let lastScrollY = 0;
+
+    lenis.on('scroll', (e) => {
+      const currentScrollY = e.scroll;
+
+      if (currentScrollY > 100 && currentScrollY > lastScrollY) {
+        topHeader.classList.add("header-hidden");
+      } else if (currentScrollY < lastScrollY || currentScrollY < 60) {
+        topHeader.classList.remove("header-hidden");
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // Master Timeline pinned over 500vh
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".scroll-viewport",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.8,
+        pin: "#pinnedStage"
+      }
+    });
+
+    // Elements
+    const phoneContainer = document.getElementById("phoneContainer");
+
+    const panelHero = document.getElementById("hero");
+    const panelStatement = document.getElementById("about");
+    const panelSimplicity = document.getElementById("features");
+    const panelFinance = document.getElementById("how-spark-works");
+    const panelFuture = document.getElementById("download");
+
+    const badgeVisitors1 = document.getElementById("badgeVisitors1");
+    const badgeVisitors2 = document.getElementById("badgeVisitors2");
+    const badgeTxLimit = document.getElementById("badgeTxLimit");
+    const badgeDonut = document.getElementById("badgeDonut");
+
+    const badgeBtcPerf = document.getElementById("badgeBtcPerf");
+    const badgeExRate = document.getElementById("badgeExRate");
+
+    const screenDashboard = document.getElementById("screenDashboard");
+    const screenSendMoney = document.getElementById("screenSendMoney");
+    const screenEarning = document.getElementById("screenEarning");
+    const screenCrypto = document.getElementById("screenCrypto");
+
+    // 📱 CLEAN UPRIGHT PHONE & FLOATING INSIGHT CARDS GSAP TIMELINE
+
+    // Stage 1 -> Stage 2 (Hero -> Statement: Phone smoothly fades out so statement text has full focus)
+    tl.to([panelHero], {
+      opacity: 0,
+      scale: 0.92,
+      y: -30,
+      duration: 1
+    }, 0)
+      .to([badgeVisitors1, badgeVisitors2, badgeBtcPerf], {
+        x: -50,
+        y: -30,
+        opacity: 0,
+        scale: 0.85,
+        duration: 1
+      }, 0)
+      .to([badgeTxLimit, badgeDonut, badgeExRate], {
+        x: 50,
+        y: 30,
+        opacity: 0,
+        scale: 0.85,
+        duration: 1
+      }, 0)
+      .to(phoneContainer, {
+        x: 0,
+        y: 100,
+        scale: 0.75,
+        opacity: 0,
+        rotationX: 0,
+        rotationY: 0,
+        rotationZ: 0,
+        duration: 1
+      }, 0)
+      .to(panelStatement, {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 1
+      }, 0.6)
+
+      // Stage 2 -> Stage 3 (Statement -> Built for Simplicity: Phone reappears on the left side)
+      .to(panelStatement, {
+        opacity: 0,
+        scale: 0.9,
+        y: -30,
+        duration: 1
+      }, 1.6)
+      .to(phoneContainer, {
+        x: "-28vw",
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        rotationX: 0,
+        rotationY: 0,
+        rotationZ: 0,
+        duration: 1.2
+      }, 1.6)
+      .to([screenDashboard], { opacity: 0, duration: 0.4 }, 1.8)
+      .to([screenSendMoney], { opacity: 1, duration: 0.4 }, 2.0)
+      .to(panelSimplicity, {
+        opacity: 1,
+        scale: 1,
+        duration: 1
+      }, 2.0)
+
+      // Stage 3 -> Stage 4 (Built for Simplicity -> How Spark Works)
+      .to(panelSimplicity, {
+        opacity: 0,
+        scale: 0.92,
+        duration: 1
+      }, 3.0)
+      .to(phoneContainer, {
+        x: "28vw",
+        y: 0,
+        scale: 1,
+        rotationX: 0,
+        rotationY: 0,
+        rotationZ: 0,
+        duration: 1.2
+      }, 3.0)
+      .to([screenSendMoney], { opacity: 0, duration: 0.4 }, 3.2)
+      .to([screenEarning], { opacity: 1, duration: 0.4 }, 3.4)
+      .to(panelFinance, {
+        opacity: 1,
+        scale: 1,
+        duration: 1
+      }, 3.4)
+
+      // Stage 4 -> Stage 5 (How Spark Works -> Download App & Get Started)
+      .to(panelFinance, {
+        opacity: 0,
+        scale: 0.92,
+        duration: 1
+      }, 4.4)
+      .to(phoneContainer, {
+        x: "0vw",
+        y: 60,
+        scale: 0.95,
+        rotationX: 0,
+        rotationY: 0,
+        rotationZ: 0,
+        duration: 1.2
+      }, 4.4)
+      .to([screenEarning], { opacity: 0, duration: 0.4 }, 4.6)
+      .to([screenCrypto], { opacity: 1, duration: 0.4 }, 4.8)
+      .to([badgeBtcPerf, badgeExRate], {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.8
+      }, 4.8)
+      .to(panelFuture, {
+        opacity: 1,
+        scale: 1,
+        duration: 1.5
+      }, 4.8)
+      // Hold Stage 5 fully visible for extra scroll dwell — matches the extended 700vh viewport
+      .to({}, { duration: 2.0 }, 6.3);
+
+    // Smooth Scroll Click Anchors
+    document.querySelectorAll('.nav-links-menu a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId !== '#') {
+          e.preventDefault();
+          const targetElem = document.querySelector(targetId);
+          if (targetElem) {
+            lenis.scrollTo(targetElem, { offset: 0, duration: 1.2 });
+          }
+        }
+      });
+    });
+
+    // Accordion Interactivity
+    document.querySelectorAll(".accordion-item-glass").forEach(item => {
+      item.addEventListener("click", () => {
+        document.querySelectorAll(".accordion-item-glass").forEach(i => i.classList.remove("active"));
+        item.classList.add("active");
+      });
+    });
+  </script>
+</body>
+
+</html>

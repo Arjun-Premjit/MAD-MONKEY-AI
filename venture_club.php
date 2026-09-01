@@ -1,0 +1,498 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venture Club | Mad Monkey AI</title>
+  
+  <!-- Bootstrap 5 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <style>
+    :root {
+      --purple-primary: #7e22ce;
+      --pink-primary: #ec4899;
+      --brand-gradient: linear-gradient(135deg, #7e22ce 0%, #ec4899 100%);
+      --brand-gradient-hover: linear-gradient(135deg, #6b21a8 0%, #db2777 100%);
+      --bg-light: #fafafa;
+      --dark-card-bg: #120e16;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(236, 72, 153, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Gradient Text & Highlights */
+    .text-gradient {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+    }
+    .nav-link {
+      color: #4b5563;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--purple-primary);
+    }
+
+    /* Buttons */
+    .btn-brand-gradient {
+      background: var(--brand-gradient);
+      color: #ffffff;
+      font-weight: 600;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(236, 72, 153, 0.3);
+    }
+    .btn-brand-gradient:hover {
+      background: var(--brand-gradient-hover);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(126, 34, 206, 0.4);
+    }
+    .btn-brand-pulse {
+      animation: pulseGlow 2s infinite;
+    }
+
+    .btn-outline-purple {
+      border: 1.5px solid #d8b4fe;
+      background: #ffffff;
+      color: var(--purple-primary);
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-purple:hover {
+      background: #f3e8ff;
+      color: var(--purple-primary);
+      border-color: var(--purple-primary);
+      transform: translateY(-2px);
+    }
+
+    /* Badges & Pills */
+    .badge-pill-tag {
+      background: #ffffff;
+      border: 1px solid #e9d5ff;
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      color: #6b21a8;
+      font-weight: 600;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(126, 34, 206, 0.05);
+      transition: all 0.25s ease;
+    }
+    .badge-pill-tag:hover {
+      border-color: var(--pink-primary);
+      transform: translateY(-2px);
+    }
+
+    .section-badge {
+      background: #f3e8ff;
+      color: var(--purple-primary);
+      font-size: 0.75rem;
+      letter-spacing: 1.2px;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    /* Step Cards & Hover Animations */
+    .step-card {
+      background: #ffffff;
+      border: 1px solid #f3e8ff;
+      border-radius: 20px;
+      padding: 32px;
+      height: 100%;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .step-card:hover {
+      transform: translateY(-8px);
+      border-color: #d8b4fe;
+      box-shadow: 0 16px 32px rgba(126, 34, 206, 0.1);
+    }
+    
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--brand-gradient);
+      color: #ffffff;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 10px rgba(236, 72, 153, 0.25);
+    }
+
+    /* Dark Feature Cards (What You Get Section) */
+    .dark-section {
+      background: var(--dark-card-bg);
+      color: #ffffff;
+      border-radius: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+    }
+
+    .dark-card {
+      background: #1c1624;
+      border: 1px solid #2e233b;
+      border-radius: 20px;
+      padding: 32px;
+      height: 100%;
+      transition: all 0.35s ease;
+    }
+    .dark-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--pink-primary);
+      box-shadow: 0 12px 28px rgba(236, 72, 153, 0.2);
+    }
+    .dark-card-badge {
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 18px;
+    }
+    .badge-purple-glow { background: rgba(126, 34, 206, 0.25); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.3); }
+    .badge-pink-glow { background: rgba(236, 72, 153, 0.25); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.3); }
+
+    /* Interactive Timeline */
+    .timeline-card {
+      background: #ffffff;
+      border: 1px solid #f3e8ff;
+      border-radius: 16px;
+      padding: 24px 16px;
+      transition: all 0.3s ease;
+    }
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(126, 34, 206, 0.08);
+    }
+    .timeline-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #e9d5ff;
+      color: #7e22ce;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin: 0 auto 14px auto;
+      transition: all 0.3s ease;
+    }
+    .timeline-card:hover .timeline-dot, .timeline-dot.active {
+      background: var(--brand-gradient);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    }
+
+    .hero-title {
+      font-size: 3.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR MATCHING HOMEPAGE -->
+  <nav class="navbar navbar-expand-xl sticky-top border-bottom py-3">
+    <div class="container-fluid px-lg-5">
+      <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="index.php">
+        mad<span class="text-gradient">monkey ai</span>
+      </a>
+      
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-xl-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how-it-works">How Spark Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+       <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle active fw-bold text-gradient" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Clubs
+  </a>
+  <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2">
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2 " href="venture_club.php">Venture Club</a></li>
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2 text-gradient" href="junior_founder.php">High School-Junior Founders</a></li>
+  </ul>
+</li>
+          <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="foundingmembers.html">Founding Members</a></li>
+          <li class="nav-item"><a class="nav-link" href="directors.html">Directors</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-brand-gradient btn-brand-pulse rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#ventureModal">
+            Download App <i class="bi bi-box-arrow-up-right ms-1"></i>
+          </button>
+          <a href="#" class="fs-7 fw-semibold text-decoration-none text-dark d-none d-sm-inline">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="py-5 text-center container px-4 animate-fade-in">
+    <div class="py-4">
+      <span class="section-badge mb-3">✦ VENTURE CLUB ✦</span>
+      <h1 class="hero-title my-3">
+        Your idea starts<br>
+        <span class="text-gradient">before college does.</span>
+      </h1>
+      <p class="text-secondary fs-5 mx-auto mb-4" style="max-width: 680px;">
+        For students in grades 9 to 12. Form a team, pick a real problem, submit your idea — and get your name on a US company's platform before you even reach college.
+      </p>
+
+      <!-- TAG PILLS -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+        <span class="badge-pill-tag">Open to Grades 9–12</span>
+        <span class="badge-pill-tag">Tech or Non-Tech Ideas</span>
+        <span class="badge-pill-tag">No Experience Needed</span>
+        <span class="badge-pill-tag">Permanent Founder Wall Listing</span>
+      </div>
+
+      <!-- CALL TO ACTIONS -->
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
+        <button class="btn btn-brand-gradient py-3 px-4 fs-6" data-bs-toggle="modal" data-bs-target="#ventureModal">
+          Submit Your Idea <i class="bi bi-arrow-right ms-1"></i>
+        </button>
+        <a href="#how-it-works" class="btn btn-outline-purple py-3 px-4 fs-6 text-decoration-none">
+          See How It Works <i class="bi bi-arrow-down ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section id="how-it-works" class="py-5 bg-white border-top border-bottom">
+    <div class="container px-4 py-4">
+      <div class="text-center mb-5">
+        <span class="section-badge mb-2">HOW IT WORKS</span>
+        <h2 class="fw-bold fs-1 mt-1">Three steps. That's all.</h2>
+      </div>
+
+      <div class="row g-4">
+        <!-- Step 1 -->
+        <div class="col-md-4">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h5 class="fw-bold mb-3 text-dark">Form your team</h5>
+            <p class="text-secondary fs-7 mb-0 leading-relaxed">
+              Find 1-3 friends from your school or coaching class who want to build something together. Tech background not required, just people who want to solve a real problem.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="col-md-4">
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h5 class="fw-bold mb-3 text-dark">Pick a real problem</h5>
+            <p class="text-secondary fs-7 mb-0 leading-relaxed">
+              Look around you. Something that bothers you at school, in your neighbourhood, in your city. Tech idea or non-tech idea — both are equally valid. If it's real to you, it's real enough.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="col-md-4">
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h5 class="fw-bold mb-3 text-dark">Submit three answers</h5>
+            <p class="text-secondary fs-7 mb-0 leading-relaxed">
+              What is the problem? Who has this problem? What is your solution idea? Answer those three questions and submit. Your name goes on the Mad Monkey AI Founder Wall — permanently.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET (DARK SECTION WITH HOVER ANIMATIONS) -->
+  <section id="features" class="py-5 container px-4">
+    <div class="dark-section p-4 p-md-5">
+      <div class="text-center mb-5">
+        <span class="section-badge bg-dark text-gradient border border-purple mb-2">WHAT YOU GET</span>
+        <h2 class="fw-bold text-white display-6 mt-1">Real recognition. Before college even starts.</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="dark-card">
+            <h5 class="fw-bold text-white mb-2">Permanent Founder Wall listing</h5>
+            <p class="text-secondary fs-7 mb-0">
+              Your name, your school, your idea — listed permanently on madmonkey.ai. Publicly visible. Not behind a login. Not a PDF certificate. A real listing on a US tech company's platform.
+            </p>
+            <span class="dark-card-badge badge-purple-glow">Permanent</span>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dark-card">
+            <h5 class="fw-bold text-white mb-2">Junior Founder certificate</h5>
+            <p class="text-secondary fs-7 mb-0">
+              An official certificate issued by Mad Monkey AI Inc., Delaware, USA. Something you can add to your resume, your college application, and your LinkedIn — starting from school.
+            </p>
+            <span class="dark-card-badge badge-pink-glow">Issued by Mad Monkey AI Inc., USA</span>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dark-card">
+            <h5 class="fw-bold text-white mb-2">Your idea moves with you</h5>
+            <p class="text-secondary fs-7 mb-0">
+              When you join college, your Junior Founder submission automatically moves into Venture Club — the next stage of the journey. You don't start from zero. You continue from where you left off.
+            </p>
+            <span class="dark-card-badge badge-purple-glow">Carries forward to college</span>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dark-card">
+            <h5 class="fw-bold text-white mb-2">Head start on every other student</h5>
+            <p class="text-secondary fs-7 mb-0">
+              Students who submit a startup idea in school arrive at college already listed on a national platform, already with a founding record. That's a head start nobody else in your batch will have.
+            </p>
+            <span class="dark-card-badge badge-pink-glow">Before Day 1 of college</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATH AHEAD (TIMELINE) -->
+  <section class="py-5 text-center container px-4">
+    <span class="section-badge mb-2">THE PATH AHEAD</span>
+    <h2 class="fw-bold fs-2 mt-1 mb-5">Start in school. Scale to the world.</h2>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-3">
+        <div class="timeline-card">
+          <div class="timeline-dot active">JF</div>
+          <div class="fw-bold fs-8 text-uppercase text-gradient">NOW</div>
+          <div class="fw-bold text-dark fs-7">Junior Founder</div>
+          <p class="text-secondary fs-8 mt-1 mb-0">Submit your idea. Get listed. Build your first founding record.</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="timeline-card">
+          <div class="timeline-dot">CD</div>
+          <div class="fw-bold fs-8 text-uppercase text-muted">COLLEGE YEAR 1</div>
+          <div class="fw-bold text-dark fs-7">Campus Director Intern</div>
+          <p class="text-secondary fs-8 mt-1 mb-0">Founder's Office lead your campus. Run your Micro Venture.</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="timeline-card">
+          <div class="timeline-dot">VC</div>
+          <div class="fw-bold fs-8 text-uppercase text-muted">COLLEGE — ONGOING</div>
+          <div class="fw-bold text-dark fs-7">Venture Club</div>
+          <p class="text-secondary fs-8 mt-1 mb-0">Take your idea through Build, Traction, and Investor Ready stages.</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="timeline-card">
+          <div class="timeline-dot">INV</div>
+          <div class="fw-bold fs-8 text-uppercase text-muted">2027 ONWARDS</div>
+          <div class="fw-bold text-dark fs-7">Investor Introduction</div>
+          <p class="text-secondary fs-8 mt-1 mb-0">Verified startups introduced directly to a curated investor pool.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA BANNER -->
+  <section class="py-5 bg-white border-top">
+    <div class="container text-center py-4">
+      <h2 class="hero-title mb-3" style="font-size: 2.75rem;">
+        Your idea is <span class="text-gradient">worth something.</span>
+      </h2>
+      <p class="text-secondary fs-6 mb-4">Submit it now. Your name goes up today.</p>
+      
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <button class="btn btn-brand-gradient py-3 px-4 fs-6" data-bs-toggle="modal" data-bs-target="#ventureModal">
+          Submit Your Idea <i class="bi bi-arrow-right ms-1"></i>
+        </button>
+        <a href="index.php" class="btn btn-outline-purple py-3 px-4 fs-6 text-decoration-none">
+          Already in college? Try Venture Club <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

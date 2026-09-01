@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venture Club - Mad Monkey AI</title>
+
+  <!-- Bootstrap 5 CSS & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+
+/* Exact Magenta-Violet Brand Gradient */
+/* Darker Rich Violet-Pink Gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #7e22ce 0%, #db2777 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block;
+}
+
+/* Download App Button Gradient */
+/* Animated Ripple Button */
+.btn-brand-gradient {
+  position: relative;
+  background: linear-gradient(135deg, #8b2fc9 0%, #e83e8c 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  z-index: 1;
+}
+
+/* Ripple Pseudo Element */
+.btn-brand-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  background: inherit;
+  z-index: -1;
+  animation: pulse-ripple 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Keyframes for Expanding Halo Glow */
+@keyframes pulse-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(232, 62, 140, 0.6);
+  }
+  70% {
+    transform: scale(1.08, 1.25);
+    opacity: 0;
+    box-shadow: 0 0 0 14px rgba(232, 62, 140, 0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(232, 62, 140, 0);
+  }
+}
+
+.btn-brand-gradient:hover {
+  background: linear-gradient(135deg, #7a25b3 0%, #d62b78 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 10px rgba(255, 210, 233, 0.9) !important;
+}
+
+/* Nav Link Hover & Active State */
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #9333ea !important;
+}
+
+/* Pill Badge Accent Match */
+.badge-purple-light {
+  background-color: #f3e8ff !important;
+  color: #7e22ce !important;
+  border: 1px solid #e9d5ff !important;
+}
+
+
+
+
+
+  .fs-7 { font-size: 0.875rem; }
+  .fs-8 { font-size: 0.725rem; }
+  .tracking-wider { letter-spacing: 0.08em; }
+
+  /* Avatar Circles */
+  .avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+
+  /* Custom Color Schemes */
+  .bg-teal-subtle { background-color: #e6fffa !important; }
+  .text-teal { color: #0d9488 !important; }
+
+  .bg-amber-subtle { background-color: #fef3c7 !important; }
+  .text-amber { color: #d97706 !important; }
+
+  .bg-purple-subtle { background-color: #f3e8ff !important; }
+  .text-purple { color: #7e22ce !important; }
+
+  /* Live Pulse Animation */
+  .live-pulse-dot {
+    width: 7px;
+    height: 7px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulse-green 1.8s infinite;
+  }
+
+  @keyframes pulse-green {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+  }
+
+  /* Segmented Stage Bar */
+  .stage-bar-segments {
+    display: flex;
+    gap: 4px;
+  }
+  .stage-bar-segments .segment {
+    width: 18px;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #e2e8f0;
+  }
+  .stage-bar-segments .segment.active-teal { background-color: #0d9488; }
+  .stage-bar-segments .segment.active-amber { background-color: #f59e0b; }
+
+  /* Interactive Venture Card */
+  .venture-card {
+    border-color: #e2e8f0 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .venture-card:hover {
+    border-color: #c084fc !important;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -8px rgba(124, 58, 237, 0.12) !important;
+  }
+
+  .connect-link {
+    transition: transform 0.2s ease;
+  }
+  .venture-card:hover .connect-link {
+    transform: translateX(3px);
+  }
+ 
+/* ==========================================================================
+       Creative 8 Stages Section Styles
+       ========================================================================== */
+    .stages-section {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      position: relative;
+    }
+
+    /* Section Header Decorators */
+    .badge-glow {
+      background: rgba(139, 92, 246, 0.1);
+      color: #7c3aed;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Connected Stepper Navigation */
+    .stepper-container {
+      position: relative;
+      padding: 1rem 0;
+    }
+
+    .stepper-track-bg {
+      position: absolute;
+      top: 50%;
+      left: 30px;
+      right: 30px;
+      height: 4px;
+      background: #e2e8f0;
+      z-index: 1;
+      transform: translateY(-50%);
+      border-radius: 4px;
+    }
+
+    .stepper-track-progress {
+      position: absolute;
+      top: 50%;
+      left: 30px;
+      height: 4px;
+      background: linear-gradient(90deg, #f59e0b 0%, #8b5cf6 100%);
+      z-index: 1;
+      transform: translateY(-50%);
+      border-radius: 4px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%; /* Dynamic JS control */
+    }
+
+    .stepper-wrapper {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    /* Stage Nodes */
+    .stage-node {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 0.65rem 1rem;
+      min-width: 105px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .stage-node:hover {
+      transform: translateY(-4px);
+      border-color: #8b5cf6;
+      box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.15);
+    }
+
+    .stage-node .node-num {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .stage-node .node-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #334155;
+      letter-spacing: 0.03em;
+    }
+
+    /* Active Node Highlight */
+    .stage-node.active {
+      background: #ffffff;
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2), 0 12px 20px -5px rgba(245, 158, 11, 0.25);
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .stage-node.active .node-num {
+      color: #d97706;
+    }
+
+    .stage-node.active .node-title {
+      color: #d97706;
+    }
+
+    /* Stage Display Card */
+    .stage-content-card {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+
+    .stage-content-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, #f59e0b 0%, #8b5cf6 100%);
+    }
+
+    /* Tab Transition Animation */
+    .stage-pane {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .stage-pane.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .badge-timeline {
+      background: #fef3c7;
+      color: #d97706;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 50rem;
+    }
+
+
+  
+.fs-7 { font-size: 0.875rem; }
+  .fs-8 { font-size: 0.725rem; letter-spacing: 0.05em; }
+
+  /* Icon Circles */
+  .icon-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Track Badges */
+  .track-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.4rem 0.9rem;
+    border-radius: 50rem;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+  }
+  .badge-amber {
+    background-color: #fef3c7;
+    color: #d97706;
+    border: 1px solid #fde68a;
+  }
+  .badge-purple {
+    background-color: #f3e8ff;
+    color: #7e22ce;
+    border: 1px solid #e9d5ff;
+  }
+
+  .bg-purple-subtle { background-color: #f3e8ff !important; }
+  .border-purple-subtle { border-color: #e9d5ff !important; }
+
+  /* Creative Card Hover Animation */
+  .track-card {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+    border-color: #e5e7eb !important;
+  }
+
+  .track-card:hover {
+    transform: translateY(-10px);
+    border-color: #c084fc !important;
+    box-shadow: 0 22px 45px -12px rgba(126, 34, 206, 0.15) !important;
+  }
+
+  /* Metrics Grid Hover Highlight */
+  .metrics-grid {
+    background-color: #f9fafb;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  .track-card:hover .metrics-grid {
+    background-color: #ffffff;
+    border-color: #d8b4fe !important;
+  }
+
+    /* ==========================================================================
+       1. Base Styling & Theme Colors
+       ========================================================================== */
+    body {
+      background-color: #ffffff;
+      color: #1f2937;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    
+
+    /* ==========================================================================
+       2. Homepage Matching Header Navigation
+       ========================================================================== */
+ /* ==========================================================================
+       Header Layout & Navigation Styling (Fixed No-Wrap)
+       ========================================================================== */
+    .navbar-homepage {
+      background-color: #ffffff;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* Logo Styling */
+    .brand-logo-text {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #0f172a;
+      white-space: nowrap;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .brand-logo-text span {
+      color: #8b5cf6;
+    }
+
+    /* Prevent Menu Items From Wrapping onto Multiple Lines */
+    .nav-link-item {
+      color: #475569;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap; /* CRITICAL: Prevents "How Spark Works" from breaking into 2 lines */
+      padding: 0.4rem 0.65rem;
+      transition: color 0.2s ease;
+      display: inline-block;
+    }
+
+    .nav-link-item:hover {
+      color: #0f172a;
+    }
+
+    /* Download App CTA Button Alignment */
+    .btn-download-app {
+      background-color: #1e293b;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.55rem 1.35rem;
+      border-radius: 50rem;
+      text-decoration: none;
+      white-space: nowrap; /* CRITICAL: Prevents button text breaking */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+      border: none;
+      line-height: 1;
+    }
+
+    .btn-download-app:hover {
+      background-color: #0f172a;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-download-app i {
+      font-size: 0.8rem;
+      line-height: 1;
+    }
+
+    /* ==========================================================================
+       3. Hero Section Typography & Elements
+       ========================================================================== */
+    .badge-purple-light {
+      background-color: #f3e8ff;
+      color: #7e22ce;
+      border: 1px solid #e9d5ff;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .badge-purple-light:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 4px 12px rgba(126, 34, 206, 0.15);
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111827;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      transition: background-position 0.5s ease;
+    }
+    .gradient-text:hover {
+      background-position: right center;
+    }
+
+    .hero-subtext {
+      color: #6b7280;
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Feature Badges Grid */
+    .hero-badge-pill {
+      font-size: 0.825rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 50rem;
+      font-weight: 500;
+      display: inline-block;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: default;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      color: #374151;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero-badge-pill:hover {
+      transform: translateY(-3px);
+      border-color: #c084fc;
+      color: #7e22ce;
+      box-shadow: 0 8px 16px rgba(126, 34, 206, 0.12);
+    }
+
+    /* Hero CTA Buttons */
+    .btn-hero-primary {
+      background-color: #7e22ce;
+      color: #ffffff;
+      font-weight: 600;
+      padding: 0.8rem 2.2rem;
+      border-radius: 50rem;
+      border: 1px solid #7e22ce;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-hero-primary:hover {
+      background-color: #6b21a8;
+      border-color: #6b21a8;
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(126, 34, 206, 0.35);
+    }
+
+    .btn-hero-secondary {
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      font-weight: 600;
+      padding: 0.8rem 2.2rem;
+      border-radius: 50rem;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-hero-secondary:hover {
+      background-color: #f9fafb;
+      border-color: #9ca3af;
+      color: #111827;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ==========================================================================
+       4. Entrance Keyframe Animations
+       ========================================================================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .anim-load-1 { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; opacity: 0; }
+    .anim-load-2 { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards; opacity: 0; }
+    .anim-load-3 { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; opacity: 0; }
+    .anim-load-4 { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards; opacity: 0; }
+    .anim-load-5 { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards; opacity: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- HOMEPAGE MATCHING HEADER NAVBAR -->
+<!-- FIXED NAVBAR -->
+  <!-- NAVBAR MATCHING HOMEPAGE -->
+  <nav class="navbar navbar-expand-xl sticky-top border-bottom py-3">
+    <div class="container-fluid px-lg-5">
+      <img  class="navbar-brand fw-bold fs-4 d-flex align-items-center"  src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" style="height: 82px; width: auto" />
+      
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-xl-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how-it-works">How Spark Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+       <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle active fw-bold text-gradient" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Clubs
+  </a>
+  <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2">
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2 text-gradient " href="venture_club.html">Venture Club</a></li>
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2 " href="junior_founder.php">High School-Junior Founders</a></li>
+  </ul>
+</li>
+          <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="foundingmembers.html">Founding Members</a></li>
+          <li class="nav-item"><a class="nav-link" href="directors.html">Directors</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-brand-gradient btn-brand-pulse rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#ventureModal">
+            Download App <i class="bi bi-box-arrow-up-right ms-1"></i>
+          </button>
+        <!--  <a href="#" class="fs-7 fw-semibold text-decoration-none text-dark d-none d-sm-inline">Sign In</a>-->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- HERO SECTION -->
+  <section class="py-5 my-lg-3 text-center bg-white">
+    <div class="container-xxl py-4">
+      
+      <!-- Section Tag -->
+      <div class="mb-3 anim-load-1">
+        <span class="badge badge-purple-light fw-bold text-uppercase px-3 py-2 rounded-pill">
+          ✦ VENTURE CLUB ✦
+        </span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="hero-title mb-3 anim-load-2">
+        Build in Public.<br>
+        <span class="gradient-text">Graduate to the World.</span>
+      </h1>
+
+      <!-- Description Subtext -->
+      <p class="hero-subtext mb-4 anim-load-3">
+        The only startup programme where your progress is visible in real time. Every stage verified. Every milestone public. Every investor can see exactly where you stand.
+      </p>
+
+      <!-- Feature Badges Strip -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5 anim-load-4">
+        <span class="hero-badge-pill">8 Verified Stages</span>
+        <span class="hero-badge-pill">Build in Public</span>
+        <span class="hero-badge-pill">Small Platform Fee Only</span>
+        <span class="hero-badge-pill">US + Global Entity</span>
+        <span class="hero-badge-pill">Investor Dashboard</span>
+        <span class="hero-badge-pill">Structured Graduation Path</span>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="d-flex flex-wrap justify-content-center gap-3 anim-load-5">
+        <a href="#" class="btn btn-hero-primary">
+          Apply to Venture Club <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+        <a href="#" class="btn btn-hero-secondary">
+          View Live Pipeline <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+   <!-- TWO TRACKS SECTION -->
+<section class="py-5 bg-white position-relative overflow-hidden">
+  
+  <!-- Subtle Background Decorator -->
+  <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 pointer-events-none" 
+       style="background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.03) 0%, rgba(255, 255, 255, 0) 70%); z-index: 0;"></div>
+
+  <div class="container-xxl py-4 position-relative" style="z-index: 1;">
+    
+    <!-- Section Header -->
+    <div class="mb-5 anim-load-1 text-center text-md-start">
+      <span class="badge badge-purple-light fw-bold text-uppercase px-3 py-2 rounded-pill mb-3">
+        ✦ TWO TRACKS ✦
+      </span>
+      <h2 class="display-5 fw-bold text-dark lh-sm mb-2">
+        Consumer or Deep Tech. <span class="gradient-text">You pick the path.</span>
+      </h2>
+      <p class="text-muted fs-6 mb-0" style="max-width: 650px;">
+        Both tracks run through the same 8 verified stages. Different economics, different support structure, different investor audiences.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="row g-4">
+      
+      <!-- TRACK A CARD: Marketplace -->
+      <div class="col-lg-6 anim-load-2">
+        <div class="card track-card h-100 border rounded-4 p-4 p-md-5 bg-white shadow-sm position-relative">
+          
+          <!-- Top Track Badge & Accent Pill -->
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <span class="track-badge badge-amber">
+              <i class="bi bi-shop me-1"></i> TRACK A
+            </span>
+            <span class="fs-8 fw-bold text-uppercase px-3 py-1 rounded-pill bg-warning-subtle text-warning border border-warning-subtle">
+              Consumer First
+            </span>
+          </div>
+
+          <!-- Title & Description -->
+          <div class="mb-4">
+            <h3 class="h3 fw-bold text-dark mb-3">Mad Monkey Marketplace</h3>
+            <p class="text-muted fs-6 mb-0 lh-relaxed">
+              Consumer ventures that launch directly to the Mad Monkey user base. Built-in distribution, faster feedback loops, and real customers from day one.
+            </p>
+          </div>
+
+          <!-- Feature List -->
+          <ul class="list-unstyled d-flex flex-column gap-3 mb-5">
+            <li class="d-flex align-items-start gap-3 fs-6 text-secondary">
+              <span class="icon-circle bg-success-subtle text-success">
+                <i class="bi bi-check-lg"></i>
+              </span>
+              <span><strong>Built-in distribution</strong> — launch to an existing engaged user base</span>
+            </li>
+            <li class="d-flex align-items-start gap-3 fs-6 text-secondary">
+              <span class="icon-circle bg-success-subtle text-success">
+                <i class="bi bi-check-lg"></i>
+              </span>
+              <span>Small platform fee on product sales made within the app</span>
+            </li>
+            <li class="d-flex align-items-start gap-3 fs-6 text-secondary">
+              <span class="icon-circle bg-success-subtle text-success">
+                <i class="bi bi-check-lg"></i>
+              </span>
+              <span><strong>Your venture stays yours</strong> — no equity taken</span>
+            </li>
+            <li class="d-flex align-items-start gap-3 fs-6 text-secondary">
+              <span class="icon-circle bg-success-subtle text-success">
+                <i class="bi bi-check-lg"></i>
+              </span>
+              <span><strong>Ideal for:</strong> consumer products, services, edtech, creator tools, local commerce</span>
+            </li>
+          </ul>
+
+          <!-- Metrics Table Footer -->
+          <div class="mt-auto pt-2">
+            <div class="metrics-grid rounded-4 p-3 border">
+              <div class="row g-0 text-center align-items-center">
+                <div class="col-4 border-end">
+                  <span class="d-block text-muted fs-8 text-uppercase fw-bold mb-1">CHARGES</span>
+                  <span class="fw-bold text-purple fs-7">Small platform fee</span>
+                </div>
+                <div class="col-4 border-end">
+                  <span class="d-block text-muted fs-8 text-uppercase fw-bold mb-1">EQUITY</span>
+                  <span class="fw-bold text-dark fs-7">None</span>
+                </div>
+                <div class="col-4">
+                  <span class="d-block text-muted fs-8 text-uppercase fw-bold mb-1">REVENUE</span>
+                  <span class="fw-bold text-dark fs-7">6–12 months</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TRACK B CARD: Labs -->
+      <div class="col-lg-6 anim-load-3">
+        <div class="card track-card h-100 border rounded-4 p-4 p-md-5 bg-white shadow-sm position-relative">
+          
+          <!-- Top Track Badge & Accent Pill -->
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <span class="track-badge badge-purple">
+              <i class="bi bi-cpu me-1"></i> TRACK B
+            </span>
+            <span class="fs-8 fw-bold text-uppercase px-3 py-1 rounded-pill bg-purple-subtle text-purple border border-purple-subtle">
+              Deep-Tech & B2B
+            </span>
+          </div>
+
+          <!-- Title & Description -->
+          <div class="mb-4">
+            <h3 class="h3 fw-bold text-dark mb-3">Mad Monkey Labs</h3>
+            <p class="text-muted fs-6 mb-0 lh-relaxed">
+              Deep-tech, B2B, and infrastructure ventures building in public and targeting external institutional funding and global markets.
+            </p>
+          </div>
+
+          <!-- Feature List -->
+          <ul class="list-unstyled d-flex flex-column gap-3 mb-5">
+            <li class="d-flex align-items-start gap-3 fs-6 text-secondary">
+              <span class="icon-circle bg-success-subtle text-success">
+                <i class="bi bi-check-lg"></i>
+              </span>
+              <span><strong>Build in public</strong> — every milestone visible to investors and community</span>
+            </li>
+            <li class="d-flex align-items-start gap-3 fs-6 text-secondary">
+              <span class="icon-circle bg-success-subtle text-success">
+                <i class="bi bi-check-lg"></i>
+              </span>
+              <span>US entity + global structure available from Traction stage</span>
+            </li>
+            <li class="d-flex align-items-start gap-3 fs-6 text-secondary">
+              <span class="icon-circle bg-success-subtle text-success">
+                <i class="bi bi-check-lg"></i>
+              </span>
+              <span>Direct investor introductions at the Raise stage</span>
+            </li>
+            <li class="d-flex align-items-start gap-3 fs-6 text-secondary">
+              <span class="icon-circle bg-success-subtle text-success">
+                <i class="bi bi-check-lg"></i>
+              </span>
+              <span><strong>Ideal for:</strong> AI, fintech, healthtech, climate, developer tools, infrastructure</span>
+            </li>
+          </ul>
+
+          <!-- Metrics Table Footer -->
+          <div class="mt-auto pt-2">
+            <div class="metrics-grid rounded-4 p-3 border">
+              <div class="row g-0 text-center align-items-center">
+                <div class="col-4 border-end">
+                  <span class="d-block text-muted fs-8 text-uppercase fw-bold mb-1">CHARGES</span>
+                  <span class="fw-bold text-purple fs-7">No fee for Labs</span>
+                </div>
+                <div class="col-4 border-end">
+                  <span class="d-block text-muted fs-8 text-uppercase fw-bold mb-1">EQUITY</span>
+                  <span class="fw-bold text-dark fs-7">None</span>
+                </div>
+                <div class="col-4">
+                  <span class="d-block text-muted fs-8 text-uppercase fw-bold mb-1">SERIES A</span>
+                  <span class="fw-bold text-dark fs-7">12–24 months</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+ <!-- THE 8 STAGES SECTION -->
+<section class="py-5 stages-section border-top border-bottom">
+  <div class="container-xxl py-4">
+    
+    <!-- Section Header -->
+    <div class="mb-5 text-center text-md-start">
+      <span class="badge badge-glow px-3 py-2 rounded-pill mb-3">
+        ✦ THE 8 STAGES ✦
+      </span>
+      <h2 class="display-5 fw-bold text-dark lh-sm mb-2">
+        Every stage verified. <span class="gradient-text">Zero ambiguity.</span>
+      </h2>
+      <p class="text-muted fs-6 mb-0" style="max-width: 680px;">
+        Stages are not self-reported. Each gate is verified by the Venture Club team before a venture advances. Click any stage to see the criteria.
+      </p>
+    </div>
+
+    <!-- Connected Stepper Navigation -->
+    <div class="stepper-container mb-5">
+      <div class="stepper-track-bg d-none d-md-block"></div>
+      <div class="stepper-track-progress d-none d-md-block" id="progressTrack"></div>
+
+      <div class="stepper-wrapper gap-2">
+        <div class="stage-node active" onclick="switchStage(0)">
+          <span class="node-num">01</span>
+          <span class="node-title">SPARK</span>
+        </div>
+        <div class="stage-node" onclick="switchStage(1)">
+          <span class="node-num">02</span>
+          <span class="node-title">VALIDATE</span>
+        </div>
+        <div class="stage-node" onclick="switchStage(2)">
+          <span class="node-num">03</span>
+          <span class="node-title">BUILD</span>
+        </div>
+        <div class="stage-node" onclick="switchStage(3)">
+          <span class="node-num">04</span>
+          <span class="node-title">TRACTION</span>
+        </div>
+        <div class="stage-node" onclick="switchStage(4)">
+          <span class="node-num">05</span>
+          <span class="node-title">REVENUE</span>
+        </div>
+        <div class="stage-node" onclick="switchStage(5)">
+          <span class="node-num">06</span>
+          <span class="node-title">RAISE</span>
+        </div>
+        <div class="stage-node" onclick="switchStage(6)">
+          <span class="node-num">07</span>
+          <span class="node-title">SCALE</span>
+        </div>
+        <div class="stage-node" onclick="switchStage(7)">
+          <span class="node-num">08</span>
+          <span class="node-title">GRADUATE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Panels -->
+    <div class="stage-content-card">
+      
+      <!-- Stage 1 -->
+      <div class="stage-pane active">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-purple-subtle text-purple fw-bold px-3 py-2 rounded-pill">STAGE 01</span>
+            <h3 class="h3 fw-bold text-dark mb-0">Stage 1 — Spark</h3>
+          </div>
+          <span class="badge-timeline"><i class="bi bi-clock me-1"></i> Weeks 1–2</span>
+        </div>
+        <p class="text-secondary fs-5 mb-0 lh-relaxed">
+          Idea posted, team forming. The founding Spark is submitted and a team of 1–10 is locked in.
+        </p>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="stage-pane">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-purple-subtle text-purple fw-bold px-3 py-2 rounded-pill">STAGE 02</span>
+            <h3 class="h3 fw-bold text-dark mb-0">Stage 2 — Validate</h3>
+          </div>
+          <span class="badge-timeline"><i class="bi bi-clock me-1"></i> Weeks 2–5</span>
+        </div>
+        <p class="text-secondary fs-5 mb-0 lh-relaxed">
+          Proving the problem exists. Customer discovery: 10+ conversations documenting a real pain point with evidence.
+        </p>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="stage-pane">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-purple-subtle text-purple fw-bold px-3 py-2 rounded-pill">STAGE 03</span>
+            <h3 class="h3 fw-bold text-dark mb-0">Stage 3 — Build</h3>
+          </div>
+          <span class="badge-timeline"><i class="bi bi-clock me-1"></i> Weeks 3–12</span>
+        </div>
+        <p class="text-secondary fs-5 mb-0 lh-relaxed">
+          MVP in development, first prototype live. A real person outside the team can interact with something.
+        </p>
+      </div>
+
+      <!-- Stage 4 -->
+      <div class="stage-pane">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-purple-subtle text-purple fw-bold px-3 py-2 rounded-pill">STAGE 04</span>
+            <h3 class="h3 fw-bold text-dark mb-0">Stage 4 — Traction</h3>
+          </div>
+          <span class="badge-timeline"><i class="bi bi-clock me-1"></i> Months 2–4</span>
+        </div>
+        <p class="text-secondary fs-5 mb-0 lh-relaxed">
+          First real users, first revenue signals. Investor visibility unlocks here — founder-controlled, default off.
+        </p>
+      </div>
+
+      <!-- Stage 5 -->
+      <div class="stage-pane">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-purple-subtle text-purple fw-bold px-3 py-2 rounded-pill">STAGE 05</span>
+            <h3 class="h3 fw-bold text-dark mb-0">Stage 5 — Revenue</h3>
+          </div>
+          <span class="badge-timeline"><i class="bi bi-clock me-1"></i> Months 3–8</span>
+        </div>
+        <p class="text-secondary fs-5 mb-0 lh-relaxed">
+          Consistent monthly revenue, PMF signals. Track A: in-app sales. Track B: paying B2B customers.
+        </p>
+      </div>
+
+      <!-- Stage 6 -->
+      <div class="stage-pane">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-purple-subtle text-purple fw-bold px-3 py-2 rounded-pill">STAGE 06</span>
+            <h3 class="h3 fw-bold text-dark mb-0">Stage 6 — Raise</h3>
+          </div>
+          <span class="badge-timeline"><i class="bi bi-clock me-1"></i> Months 4–8</span>
+        </div>
+        <p class="text-secondary fs-5 mb-0 lh-relaxed">
+          Actively seeking investment. Direct investor introductions made by the Venture Club team.
+        </p>
+      </div>
+
+      <!-- Stage 7 -->
+      <div class="stage-pane">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-purple-subtle text-purple fw-bold px-3 py-2 rounded-pill">STAGE 07</span>
+            <h3 class="h3 fw-bold text-dark mb-0">Stage 7 — Scale</h3>
+          </div>
+          <span class="badge-timeline"><i class="bi bi-rocket-takeoff me-1"></i> Post-Funded</span>
+        </div>
+        <p class="text-secondary fs-5 mb-0 lh-relaxed">
+          Funded. Hiring. Growing beyond founding city. Operational at meaningful scale.
+        </p>
+      </div>
+
+      <!-- Stage 8 -->
+      <div class="stage-pane">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-purple-subtle text-purple fw-bold px-3 py-2 rounded-pill">STAGE 08</span>
+            <h3 class="h3 fw-bold text-dark mb-0">Stage 8 — Graduate</h3>
+          </div>
+          <span class="badge-timeline"><i class="bi bi-award me-1"></i> Months 18–36</span>
+        </div>
+        <p class="text-secondary fs-5 mb-0 lh-relaxed">
+          Independent entity. You made it. Venture spins out as a fully independent company with full support.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- LIVE VENTURE PIPELINE SECTION -->
+<section class="py-5 bg-white position-relative border-top">
+  <div class="container-xxl py-4">
+    
+    <!-- Section Header Bar -->
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-2">
+      <div class="d-flex align-items-center gap-2">
+        <span class="fs-8 fw-bold text-uppercase tracking-wider text-muted">LIVE VENTURE PIPELINE</span>
+        <!-- Pulsing Live Dot -->
+        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 fs-8 fw-semibold d-inline-flex align-items-center gap-1.5 ms-1">
+          <span class="live-pulse-dot"></span> Live
+        </span>
+      </div>
+
+      <a href="#" class="btn btn-outline-dark btn-sm rounded-pill fw-semibold px-3 py-1.5 fs-7">
+        Investor Access <i class="bi bi-arrow-right ms-1"></i>
+      </a>
+    </div>
+
+    <!-- PIPELINE CARDS CONTAINER -->
+    <div class="d-flex flex-column gap-3">
+
+      <!-- VENTURE CARD 1: Ravi Kumar -->
+      <div class="card venture-card border rounded-4 p-4 bg-white shadow-sm transition-all">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <!-- User Profile & Info -->
+          <div class="d-flex align-items-center gap-3">
+            <div class="avatar-circle bg-purple-subtle text-purple">RK</div>
+            <div>
+              <h6 class="fw-bold text-dark mb-0 fs-6">Ravi Kumar</h6>
+              <span class="text-muted fs-8">Bangalore · Track A</span>
+            </div>
+          </div>
+          <!-- Tag -->
+          <span class="badge bg-purple-subtle text-purple fw-semibold rounded-pill px-3 py-1.5 fs-8">EdTech</span>
+        </div>
+
+        <!-- Project Title & Description -->
+        <div class="my-3">
+          <h4 class="h5 fw-bold text-dark mb-1">AI Study Planner</h4>
+          <p class="text-secondary fs-6 mb-0">Personalised study plans powered by adaptive AI. 300 beta users, 92% completion rate.</p>
+        </div>
+
+        <!-- Progress Bar & Metrics Footer -->
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 pt-2 mt-auto">
+          <div class="d-flex align-items-center gap-4">
+            <!-- Stage Segmented Bar (3/8 Active) -->
+            <div>
+              <div class="stage-bar-segments mb-1">
+                <span class="segment active-amber"></span>
+                <span class="segment active-amber"></span>
+                <span class="segment active-amber"></span>
+                <span class="segment"></span>
+                <span class="segment"></span>
+                <span class="segment"></span>
+                <span class="segment"></span>
+                <span class="segment"></span>
+              </div>
+              <div class="fs-8 text-muted fw-semibold">STAGE <span class="text-amber fw-bold">3/8 · Build</span></div>
+            </div>
+
+            <!-- Metric -->
+            <div class="ps-3 border-start">
+              <span class="d-block text-muted fs-8 fw-semibold">RAISING</span>
+              <span class="fw-bold text-amber fs-7">₹25L Seed</span>
+            </div>
+          </div>
+
+          <a href="#" class="connect-link fw-bold text-purple fs-7 text-decoration-none">Connect <i class="bi bi-chevron-right fs-8 ms-0.5"></i></a>
+        </div>
+      </div>
+
+      <!-- VENTURE CARD 2: Priya Nair -->
+      <div class="card venture-card border rounded-4 p-4 bg-white shadow-sm transition-all">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <!-- User Profile & Info -->
+          <div class="d-flex align-items-center gap-3">
+            <div class="avatar-circle bg-teal-subtle text-teal">PN</div>
+            <div>
+              <h6 class="fw-bold text-dark mb-0 fs-6">Priya Nair</h6>
+              <span class="text-muted fs-8">Chennai · Track B</span>
+            </div>
+          </div>
+          <!-- Tag -->
+          <span class="badge bg-teal-subtle text-teal fw-semibold rounded-pill px-3 py-1.5 fs-8">Climate</span>
+        </div>
+
+        <!-- Project Title & Description -->
+        <div class="my-3">
+          <h4 class="h5 fw-bold text-dark mb-1">EcoPackage</h4>
+          <p class="text-secondary fs-6 mb-0">Sustainable packaging for D2C brands. 3 paying customers, 40% MoM growth.</p>
+        </div>
+
+        <!-- Progress Bar & Metrics Footer -->
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 pt-2 mt-auto">
+          <div class="d-flex align-items-center gap-4">
+            <!-- Stage Segmented Bar (5/8 Active) -->
+            <div>
+              <div class="stage-bar-segments mb-1">
+                <span class="segment active-teal"></span>
+                <span class="segment active-teal"></span>
+                <span class="segment active-teal"></span>
+                <span class="segment active-teal"></span>
+                <span class="segment active-amber"></span>
+                <span class="segment"></span>
+                <span class="segment"></span>
+                <span class="segment"></span>
+              </div>
+              <div class="fs-8 text-muted fw-semibold">STAGE <span class="text-amber fw-bold">5/8 · Revenue</span></div>
+            </div>
+
+            <!-- Metric -->
+            <div class="ps-3 border-start">
+              <span class="d-block text-muted fs-8 fw-semibold">MRR</span>
+              <span class="fw-bold text-teal fs-7">₹8L</span>
+            </div>
+          </div>
+
+          <a href="#" class="connect-link fw-bold text-purple fs-7 text-decoration-none">Connect <i class="bi bi-chevron-right fs-8 ms-0.5"></i></a>
+        </div>
+      </div>
+
+      <!-- VENTURE CARD 3: Kiran Rao -->
+      <div class="card venture-card border rounded-4 p-4 bg-white shadow-sm transition-all">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <!-- User Profile & Info -->
+          <div class="d-flex align-items-center gap-3">
+            <div class="avatar-circle bg-amber-subtle text-amber">KR</div>
+            <div>
+              <h6 class="fw-bold text-dark mb-0 fs-6">Kiran Rao</h6>
+              <span class="text-muted fs-8">Pune · Track B</span>
+            </div>
+          </div>
+          <!-- Tag -->
+          <span class="badge bg-amber-subtle text-amber fw-semibold rounded-pill px-3 py-1.5 fs-8">FinTech</span>
+        </div>
+
+        <!-- Project Title & Description -->
+        <div class="my-3">
+          <h4 class="h5 fw-bold text-dark mb-1">GigSave</h4>
+          <p class="text-secondary fs-6 mb-0">Savings and insurance for gig workers. Consistent MRR growth, strong unit economics, profitable.</p>
+        </div>
+
+        <!-- Progress Bar & Metrics Footer -->
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 pt-2 mt-auto">
+          <div class="d-flex align-items-center gap-4">
+            <!-- Stage Segmented Bar (6/8 Active) -->
+            <div>
+              <div class="stage-bar-segments mb-1">
+                <span class="segment active-teal"></span>
+                <span class="segment active-teal"></span>
+                <span class="segment active-teal"></span>
+                <span class="segment active-teal"></span>
+                <span class="segment active-teal"></span>
+                <span class="segment active-amber"></span>
+                <span class="segment"></span>
+                <span class="segment"></span>
+              </div>
+              <div class="fs-8 text-muted fw-semibold">STAGE <span class="text-amber fw-bold">6/8 · Raise</span></div>
+            </div>
+
+            <!-- Metric -->
+            <div class="ps-3 border-start">
+              <span class="d-block text-muted fs-8 fw-semibold">MRR</span>
+              <span class="fw-bold text-teal fs-7">₹12L</span>
+            </div>
+          </div>
+
+          <a href="#" class="connect-link fw-bold text-purple fs-7 text-decoration-none">Connect <i class="bi bi-chevron-right fs-8 ms-0.5"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Section Disclaimer Footer -->
+    <div class="text-center mt-4 pt-2">
+      <p class="text-muted fs-8 mb-0">Illustrative examples. Real ventures appear here once verified at Stage 4+.</p>
+    </div>
+
+  </div>
+</section>
+ 
+ 
+
+ 
+
+<!-- Custom JavaScript for Tab Switching & Progress Bar -->
+<script>
+  function switchStage(index) {
+    const nodes = document.querySelectorAll('.stage-node');
+    const panes = document.querySelectorAll('.stage-pane');
+    const progressTrack = document.getElementById('progressTrack');
+
+    // Update active node styling
+    nodes.forEach((node, i) => {
+      if (i === index) {
+        node.classList.add('active');
+      } else {
+        node.classList.remove('active');
+      }
+    });
+
+    // Update active pane content
+    panes.forEach((pane, i) => {
+      if (i === index) {
+        pane.classList.add('active');
+      } else {
+        pane.classList.remove('active');
+      }
+    });
+
+    // Update progress bar width
+    const percent = (index / (nodes.length - 1)) * 100;
+    progressTrack.style.width = percent + '%';
+  }
+
+  // Initialize line on load
+  document.addEventListener("DOMContentLoaded", () => {
+    switchStage(0);
+  });
+</script>
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

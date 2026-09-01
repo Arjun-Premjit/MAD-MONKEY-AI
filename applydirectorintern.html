@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply as Campus Director Intern | Mad Monkey AI</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #111827;
+    }
+    .hover-glow {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hover-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3) !important;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #a855f7 !important;
+      box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15) !important;
+    }
+    .fs-7 { font-size: 0.875rem; }
+    .fs-8 { font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3 mb-2">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand fw-bold fs-4 text-dark d-flex align-items-center gap-2" href="index.html">
+        <img src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" style="height: 60px; width: auto" />
+      </a>
+      
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-3">
+          <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="https://madmonkey.ai/">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="#">How Spark Works</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="#">Features</a></li>
+  <!--        <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="#">Our Name</a></li>-->
+          <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="#">About</a></li>
+          <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle active fw-bold text-gradient" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Clubs
+  </a>
+  <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2">
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2 text-gradient" href="venture_club.php">Venture Club</a></li>
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2" href="junior_founder.php">High School-Junior Founders</a></li>
+  </ul>
+</li>
+          <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="leaderboard.html">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary fw-medium" href="foundingmembers.html">Founding Members</a></li>
+          <li class="nav-item"><a class="nav-link text-dark active fw-bold" href="directors.html">Directors</a></li>
+        </ul>
+        <a href="#" class="btn btn-dark rounded-pill px-4 py-2 text-white fw-medium">
+          Download App <i class="bi bi-arrow-up-right ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN APPLICATION FORM SECTION -->
+  <section class="py-4">
+    <div class="container" style="max-width: 780px;">
+      
+      <!-- HEADER BADGES & TITLE -->
+      <div class="mb-4">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="fw-bold fs-6 text-dark">mad <span style="color: #ec4899;">monkey ai</span></span>
+        </div>
+        
+        <h1 class="display-6 fw-black text-dark mb-2" style="font-weight: 900; letter-spacing: -0.02em;">
+          Apply as <span style="background: linear-gradient(135deg, #7e22ce 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Campus Director Intern</span>
+        </h1>
+        
+        <p class="text-secondary fw-medium fs-6 mb-3">
+          Founder's Office Â· Mad Monkey AI Inc., Delaware, USA
+        </p>
+
+        <!-- HIGHLIGHT PILLS -->
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <span class="badge rounded-pill bg-white text-dark border border-light-subtle px-3 py-2 fw-semibold shadow-sm">
+           2 seats per college only
+          </span>
+          <span class="badge rounded-pill bg-white text-dark border border-light-subtle px-3 py-2 fw-semibold shadow-sm">
+              Founder's Office Internship
+          </span>
+          <span class="badge rounded-pill bg-white text-dark border border-light-subtle px-3 py-2 fw-semibold shadow-sm">
+             Direct founder access
+          </span>
+        </div>
+      </div>
+
+      <!-- FORM CARD CONTAINER -->
+      <div class="card border-0 shadow-lg rounded-5 overflow-hidden p-4 p-md-5 bg-white">
+        
+        <!-- TOP ACCENT BAR -->
+        <div style="height: 5px; background: linear-gradient(135deg, #7e22ce 0%, #ec4899 100%); margin: -3rem -3rem 2.5rem -3rem;"></div>
+
+        <form id="directorAppForm" method="POST" action="submit_application.php" onsubmit="handleFormSubmit(event)">
+          
+          <!-- SECTION 1: PERSONAL DETAILS -->
+          <div class="mb-4">
+            <h6 class="text-uppercase fw-bold text-muted fs-8 tracking-wider mb-3" style="letter-spacing: 0.08em;">
+              PERSONAL DETAILS
+            </h6>
+            
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark fs-7">First name</label>
+                <input type="text" name="first_name" class="form-control bg-light border-0 rounded-3 py-2.5 fw-medium" placeholder="Priya" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark fs-7">Last name</label>
+                <input type="text" name="last_name" class="form-control bg-light border-0 rounded-3 py-2.5 fw-medium" placeholder="Sharma" required>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark fs-7">Email address</label>
+                <input type="email" name="email" class="form-control bg-light border-0 rounded-3 py-2.5 fw-medium" placeholder="priya@email.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark fs-7">WhatsApp number</label>
+                <input type="tel" name="whatsapp" class="form-control bg-light border-0 rounded-3 py-2.5 fw-medium" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4 opacity-10">
+
+          <!-- SECTION 2: COLLEGE DETAILS -->
+          <div class="mb-4">
+            <h6 class="text-uppercase fw-bold text-muted fs-8 tracking-wider mb-3" style="letter-spacing: 0.08em;">
+              COLLEGE DETAILS
+            </h6>
+
+            <div class="mb-3">
+              <label class="form-label fw-bold text-dark fs-7">College name</label>
+              <input type="text" name="college_name" class="form-control bg-light border-0 rounded-3 py-2.5 fw-medium" placeholder="VIT Vellore / IIT Bombay" required>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark fs-7">City</label>
+                <input type="text" name="city" class="form-control bg-light border-0 rounded-3 py-2.5 fw-medium" placeholder="Vellore" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark fs-7">State</label>
+                <input type="text" name="state" class="form-control bg-light border-0 rounded-3 py-2.5 fw-medium" placeholder="Tamil Nadu" required>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark fs-7">Degree and stream</label>
+                <input type="text" name="degree_stream" class="form-control bg-light border-0 rounded-3 py-2.5 fw-medium" placeholder="B.Tech Computer Science" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark fs-7">Current year of study</label>
+                <select name="year_of_study" class="form-select bg-light border-0 rounded-3 py-2.5 fw-medium" required>
+                  <option value="" disabled selected>Select year</option>
+                  <option value="1st Year">1st Year</option>
+                  <option value="2nd Year">2nd Year</option>
+                  <option value="3rd Year">3rd Year</option>
+                  <option value="4th Year / Final Year">4th Year</option>
+                  <option value="Postgraduate">Postgraduate</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4 opacity-10">
+
+          <!-- SECTION 3: ONE LAST THING -->
+          <div class="mb-4">
+            <h6 class="text-uppercase fw-bold text-muted fs-8 tracking-wider mb-3" style="letter-spacing: 0.08em;">
+              ONE LAST THING
+            </h6>
+
+            <div class="mb-2">
+              <label class="form-label fw-bold text-dark fs-7">Why do you want to be a Campus Director Intern?</label>
+              <textarea name="reason" class="form-control bg-light border-0 rounded-3 p-3 fw-medium" id="reasonText" rows="4" maxlength="300" placeholder="Tell us in 2 to 3 sentences - what excites you about this role?" oninput="updateCharCount()" required></textarea>
+              <div class="d-flex justify-content-start mt-1">
+                <span class="fs-8 text-muted fw-semibold" id="charCounter">0 / 300</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBMIT ACTION -->
+          <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-3 mt-4 pt-2">
+            <button type="submit" id="submitBtn" class="btn text-white rounded-pill px-5 py-3 fw-bold fs-6 shadow-sm border-0 transition-all hover-glow" style="background: linear-gradient(135deg, #7e22ce 0%, #ec4899 100%);">
+              Submit application
+            </button>
+            <span class="text-secondary fs-7 fw-medium">
+              We'll reach out on WhatsApp within 48 hours
+            </span>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function updateCharCount() {
+      const text = document.getElementById('reasonText').value;
+      document.getElementById('charCounter').innerText = `${text.length} / 300`;
+    }
+
+    async function handleFormSubmit(e) {
+  e.preventDefault();
+  
+  const form = document.getElementById('directorAppForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formData = new FormData(form);
+
+  submitBtn.disabled = true;
+  submitBtn.innerText = 'Submitting...';
+
+  try {
+    const response = await fetch('submit_application.php', {
+      method: 'POST',
+      body: formData
+    });
+
+    const responseText = await response.text();
+    console.log('Raw Server Response:', responseText); // Debug output
+
+    let result;
+    try {
+      result = JSON.parse(responseText);
+    } catch (parseError) {
+      alert('Server returned invalid output. Check developer console for details.');
+      console.error('JSON Parsing Error:', parseError, responseText);
+      return;
+    }
+
+    if (result.status === 'success') {
+      alert(result.message);
+      form.reset();
+      updateCharCount();
+    } else {
+      alert('Error: ' + result.message);
+    }
+
+  } catch (err) {
+    console.error('Fetch error:', err);
+    alert('Failed to connect to submit_application.php. Ensure file exists in the same web directory.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerText = 'Submit application ➔';
+  }
+}
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

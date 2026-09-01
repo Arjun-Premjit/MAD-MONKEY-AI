@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Founding Members - Mad Monkey AI</title>
+  
+  <!-- Bootstrap 5 CSS & Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+  
+  /* Exact Magenta-Violet Brand Gradient */
+/* Darker Rich Violet-Pink Gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #7e22ce 0%, #db2777 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block;
+}
+
+/* Download App Button Gradient */
+/* Animated Ripple Button */
+.btn-brand-gradient {
+  position: relative;
+  background: linear-gradient(135deg, #8b2fc9 0%, #e83e8c 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  z-index: 1;
+}
+
+/* Ripple Pseudo Element */
+.btn-brand-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  background: inherit;
+  z-index: -1;
+  animation: pulse-ripple 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Keyframes for Expanding Halo Glow */
+@keyframes pulse-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(232, 62, 140, 0.6);
+  }
+  70% {
+    transform: scale(1.08, 1.25);
+    opacity: 0;
+    box-shadow: 0 0 0 14px rgba(232, 62, 140, 0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(232, 62, 140, 0);
+  }
+}
+
+.btn-brand-gradient:hover {
+  background: linear-gradient(135deg, #7a25b3 0%, #d62b78 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 10px rgba(255, 210, 233, 0.9) !important;
+}
+
+/* Nav Link Hover & Active State */
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #9333ea !important;
+}
+
+/* Pill Badge Accent Match */
+.badge-purple-light {
+  background-color: #f3e8ff !important;
+  color: #7e22ce !important;
+  border: 1px solid #e9d5ff !important;
+}
+
+/* Open dropdown on hover for desktop screens */
+@media (min-width: 1200px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+}
+  
+  
+  
+    :root {
+      --bg-light: #fafafa;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --brand-purple: #9333ea;
+      --brand-pink: #ec4899;
+      --brand-dark: #1e293b;
+      --text-muted: #64748b;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--brand-dark);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar Brand & Buttons */
+    .brand-logo {
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: #7e22ce;
+    }
+
+    .nav-link-custom {
+      color: #475569;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-link-custom:hover {
+      color: #0f172a;
+    }
+    .nav-link-custom.active {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .btn-download-app {
+      background-color: var(--brand-dark);
+      color: #ffffff !important;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 9999px;
+      padding: 8px 20px;
+      border: none;
+      transition: opacity 0.2s ease;
+    }
+    
+    .btn-download-app:hover {
+      background-color: #0f172a;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Live Badge */
+    .status-badge {
+      background-color: #f3e8ff;
+      color: #9333ea;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: 9999px;
+      display: inline-block;
+    }
+
+    /* Hero Headings */
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .hero-gradient-text {
+      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+      font-weight: 900;
+    }
+
+    .hero-subtext {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    /* Tab Switcher (Viewing in: India | US USA) */
+    .tab-switcher-wrapper {
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #e2e8f0;
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      color: #64748b;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background-color: var(--brand-dark);
+      color: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Metric Cards */
+    .metric-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 18px 12px;
+      text-align: center;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    }
+
+    .metric-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    /* Purple Notice Banner */
+    .notice-banner {
+      background-color: #faf5ff;
+      border: 1px solid #f3e8ff;
+      border-radius: 16px;
+      padding: 14px 20px;
+      font-size: 0.88rem;
+      color: #6b21a8;
+      font-weight: 500;
+    }
+    .notice-banner strong {
+      color: #9333ea;
+      font-weight: 800;
+    }
+
+    /* Filter Pills */
+    .filter-pill {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-pill:hover {
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .filter-pill.active {
+      background-color: var(--brand-dark);
+      color: #ffffff;
+      border-color: var(--brand-dark);
+    }
+
+    /* Member Cards */
+    .member-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    .member-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+      border-color: #cbd5e1;
+    }
+
+    .avatar-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      color: #3b82f6;
+      font-weight: 800;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Category Badges */
+    .badge-category {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .badge-bug-fix { background: #ffe4e6; color: #e11d48; border: 1px solid #fecdd3; }
+    .badge-security { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .badge-design { background: #ffedd5; color: #ea580c; border: 1px solid #fed7aa; }
+    .badge-ux { background: #fae8ff; color: #c084fc; border: 1px solid #f5d0fe; }
+    .badge-community { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+    .badge-development { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
+
+    /* Sticky Bottom Button */
+    .bottom-floating-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+    }
+
+    .btn-brand-floating {
+      background: linear-gradient(135deg, #7e22ce 0%, #ec4899 100%);
+      color: #ffffff !important;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 10px 24px;
+      border-radius: 9999px;
+      border: none;
+      box-shadow: 0 4px 16px rgba(126, 34, 206, 0.3);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-brand-floating:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-xl sticky-top border-bottom py-3">
+    <div class="container-fluid px-lg-5">
+       <img  class="navbar-brand fw-bold fs-4 d-flex align-items-center"  src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" style="height: 82px; width: auto" />
+      
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-xl-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how-it-works">How Spark Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+       <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle  fw-bold " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Clubs
+  </a>
+  <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2">
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2 " href="venture_club.html">Venture Club</a></li>
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2 " href="junior_founder.php">High School-Junior Founders</a></li>
+  </ul>
+</li>
+          <li class="nav-item"><a class="nav-link " href="leaderboard.html">Leaderboard</a></li>
+          <li class="nav-item"><a class="nav-link text-gradient"  href="foundingmembers.html">Founding Members</a></li>
+          <li class="nav-item"><a class="nav-link" href="directors.html">Directors</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-brand-gradient btn-brand-pulse rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#ventureModal">
+            Download App <i class="bi bi-box-arrow-up-right ms-1"></i>
+          </button>
+        <!--  <a href="#" class="fs-7 fw-semibold text-decoration-none text-dark d-none d-sm-inline">Sign In</a>-->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="container py-4 flex-grow-1" style="max-width: 1000px;">
+    
+    <!-- HERO HEADER -->
+    <div class="text-center mb-4">
+      <div class="status-badge mb-3">• Live · Updated daily · No login needed</div>
+      <h1 class="hero-title mb-2">
+        The people who made this possible.
+        <span class="hero-gradient-text">Founding Members</span>
+      </h1>
+      <p class="hero-subtext mx-auto mb-4" style="max-width: 620px;">
+        Every person here helped shape Mad Monkey AI before the world knew it existed — fixing bugs, finding vulnerabilities, suggesting designs, and pushing us to be better.
+      </p>
+
+      <!-- TAB SWITCHER -->
+      <div class="d-flex align-items-center justify-content-center gap-2">
+        <span class="fs-8 fw-bold text-uppercase text-muted tracking-wider">VIEWING</span>
+        <div class="tab-switcher-wrapper">
+          <button class="tab-btn active" id="tab-in" onclick="switchTab('in')">IN India</button>
+          <button class="tab-btn" id="tab-us" onclick="switchTab('us')">US USA</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- METRICS SECTION -->
+    <div class="row g-3 mb-4 justify-content-center">
+      <div class="col-6 col-md-3">
+        <div class="metric-card">
+          <div class="metric-value" id="stat-members">47</div>
+          <div class="metric-label">MEMBERS</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="metric-card">
+          <div class="metric-value" id="stat-bugs">12</div>
+          <div class="metric-label">BUG FIXES</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="metric-card">
+          <div class="metric-value" id="stat-vulns">8</div>
+          <div class="metric-label">VULNERABILITIES FOUND</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="metric-card">
+          <div class="metric-value" id="stat-design">23</div>
+          <div class="metric-label">DESIGN CONTRIBUTIONS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PURPLE NOTICE BANNER -->
+    <div class="notice-banner mb-4 text-center text-md-start" id="info-banner-text">
+      🚀 <strong>India Founding Members</strong> — these early contributors helped us understand the campus and restaurant market before we launched.
+    </div>
+
+    <!-- CATEGORY FILTERS -->
+    <div class="d-flex flex-wrap align-items-center justify-content-center gap-2 mb-4" id="filter-pills-container">
+      <button class="filter-pill active" onclick="filterCategory('All', this)">All</button>
+      <button class="filter-pill" onclick="filterCategory('Bug Fix', this)">Bug Fix</button>
+      <button class="filter-pill" onclick="filterCategory('Security', this)">Security</button>
+      <button class="filter-pill" onclick="filterCategory('Design', this)">Design</button>
+      <button class="filter-pill" onclick="filterCategory('UX Suggestion', this)">UX Suggestion</button>
+      <button class="filter-pill" onclick="filterCategory('Community', this)">Community</button>
+      <button class="filter-pill" onclick="filterCategory('Development', this)">Development</button>
+    </div>
+
+    <!-- MEMBERS GRID -->
+    <div class="row g-3" id="members-grid">
+      <!-- JavaScript Dynamic Render -->
+    </div>
+
+  </main>
+
+  <!-- FLOATING CTA BUTTON -->
+  <div class="bottom-floating-btn">
+    <a href="directors.html" class="btn btn-brand-floating d-flex align-items-center gap-2 text-decoration-none" >
+      Meet the Directors <span>→</span>
+    </a>
+  </div>
+
+  <!-- JS LOGIC -->
+  <script>
+    const dataStore = {
+      in: {
+        stats: { members: 47, bugs: 12, vulns: 8, design: 23 },
+        banner: "🚀 <strong>India Founding Members</strong> — these early contributors helped us test early builds, spot critical system bugs, and refine features across campuses.",
+        members: [
+          {
+            name: "VT Pranav Jeyan",
+            location: "College, Place",
+            initials: "PJ",
+            category: "Security",
+            badgeClass: "badge-security",
+            description: "Identified a critical auth-flow vulnerability in the Spark team-formation endpoint that would have allowed uninvited users to join private groups.",
+            joined: "Joined March 2026"
+          },
+          {
+            name: "Ananga Rao",
+            location: "PES University, Bengaluru",
+            initials: "AR",
+            category: "Design",
+            badgeClass: "badge-design",
+            description: "Co-designed the Deals Near You card layout and proposed the split drive-in UI vs. delivery visual distinction that is now moving to the fill-rate mechanic section.",
+            joined: "Joined January 2026"
+          },
+          {
+            name: "Siddharth Kumar",
+            location: "RVCE, Bengaluru",
+            initials: "SK",
+            category: "Bug Fix",
+            badgeClass: "badge-bug-fix",
+            description: "Found and documented a race condition in the Spark expiry timer that caused group chats to form before the creator had accepted all members.",
+            joined: "Joined January 2026"
+          },
+          {
+            name: "Meera Pillai",
+            location: "UX SUGGESTION",
+            initials: "MP",
+            category: "UX Suggestion",
+            badgeClass: "badge-ux",
+            description: "Proposed adding the '16 of 20 Sparks filled' counter to the create screen after beta testing showed users-banks were missing context.",
+            joined: "Joined February 2026"
+          },
+          {
+            name: "Rohan Nair",
+            location: "COMMUNITY",
+            initials: "RN",
+            category: "Community",
+            badgeClass: "badge-community",
+            description: "Ran the first 20 manual Sparks during closed beta, personally responding to user feedback and helping test Spark-to-merchant workflow.",
+            joined: "Joined December 2025"
+          },
+          {
+            name: "Vikram Sharma",
+            location: "DEVELOPMENT",
+            initials: "VS",
+            category: "Development",
+            badgeClass: "badge-development",
+            description: "Executed a static analysis of the Android APK and surfaced two hardcoded API keys that were unintentionally included in a pre-release build.",
+            joined: "Joined April 2026"
+          },
+          {
+            name: "Priya Bair",
+            location: "IIT Madras, Chennai",
+            initials: "PB",
+            category: "Design",
+            badgeClass: "badge-design",
+            description: "Co-designed the Aspiring Venture Club stage roll-up and the Showcase card layout, ensuring the high school programme felt distinct from the college tier.",
+            joined: "Joined March 2026"
+          },
+          {
+            name: "Arjun Mehta",
+            location: "BITS Pilani, Hyderabad",
+            initials: "AM",
+            category: "Development",
+            badgeClass: "badge-development",
+            description: "Built the working prototype of the Merchant Margin Calculator in SheetJS, validating the core math model before the app rewrite even began.",
+            joined: "Joined March 2026"
+          },
+          {
+            name: "Kavya Reddy",
+            location: "IIT Delhi, New Delhi",
+            initials: "KR",
+            category: "Bug Fix",
+            badgeClass: "badge-bug-fix",
+            description: "Found and reproduced a ghost-messaging bug where QR-scan group-chats were stored in local text storage, causing cross-timezone messaging lag.",
+            joined: "Joined April 2026"
+          }
+        ]
+      },
+      us: {
+        stats: { members: 8, bugs: 3, vulns: 2, design: 4 },
+        banner: "🚀 <strong>US Founding Members — Early Access.</strong> We're seeding our first US campuses from Richmond, VA. Be among the first Campus Directors to put your college on the board.",
+        members: [
+          {
+            name: "Jordan Mills",
+            location: "Richmond, Virginia in VA",
+            initials: "JM",
+            category: "Community",
+            badgeClass: "badge-community",
+            description: "First US Campus Director candidate at VCU. Ran initial student outreach in Broad Street, identified the first 3 merchant prospects in the pilot corridor.",
+            joined: "Joined May 2026"
+          },
+          {
+            name: "Sarah Chen",
+            location: "Richmond, Virginia in VA",
+            initials: "SC",
+            category: "UX Suggestion",
+            badgeClass: "badge-ux",
+            description: "Flagged that the in-app currency display defaulted to ₹ for US users; proposed the automatic USD/INR switch based on user profile locale.",
+            joined: "Joined May 2026"
+          },
+          {
+            name: "Marcus Rodriguez",
+            location: "Short Pump, Virginia in VA",
+            initials: "MR",
+            category: "Development",
+            badgeClass: "badge-development",
+            description: "Validated that the DoorDash 15/20/30% commission tier model could be built into the Merchant Margin Calculator using publicly available rate data.",
+            joined: "Joined June 2026"
+          }
+        ]
+      }
+    };
+
+    let currentTab = 'in';
+    let currentCategory = 'All';
+
+    function render() {
+      const activeData = dataStore[currentTab];
+
+      document.getElementById('stat-members').textContent = activeData.stats.members;
+      document.getElementById('stat-bugs').textContent = activeData.stats.bugs;
+      document.getElementById('stat-vulns').textContent = activeData.stats.vulns;
+      document.getElementById('stat-design').textContent = activeData.stats.design;
+
+      document.getElementById('info-banner-text').innerHTML = activeData.banner;
+
+      const filteredMembers = activeData.members.filter(m => {
+        return currentCategory === 'All' || m.category === currentCategory;
+      });
+
+      const grid = document.getElementById('members-grid');
+      if (filteredMembers.length === 0) {
+        grid.innerHTML = `<div class="col-12 text-center text-muted py-5 fs-7">No members found under the "${currentCategory}" category for this region.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filteredMembers.map(m => `
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="member-card">
+            <div>
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="avatar-box">${m.initials}</div>
+                <div class="overflow-hidden">
+                  <div class="fw-bold text-dark text-truncate fs-7">${m.name}</div>
+                  <div class="text-secondary fs-8 text-truncate">${m.location}</div>
+                </div>
+              </div>
+              <span class="badge-category ${m.badgeClass}">${m.category}</span>
+              <p class="text-secondary fs-8 mb-3 lh-base" style="font-size: 0.8rem !important; color: #475569 !important;">
+                ${m.description}
+              </p>
+            </div>
+            <div class="text-muted fs-8 fw-semibold border-top border-light-subtle pt-2 mt-2" style="font-size: 0.75rem !important;">
+              ${m.joined}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.getElementById('tab-in').classList.toggle('active', tab === 'in');
+      document.getElementById('tab-us').classList.toggle('active', tab === 'us');
+      render();
+    }
+
+    function filterCategory(category, btnElement) {
+      currentCategory = category;
+      document.querySelectorAll('.filter-pill').forEach(el => el.classList.remove('active'));
+      btnElement.classList.add('active');
+      render();
+    }
+
+    render();
+  </script>
+  
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  
+</body>
+</html>
