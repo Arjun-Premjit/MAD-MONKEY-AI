@@ -36,7 +36,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth removed — Lenis handles smooth scrolling */
   background-color: #ffffff;
 }
 
@@ -368,7 +368,8 @@ body {
 .scroll-viewport {
   position: relative;
   width: 100vw;
-  min-height: 580vh;   /* Stage 5 gets ample dwell without excessive scroll to footer */
+  min-height: 580vh;   /* vh fallback for older browsers */
+  min-height: 580dvh;  /* dynamic viewport height — fixes iOS Safari address-bar bug */
   z-index: 10;
 }
 
@@ -377,7 +378,8 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100vh;    /* vh fallback */
+  height: 100dvh;   /* dynamic viewport height fix */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -387,7 +389,8 @@ body {
 .stage-wrapper {
   position: relative;
   width: min(calc(100% - 48px), var(--max-width));
-  height: 85vh;
+  height: 85vh;     /* vh fallback */
+  height: 85dvh;    /* dynamic viewport height fix */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -402,8 +405,9 @@ body {
   justify-content: space-between;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  /* No CSS transition here — GSAP owns opacity & transform for scrub animations */
   z-index: 10;
+  will-change: opacity, transform;
 }
 
 .stage-panel.active {
@@ -732,8 +736,9 @@ body {
   display: flex;
   flex-direction: column;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  /* No CSS transition — GSAP controls opacity for smooth scrub */
   pointer-events: none;
+  will-change: opacity;
 }
 
 .app-screen-layer.active {
@@ -1047,10 +1052,6 @@ body {
   margin-top: -14px;
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
 }
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-}
 
 .user-welcome-label {
   font-size: 0.66rem;
@@ -1334,19 +1335,198 @@ body {
   color: var(--text-muted);
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .top-header-wrapper { flex-direction: column; gap: 10px; align-items: center; }
-  .brand-logo-img-lg { height: 75px; }
-  .hero-title-container-left, .hero-desc-container-right, .simplicity-right, .finance-left { max-width: 100%; margin-top: 0; }
-  .stage-wrapper { flex-direction: column; justify-content: center; gap: 30px; }
+/* ==========================================================================
+   RESPONSIVE — SMALL DESKTOP (1024px – 1199px)
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  /* Floating badges would clip at narrow desktop widths — hide them */
   .floating-stat-badge { display: none; }
-  .phone-perspective-container { width: 280px; height: 550px; }
-  .footer-content-grid { grid-template-columns: 1fr 1fr; }
+  .hero-title-slim { font-size: clamp(2.1rem, 3.8vw, 3rem); }
+  .hero-title-container-left { max-width: 330px; }
+  .hero-desc-container-right { max-width: 290px; }
+  .simplicity-right, .finance-left { max-width: 420px; }
 }
 
-@media (max-width: 768px) {
-  .nav-links-menu { display: none; }
-  .feature-grid { grid-template-columns: 1fr; }
-  .footer-content-grid { grid-template-columns: 1fr; }
+/* ==========================================================================
+   RESPONSIVE — TABLET (768px – 1023px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Header: keep single row, no stacking */
+  .top-header-wrapper {
+    flex-direction: row;
+    width: min(calc(100% - 24px), 960px);
+    gap: 10px;
+  }
+  .brand-logo-img-lg { height: 64px; }
+  .nav-links-menu { gap: 4px; }
+  .nav-links-menu a { font-size: 0.76rem; padding: 6px 9px; }
+
+  /* Floating badges: too cramped on tablet — hidden via JS context too */
+  .floating-stat-badge { display: none !important; }
+
+  /* Phone: slightly smaller */
+  .phone-perspective-container { width: 255px; height: 500px; }
+
+  /* Stage wrapper: tablet height */
+  .stage-wrapper {
+    width: min(calc(100% - 32px), 880px);
+    height: 85vh;
+    height: 85dvh;
+  }
+
+  /* Content areas */
+  .hero-title-slim { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+  .hero-title-container-left { max-width: 275px; }
+  .hero-desc-container-right { max-width: 240px; }
+  .simplicity-right, .finance-left { max-width: 390px; }
+
+  /* Footer */
+  .footer-content-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Reduce GPU-heavy effects on tablet */
+  .ios-glass-nav-pill {
+    backdrop-filter: blur(20px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — MOBILE (< 768px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  /* Prevent any horizontal overflow from absolutely-positioned elements */
+  html, body { overflow-x: clip; width: 100%; }
+
+  /* ── Header: compact single row — logo left, download button right, no nav pill ── */
+  .top-header-wrapper {
+    flex-direction: row;
+    width: calc(100% - 20px);
+    top: max(8px, env(safe-area-inset-top));
+    gap: 8px;
+  }
+  .brand-logo-img-lg { height: 50px; }
+  .ios-glass-nav-pill { display: none !important; }
+  .glass-btn-white { padding: 8px 14px; font-size: 0.8rem; }
+
+  /* ── Scroll-viewport: drop the 580dvh height — mobile uses natural content height ── */
+  .scroll-viewport { min-height: auto !important; height: auto !important; }
+
+  /* ── Pinned stage: UN-PIN on mobile (GSAP skips pin; CSS position must be relative) ── */
+  .pinned-stage {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 76px; /* clear the fixed header */
+    overflow: visible;
+  }
+
+  /* ── Phone mockup: centred, static, scaled to fit ── */
+  .phone-perspective-container {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 230px !important;
+    height: 452px !important;
+    margin: 0 auto 24px auto;
+    perspective: 1200px;
+  }
+  /* Disable 3D perspective on mobile — saves GPU memory */
+  .phone-3d-body { transform-style: flat !important; }
+
+  /* ── Stage wrapper: natural-height stacked column ── */
+  .stage-wrapper {
+    position: relative;
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0 20px 80px 20px;
+  }
+
+  /* ── Stage panels: block layout, stacked vertically ── */
+  .stage-panel {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    padding: 32px 0 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Hero */
+  .hero-title-container-left { max-width: 100%; margin: 0 0 18px 0; }
+  .hero-title-slim { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+  .hero-desc-container-right { max-width: 100%; margin: 0; }
+
+  /* Statement */
+  .statement-panel {
+    max-width: 100%;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .statement-text { font-size: clamp(1.5rem, 6vw, 2rem); }
+
+  /* Features */
+  .simplicity-right { max-width: 100%; }
+  .section-heading { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+  .feature-grid { grid-template-columns: 1fr; gap: 10px; }
+
+  /* How Spark Works */
+  .finance-left { max-width: 100%; }
+
+  /* Download */
+  .future-top {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    text-align: left;
+    max-width: 100%;
+  }
+  .action-row { flex-direction: column; align-items: stretch; gap: 12px; }
+  .glass-btn { width: 100%; justify-content: center; }
+
+  /* Hide all floating badges on mobile */
+  .floating-stat-badge { display: none !important; }
+
+  /* ── GPU savings: reduce backdrop-filter blur depth on mobile ── */
+  .ios-glass-nav-pill {
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+  .glass-card, .feature-card {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+  .accordion-item-glass {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+  .footer-section {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
+
+  /* Footer */
+  .social-links-bar {
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: flex-start;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .footer-content-grid { grid-template-columns: 1fr; gap: 24px; }
+  .watermark-logo { font-size: clamp(3.5rem, 14vw, 7rem); }
 }
