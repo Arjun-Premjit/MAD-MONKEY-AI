@@ -466,12 +466,24 @@
             <h2 class="section-heading">Don't search for help.<br><span class="gradient-text">Spark it</span></h2>
             <p class="section-subtext mb-0">Your next co-founder, collaborator, or opportunity is one Spark away.</p>
 
-            <!-- Frosted Glass Action Buttons at Bottom -->
+            <!-- Action Buttons: Download App & Join Venture Club -->
             <div class="action-row">
               <a href="https://apps.apple.com/in/app/mad-monkey-ai/id6737187047" target="_blank"
-                class="glass-btn glass-btn-brand py-3 px-4 fs-6">Download App <i
-                  class="bi bi-arrow-down-circle-fill ms-1"></i></a>
-              <a href="venture_club.html" class="glass-btn py-3 px-4 fs-6">Join Venture Club</a>
+                class="glass-btn glass-btn-brand">
+                <i class="bi bi-apple fs-5"></i> Download App
+              </a>
+              <a href="venture_club.html" class="glass-btn glass-btn-white-pill">
+                Join Venture Club <i class="bi bi-arrow-up-right ms-1"></i>
+              </a>
+            </div>
+
+            <!-- Email Subscription Box with Simple Black Subscribe Button -->
+            <div class="download-subscribe-box">
+              <div class="subscribe-label">Never miss startup grants, demo days & releases</div>
+              <form class="subscribe-input-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Mad Monkey AI!');">
+                <input type="email" class="subscribe-input-field" placeholder="Your email address" required>
+                <button type="submit" class="btn-simple-black">Subscribe</button>
+              </form>
             </div>
           </div>
         </div>
@@ -642,8 +654,8 @@
       gsap.set(phoneContainer, { x: 0, y: 0, scale: 1, opacity: 1, rotationX: 0, rotationY: 0, rotationZ: 0 });
       gsap.set(screenDashboard, { opacity: 1 });
       gsap.set([screenSendMoney, screenEarning, screenCrypto], { opacity: 0 });
-      gsap.set([badgeVisitors1, badgeVisitors2, badgeTxLimit, badgeDonut], { opacity: 1, scale: 1, x: 0, y: 0 });
-      gsap.set([badgeBtcPerf, badgeExRate], { opacity: 0, scale: 0.85 });
+      // Screen Time Shield and What to Spark start VISIBLE on the home screen!
+      gsap.set(allBadges, { opacity: 1, scale: 1, x: 0, y: 0, display: "flex" });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -657,43 +669,50 @@
         }
       });
 
+      // A: Hero → Statement
       tl
         .to(panelHero, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 1 }, 0)
-        .to([badgeVisitors1, badgeVisitors2], { x: -60, y: -20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
-        .to([badgeTxLimit, badgeDonut], { x: 60, y: 20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
+        .to([badgeVisitors1, badgeVisitors2, badgeBtcPerf], { x: -60, y: -20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
+        .to([badgeTxLimit, badgeDonut, badgeExRate], { x: 60, y: 20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
         .to(phoneContainer, { y: 120, scale: 0.72, opacity: 0, ease: "power2.in", duration: 1 }, 0)
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
+      // B: Statement → Features
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
         .to(phoneContainer, { x: "-28vw", y: 0, scale: 1, opacity: 1, ease: "power3.out", duration: 1.1 }, 1.7)
         .to(screenDashboard, { opacity: 0, ease: "none", duration: 0.35 }, 1.95)
         .to(screenSendMoney, { opacity: 1, ease: "none", duration: 0.35 }, 2.15)
         .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 2.1)
+      // C: Features → How Spark Works
         .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 3.1)
         .to(phoneContainer, { x: "28vw", y: 0, scale: 1, ease: "power3.out", duration: 1.1 }, 3.1)
         .to(screenSendMoney, { opacity: 0, ease: "none", duration: 0.35 }, 3.35)
         .to(screenEarning,   { opacity: 1, ease: "none", duration: 0.35 }, 3.55)
         .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.5)
+      // D: How Spark Works → Download
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.5)
-        .to(phoneContainer, { x: 0, y: 50, scale: 0.93, ease: "power3.out", duration: 1.1 }, 4.5)
+        // Phone shifts down to lower half so Download title, buttons & subscribe are 100% visible
+        .to(phoneContainer, { x: 0, y: 200, scale: 0.76, opacity: 0.38, ease: "power3.out", duration: 1.1 }, 4.5)
         .to(screenEarning,  { opacity: 0, ease: "none", duration: 0.35 }, 4.75)
         .to(screenCrypto,   { opacity: 1, ease: "none", duration: 0.35 }, 4.95)
         .to([badgeBtcPerf, badgeExRate], { opacity: 1, scale: 1, x: 0, y: 0, ease: "power3.out", duration: 0.8 }, 5.0)
-        .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.2 }, 5.0)
-        .to({}, { duration: 1.5 }, 6.5);
+        .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 4.8)
+        // Short dwell so footer enters immediately after slide is scrolled
+        .to({}, { duration: 0.4 }, 5.8);
 
       return () => { tl.kill(); };
     });
 
     // ═══════════════════════════════════════════════════════════════
-    // TABLET (768px - 1023px) — Pinned scroll, smaller phone, no badges
+    // TABLET (768px - 1023px) — Pinned scroll, widgets visible
     // ═══════════════════════════════════════════════════════════════
     mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
-      gsap.set(allBadges, { display: "none" });
       gsap.set(panelHero, { opacity: 1, scale: 1, y: 0 });
       gsap.set([panelStatement, panelSimplicity, panelFinance, panelFuture], { opacity: 0, scale: 0.95, y: 20 });
       gsap.set(phoneContainer, { x: 0, y: 0, scale: 0.85, opacity: 1, rotationX: 0, rotationY: 0, rotationZ: 0 });
       gsap.set(screenDashboard, { opacity: 1 });
       gsap.set([screenSendMoney, screenEarning, screenCrypto], { opacity: 0 });
+      // Widgets visible on tablet home screen
+      gsap.set(allBadges, { opacity: 1, scale: 0.82, x: 0, y: 0, display: "flex" });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -709,40 +728,48 @@
 
       tl
         .to(panelHero, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 1 }, 0)
+        .to([badgeVisitors1, badgeVisitors2, badgeBtcPerf], { x: -40, opacity: 0, scale: 0.75, duration: 0.9 }, 0)
+        .to([badgeTxLimit, badgeDonut, badgeExRate], { x: 40, opacity: 0, scale: 0.75, duration: 0.9 }, 0)
         .to(phoneContainer, { y: 80, scale: 0.65, opacity: 0, ease: "power2.in", duration: 1 }, 0)
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
+
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
         .to(phoneContainer, { y: -60, scale: 0.85, opacity: 1, ease: "power3.out", duration: 1.1 }, 1.7)
         .to(screenDashboard, { opacity: 0, ease: "none", duration: 0.3 }, 2.0)
         .to(screenSendMoney, { opacity: 1, ease: "none", duration: 0.3 }, 2.15)
         .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 2.1)
+
         .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 3.1)
         .to(screenSendMoney, { opacity: 0, ease: "none", duration: 0.3 }, 3.3)
         .to(screenEarning,   { opacity: 1, ease: "none", duration: 0.3 }, 3.5)
         .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.5)
+
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.5)
-        .to(phoneContainer, { y: 40, scale: 0.75, ease: "power2.out", duration: 1 }, 4.5)
+        .to(phoneContainer, { y: 160, scale: 0.72, opacity: 0.35, ease: "power2.out", duration: 1 }, 4.5)
         .to(screenEarning,  { opacity: 0, ease: "none", duration: 0.3 }, 4.7)
         .to(screenCrypto,   { opacity: 1, ease: "none", duration: 0.3 }, 4.9)
-        .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.2 }, 5.0)
-        .to({}, { duration: 1.5 }, 6.5);
+        .to([badgeBtcPerf, badgeExRate], { opacity: 1, scale: 0.82, x: 0, y: 0, duration: 0.8 }, 5.0)
+        .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 4.8)
+        .to({}, { duration: 0.4 }, 5.8);
 
       return () => { tl.kill(); };
     });
 
     // ═══════════════════════════════════════════════════════════════
-    // MOBILE (< 768px) — Stacked sections, NO pin, scroll fade-ins
+    // MOBILE (< 768px) — Stacked sections, Screen Time & Spark badges visible
     // ═══════════════════════════════════════════════════════════════
     mm.add("(max-width: 767px)", () => {
       // Phone static at top — no transforms, no screen swaps
       gsap.set(phoneContainer, { clearProps: "x,y,scale,opacity,rotationX,rotationY,rotationZ" });
       gsap.set(screenDashboard, { opacity: 1 });
       gsap.set([screenSendMoney, screenEarning, screenCrypto], { opacity: 0 });
-      gsap.set(allBadges, { display: "none" });
+
+      // Screen Time Shield & What to Spark (plus top badges) visible on mobile!
+      gsap.set([badgeBtcPerf, badgeExRate, badgeVisitors1, badgeDonut], { opacity: 1, scale: 1, clearProps: "display" });
 
       // Hero immediately visible; other panels fade in as they enter viewport
       gsap.set(panelHero, { opacity: 1, y: 0, scale: 1 });
-      gsap.set([panelStatement, panelSimplicity, panelFinance, panelFuture], { opacity: 0, y: 50 });
+      gsap.set([panelStatement, panelSimplicity, panelFinance, panelFuture], { opacity: 0, y: 40 });
 
       [panelStatement, panelSimplicity, panelFinance, panelFuture].forEach(panel => {
         gsap.to(panel, {
@@ -778,10 +805,10 @@
             // Desktop / tablet: map section id to scroll progress in pinned viewport
             const scrollMap = {
               '#hero':            0.00,
-              '#about':           0.16,
-              '#features':        0.38,
-              '#how-spark-works': 0.60,
-              '#download':        0.82
+              '#about':           0.18,
+              '#features':        0.40,
+              '#how-spark-works': 0.62,
+              '#download':        0.84
             };
             const progress = scrollMap[targetId];
             if (progress !== undefined) {

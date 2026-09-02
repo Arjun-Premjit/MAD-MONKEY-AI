@@ -368,8 +368,8 @@ body {
 .scroll-viewport {
   position: relative;
   width: 100vw;
-  min-height: 580vh;   /* vh fallback for older browsers */
-  min-height: 580dvh;  /* dynamic viewport height — fixes iOS Safari address-bar bug */
+  min-height: 480vh;   /* vh fallback for older browsers */
+  min-height: 480dvh;  /* dynamic viewport height — footer comes right after slide is scrolled */
   z-index: 10;
 }
 
@@ -639,15 +639,34 @@ body {
   display: block;
 }
 
-/* Stage 5: Financial Future Top */
-.future-top {
+/* ==========================================================================
+   STAGE 5: DOWNLOAD APP, VENTURE CLUB & EMAIL SUBSCRIBE
+   ========================================================================== */
+#download {
   position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 35;
+  pointer-events: auto !important;
+}
+
+.future-top {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
   text-align: center;
-  max-width: 660px;
-  z-index: 10;
+  max-width: 680px;
+  width: 100%;
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto !important;
+  padding: 10px 20px;
 }
 
 .action-row {
@@ -655,7 +674,147 @@ body {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-top: 20px;
+  margin-top: 24px;
+  width: 100%;
+  pointer-events: auto !important;
+}
+
+/* Premium Button Styles */
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 28px;
+  border-radius: 9999px;
+  font-family: 'Host Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  pointer-events: auto !important;
+}
+
+.glass-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.glass-btn-brand,
+.glass-btn-dark {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+  box-shadow: 0 6px 22px rgba(15, 23, 42, 0.22);
+}
+
+.glass-btn-brand:hover,
+.glass-btn-dark:hover {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.32);
+}
+
+.glass-btn-white-pill {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+.glass-btn-white-pill:hover {
+  background: #f8fafc !important;
+  color: #000000 !important;
+  border-color: rgba(15, 23, 42, 0.3) !important;
+}
+
+/* Last Slide Email Subscription Box */
+.download-subscribe-box {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  pointer-events: auto !important;
+}
+
+.subscribe-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: -0.01em;
+}
+
+.subscribe-input-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  border-radius: 9999px;
+  padding: 5px 6px 5px 18px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto !important;
+}
+
+.subscribe-input-form:focus-within {
+  border-color: #000000;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.14);
+}
+
+.subscribe-input-field {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: #0f172a;
+  min-width: 120px;
+}
+
+.subscribe-input-field::placeholder {
+  color: #94a3b8;
+}
+
+.btn-simple-black {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  padding: 10px 22px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  font-family: inherit !important;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-simple-black:hover {
+  background: #27272a !important;
+  transform: scale(1.02);
 }
 
 /* ==========================================================================
@@ -1178,7 +1337,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  will-change: transform, opacity;
   pointer-events: none;
   max-width: 200px;
 }
@@ -1339,8 +1498,18 @@ body {
    RESPONSIVE — SMALL DESKTOP (1024px – 1199px)
    ========================================================================== */
 @media (min-width: 1024px) and (max-width: 1199px) {
-  /* Floating badges would clip at narrow desktop widths — hide them */
-  .floating-stat-badge { display: none; }
+  /* Scale badges to fit comfortably without clipping */
+  .floating-stat-badge {
+    transform: scale(0.85);
+    max-width: 175px;
+  }
+  .badge-visitors-green { top: 6%; left: -140px; }
+  .badge-btc-perf { top: 32%; left: -125px; }
+  .badge-visitors-coral { top: 60%; left: -130px; }
+  .badge-tx-limit { bottom: 4%; left: -130px; }
+  .badge-donut-chart { top: 16%; right: -125px; }
+  .badge-exchange-rate { top: 52%; right: -120px; }
+
   .hero-title-slim { font-size: clamp(2.1rem, 3.8vw, 3rem); }
   .hero-title-container-left { max-width: 330px; }
   .hero-desc-container-right { max-width: 290px; }
@@ -1361,8 +1530,20 @@ body {
   .nav-links-menu { gap: 4px; }
   .nav-links-menu a { font-size: 0.76rem; padding: 6px 9px; }
 
-  /* Floating badges: too cramped on tablet — hidden via JS context too */
-  .floating-stat-badge { display: none !important; }
+  /* Floating badges: visible & scaled to fit tablet width */
+  .floating-stat-badge {
+    display: flex !important;
+    opacity: 1 !important;
+    transform: scale(0.82);
+    max-width: 165px;
+    z-index: 25;
+  }
+  .badge-visitors-green { top: 6%; left: -130px; }
+  .badge-btc-perf { top: 32%; left: -120px; }
+  .badge-visitors-coral { top: 60%; left: -120px; }
+  .badge-tx-limit { bottom: 4%; left: -120px; }
+  .badge-donut-chart { top: 16%; right: -120px; }
+  .badge-exchange-rate { top: 52%; right: -115px; }
 
   /* Phone: slightly smaller */
   .phone-perspective-container { width: 255px; height: 500px; }
@@ -1408,10 +1589,10 @@ body {
   .ios-glass-nav-pill { display: none !important; }
   .glass-btn-white { padding: 8px 14px; font-size: 0.8rem; }
 
-  /* ── Scroll-viewport: drop the 580dvh height — mobile uses natural content height ── */
+  /* ── Scroll-viewport: natural content height on mobile ── */
   .scroll-viewport { min-height: auto !important; height: auto !important; }
 
-  /* ── Pinned stage: UN-PIN on mobile (GSAP skips pin; CSS position must be relative) ── */
+  /* ── Pinned stage: UN-PIN on mobile ── */
   .pinned-stage {
     position: relative !important;
     top: auto !important;
@@ -1431,13 +1612,63 @@ body {
     left: auto !important;
     top: auto !important;
     transform: none !important;
-    width: 230px !important;
-    height: 452px !important;
-    margin: 0 auto 24px auto;
+    width: 240px !important;
+    height: 470px !important;
+    margin: 0 auto 28px auto;
     perspective: 1200px;
   }
   /* Disable 3D perspective on mobile — saves GPU memory */
   .phone-3d-body { transform-style: flat !important; }
+
+  /* ── Floating Insight Badges: visible orbiting mobile phone mockup ── */
+  .floating-stat-badge {
+    display: flex !important;
+    opacity: 1 !important;
+    position: absolute !important;
+    padding: 6px 10px !important;
+    gap: 7px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12) !important;
+    z-index: 25 !important;
+  }
+  .floating-stat-badge i { font-size: 1.1rem !important; }
+  .floating-stat-badge .fw-bold { font-size: 0.72rem !important; }
+  .floating-stat-badge .text-muted { font-size: 0.58rem !important; }
+  .floating-stat-badge .text-success { font-size: 0.58rem !important; }
+
+  /* Brain Rot Meter / Screen Time Shield: Top-Left of Phone */
+  .badge-btc-perf {
+    top: 22% !important;
+    left: -12px !important;
+    max-width: 145px !important;
+  }
+
+  /* What to Spark Widget: Lower-Right of Phone */
+  .badge-exchange-rate {
+    top: 58% !important;
+    right: -12px !important;
+    max-width: 145px !important;
+  }
+
+  /* Spark Project Card: Upper-Left of Phone */
+  .badge-visitors-green {
+    top: 3% !important;
+    left: -8px !important;
+    max-width: 150px !important;
+  }
+
+  /* Builder Crew: Upper-Right of Phone */
+  .badge-donut-chart {
+    top: 10% !important;
+    right: -8px !important;
+    max-width: 145px !important;
+  }
+
+  /* Secondary badges hidden on mobile to keep layout clean & uncluttered */
+  .badge-visitors-coral,
+  .badge-tx-limit {
+    display: none !important;
+  }
 
   /* ── Stage wrapper: natural-height stacked column ── */
   .stage-wrapper {
@@ -1449,7 +1680,7 @@ body {
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
-    padding: 0 20px 80px 20px;
+    padding: 0 20px 40px 20px;
   }
 
   /* ── Stage panels: block layout, stacked vertically ── */
@@ -1486,20 +1717,52 @@ body {
   /* How Spark Works */
   .finance-left { max-width: 100%; }
 
-  /* Download */
+  /* Stage 5: Download App & Subscribe */
+  #download {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 36px 0 20px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
   .future-top {
     position: relative !important;
     top: auto !important;
     left: auto !important;
     transform: none !important;
-    text-align: left;
-    max-width: 100%;
+    text-align: center !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    align-items: stretch !important;
   }
-  .action-row { flex-direction: column; align-items: stretch; gap: 12px; }
-  .glass-btn { width: 100%; justify-content: center; }
 
-  /* Hide all floating badges on mobile */
-  .floating-stat-badge { display: none !important; }
+  .action-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    margin-top: 20px !important;
+  }
+
+  .action-row .glass-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .download-subscribe-box {
+    margin-top: 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .subscribe-input-form {
+    width: 100% !important;
+  }
 
   /* ── GPU savings: reduce backdrop-filter blur depth on mobile ── */
   .ios-glass-nav-pill {
