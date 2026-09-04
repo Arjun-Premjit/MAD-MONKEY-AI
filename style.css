@@ -1901,7 +1901,8 @@ body {
     height: auto !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
-    align-items: flex-start !important;
+    align-items: center !important;
+    text-align: center !important;
     padding: 32px 0 !important;
     pointer-events: auto !important;
   }
@@ -1914,25 +1915,29 @@ body {
   .campus-track { gap: 10px; animation-duration: 22s; }
 
   /* Hero */
-  .hero-title-container-left { max-width: 100%; margin: 0 0 18px 0; }
-  .hero-title-slim { font-size: clamp(1.9rem, 8vw, 2.6rem); }
-  .hero-desc-container-right { position: relative; left: auto; width: auto; max-width: 100%; margin: 0; }
+  .hero-title-container-left { max-width: 100%; margin: 0 0 18px 0; text-align: center; }
+  .hero-title-slim { font-size: clamp(1.9rem, 8vw, 2.6rem); text-align: center; }
+  .hero-desc-container-right { position: relative; left: auto; width: auto; max-width: 100%; margin: 0; text-align: center; }
+  .hero-desc-right-slim { text-align: center; }
 
   /* Statement */
   .statement-panel {
     max-width: 100%;
-    text-align: left;
-    align-items: flex-start;
+    text-align: center;
+    align-items: center;
   }
-  .statement-text { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .statement-text { font-size: clamp(1.5rem, 6vw, 2rem); text-align: center; }
 
   /* Features */
-  .simplicity-right { max-width: 100%; }
-  .section-heading { font-size: clamp(1.7rem, 7vw, 2.2rem); }
-  .feature-grid { grid-template-columns: 1fr; gap: 10px; }
+  .simplicity-right { max-width: 100%; text-align: center; }
+  .section-heading { font-size: clamp(1.7rem, 7vw, 2.2rem); text-align: center; }
+  .section-subtext { text-align: center; }
+  .feature-grid { grid-template-columns: 1fr; gap: 10px; text-align: left; } /* Keep cards left aligned for readability */
 
   /* How Spark Works */
-  .finance-left { width: 100%; max-width: 100%; }
+  .finance-left { width: 100%; max-width: 100%; text-align: center; }
+  .finance-intro { text-align: center; }
+  .primitive-kicker { text-align: center; justify-content: center; display: flex; }
   #how-spark-works { padding-top: 0; }
   .accordion-list { grid-template-columns: 1fr; width: 100%; margin-top: 28px; }
   .accordion-item-glass { min-height: 0; padding: 38px 16px 16px; }
@@ -2079,6 +2084,11 @@ body {
 
 .campus-card img { width: clamp(76px, 6vw, 100px); height: clamp(76px, 6vw, 100px); object-fit: contain; opacity: 0.9; mix-blend-mode: multiply; }
 .campus-card span { font-size: clamp(0.98rem, 1.25vw, 1.2rem); font-weight: 700; line-height: 1.25; white-space: normal; color: #0f172a; }
+
+.campus-track .campus-card:first-child,
+.campus-track .campus-card:last-child {
+  border-radius: 50px;
+}
 .campus-wordmark { flex-direction: column; gap: 3px; }
 .campus-wordmark .campus-mark { font-size: 1.1rem; letter-spacing: 0.08em; }
 
