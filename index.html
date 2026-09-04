@@ -627,7 +627,7 @@
         .to(panelCampuses, { opacity: 1, duration: 0.7 }, 2.9)
         .to(panelCampuses, { opacity: 0, scale: 0.96, y: -24, ease: "power2.in", duration: 0.6 }, 3.1)
         .to(phoneBody, { opacity: 1, duration: 0.2 }, 3.7)
-        .to(phoneContainer, { y: -60, scale: 0.85, opacity: 1, ease: "power3.out", duration: 1.1 }, 3.7)
+        .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.24, 220), 390), y: -60, scale: () => Math.min(Math.max(window.innerWidth / 1440, 0.82), 1), opacity: 1, ease: "power3.out", duration: 1.1 }, 3.7)
         .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 3.9)
         .to(screenSendMoney, { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 3.9)
         .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.9)
