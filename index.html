@@ -105,6 +105,12 @@
 
       <!-- LAYER 3: 3D PHONE CONTAINER (Entire Phone & UI Fully Visible, Starts Below Header) -->
       <div class="phone-perspective-container" id="phoneContainer">
+        
+        <!-- NEW PHONE PHOTO OVERLAY (Hand + UI) shown only on first slide -->
+        <div class="phone-photo-overlay-wrap" id="phonePhotoOverlay">
+          <img src="NEW PHONE PHOTO.png" class="new-phone-photo-img" alt="Phone with Hand">
+        </div>
+
         <div class="phone-3d-body" id="phoneBody">
 
           <div class="phone-notch">
@@ -218,12 +224,12 @@
 
             <!-- SCREEN 2: DISCOVER PHOTO — Full Bleed (Stage 3: Built for Builders) -->
             <div class="app-screen-layer app-screen-photo" id="screenSendMoney">
-              <img src="DISCOVER PHOTO.png" alt="Discover — Mad Monkey AI">
+              <img src="DISCOVER_4K.png" alt="Discover — Mad Monkey AI">
             </div>
 
             <!-- SCREEN 3: ONE BUTTON PHOTO — Full Bleed (Stage 4: How Spark Works) -->
             <div class="app-screen-layer app-screen-photo" id="screenEarning">
-              <img src="ONE BUTTON PHOTO.png" alt="One Button — Mad Monkey AI">
+              <img src="ONE_BUTTON_4K.png" alt="One Button — Mad Monkey AI">
             </div>
 
             <!-- SCREEN 4: REWARDS & VENTURE CLUB (Stage 5) -->
@@ -264,22 +270,7 @@
 
 
         <!-- LAYER 4: FLOATING INSIGHT CARDS (Actual Phone App Widgets Orbiting Outer Frame) -->
-        <!-- Widget 1: Spark Project Post Card (Rahul Krishnan - Smart Irrigation) -->
-        <div class="floating-stat-badge badge-visitors-green" id="badgeVisitors1">
-          <div class="d-flex align-items-center gap-2 mb-1">
-            <div class="post-avatar-box">RK</div>
-            <div>
-              <div class="fw-bold text-dark" style="font-size: 0.74rem;">Rahul Krishnan</div>
-              <div class="text-muted" style="font-size: 0.60rem;">VIT Chennai · Project</div>
-            </div>
-          </div>
-          <div class="fw-bold text-dark" style="font-size: 0.76rem; line-height: 1.2;">Smart Irrigation System</div>
-          <div class="d-flex gap-2 mt-1" style="font-size: 0.60rem; color: #10b981; font-weight: 700;">
-            <span>⚡ 24 Interested</span>
-            <span>🤝 8 Builders</span>
-          </div>
-        </div>
-
+        <!-- Widget 1: Spark Project Post Card (Rahul Krishnan - Smart Irrigation) - REMOVED (Duplicate) -->
         <!-- Widget 2: Brain Rot Meter / Screen Time Shield -->
         <div class="floating-stat-badge badge-btc-perf" id="badgeBtcPerf">
           <i class="bi bi-shield-check text-success fs-5"></i>
@@ -316,18 +307,7 @@
           <div class="fw-bold text-dark" style="font-size: 0.68rem;">Team Assembled</div>
         </div>
 
-        <!-- Widget 5: Spark Action Box -->
-        <div class="floating-stat-badge badge-exchange-rate" id="badgeExRate">
-          <i class="bi bi-stars text-primary fs-5"></i>
-          <div>
-            <div class="fw-bold text-dark" style="font-size: 0.78rem;">What to Spark?</div>
-            <div class="d-flex gap-1 mt-1">
-              <span class="badge bg-light text-dark" style="font-size: 0.6rem; padding: 2px 6px;">⚡ Build</span>
-              <span class="badge bg-light text-muted" style="font-size: 0.6rem; padding: 2px 6px;">✨ Fun</span>
-            </div>
-          </div>
-        </div>
-
+        <!-- Widget 5: Spark Action Box - REMOVED (Duplicate) -->
         <!-- Widget 6: Venture Club Graduate -->
         <div class="floating-stat-badge badge-tx-limit" id="badgeTxLimit">
           <i class="bi bi-award-fill text-warning fs-5"></i>
@@ -624,13 +604,11 @@
     const panelFinance    = document.getElementById("how-spark-works");
     const panelFuture     = document.getElementById("download");
 
-    const badgeVisitors1  = document.getElementById("badgeVisitors1");
     const badgeVisitors2  = document.getElementById("badgeVisitors2");
     const badgeTxLimit    = document.getElementById("badgeTxLimit");
     const badgeDonut      = document.getElementById("badgeDonut");
     const badgeBtcPerf    = document.getElementById("badgeBtcPerf");
-    const badgeExRate     = document.getElementById("badgeExRate");
-    const allBadges = [badgeVisitors1, badgeVisitors2, badgeTxLimit, badgeDonut, badgeBtcPerf, badgeExRate];
+    const allBadges = [badgeVisitors2, badgeTxLimit, badgeDonut, badgeBtcPerf];
 
     const screenDashboard = document.getElementById("screenDashboard");
     const screenSendMoney = document.getElementById("screenSendMoney");
@@ -652,6 +630,11 @@
       gsap.set(panelHero, { opacity: 1, scale: 1, y: 0 });
       gsap.set([panelStatement, panelSimplicity, panelFinance, panelFuture], { opacity: 0, scale: 0.95, y: 20 });
       gsap.set(phoneContainer, { x: 0, y: 0, scale: 1, opacity: 1, rotationX: 0, rotationY: 0, rotationZ: 0 });
+      
+      // Phone overlay (hand) starts visible, 3D bezel hidden
+      gsap.set(phonePhotoOverlay, { opacity: 1 });
+      gsap.set(phoneBody, { opacity: 0 });
+      
       gsap.set(screenDashboard, { opacity: 1 });
       gsap.set([screenSendMoney, screenEarning, screenCrypto], { opacity: 0 });
       // Screen Time Shield and What to Spark start VISIBLE on the home screen!
@@ -672,12 +655,14 @@
       // A: Hero → Statement
       tl
         .to(panelHero, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 1 }, 0)
-        .to([badgeVisitors1, badgeVisitors2, badgeBtcPerf], { x: -60, y: -20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
-        .to([badgeTxLimit, badgeDonut, badgeExRate], { x: 60, y: 20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
+        .to([badgeVisitors2, badgeBtcPerf], { x: -60, y: -20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
+        .to([badgeTxLimit, badgeDonut], { x: 60, y: 20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
         .to(phoneContainer, { y: 120, scale: 0.72, opacity: 0, ease: "power2.in", duration: 1 }, 0)
+        .to(phonePhotoOverlay, { opacity: 0, ease: "power2.in", duration: 0.9 }, 0)
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
       // B: Statement → Features
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
+        .to(phoneBody, { opacity: 1, duration: 0.2 }, 1.7)
         .to(phoneContainer, { x: "-28vw", y: 0, scale: 1, opacity: 1, ease: "power3.out", duration: 1.1 }, 1.7)
         .to(screenDashboard, { opacity: 0, ease: "none", duration: 0.35 }, 1.95)
         .to(screenSendMoney, { opacity: 1, ease: "none", duration: 0.35 }, 2.15)
@@ -691,13 +676,13 @@
       // D: How Spark Works → Download
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.5)
         // Phone shifts down to lower half so Download title, buttons & subscribe are 100% visible
-        .to(phoneContainer, { x: 0, y: 200, scale: 0.76, opacity: 0.38, ease: "power3.out", duration: 1.1 }, 4.5)
+        .to(phoneContainer, { x: 0, y: 200, scale: 0.76, opacity: 1, ease: "power3.out", duration: 1.1 }, 4.5)
         .to(screenEarning,  { opacity: 0, ease: "none", duration: 0.35 }, 4.75)
         .to(screenCrypto,   { opacity: 1, ease: "none", duration: 0.35 }, 4.95)
-        .to([badgeBtcPerf, badgeExRate], { opacity: 1, scale: 1, x: 0, y: 0, ease: "power3.out", duration: 0.8 }, 5.0)
+        .to([badgeBtcPerf], { opacity: 1, scale: 1, x: 0, y: 0, ease: "power3.out", duration: 0.8 }, 5.0)
         .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 4.8)
-        // Short dwell so footer enters immediately after slide is scrolled
-        .to({}, { duration: 0.4 }, 5.8);
+      // E: Fade out Download slide before footer appears
+        .to([panelFuture, phoneContainer], { opacity: 0, scale: 0.9, y: -20, ease: "power2.in", duration: 1.0 }, 6.2);
 
       return () => { tl.kill(); };
     });
@@ -709,6 +694,10 @@
       gsap.set(panelHero, { opacity: 1, scale: 1, y: 0 });
       gsap.set([panelStatement, panelSimplicity, panelFinance, panelFuture], { opacity: 0, scale: 0.95, y: 20 });
       gsap.set(phoneContainer, { x: 0, y: 0, scale: 0.85, opacity: 1, rotationX: 0, rotationY: 0, rotationZ: 0 });
+      
+      gsap.set(phonePhotoOverlay, { opacity: 1 });
+      gsap.set(phoneBody, { opacity: 0 });
+
       gsap.set(screenDashboard, { opacity: 1 });
       gsap.set([screenSendMoney, screenEarning, screenCrypto], { opacity: 0 });
       // Widgets visible on tablet home screen
@@ -728,12 +717,14 @@
 
       tl
         .to(panelHero, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 1 }, 0)
-        .to([badgeVisitors1, badgeVisitors2, badgeBtcPerf], { x: -40, opacity: 0, scale: 0.75, duration: 0.9 }, 0)
-        .to([badgeTxLimit, badgeDonut, badgeExRate], { x: 40, opacity: 0, scale: 0.75, duration: 0.9 }, 0)
+        .to([badgeVisitors2, badgeBtcPerf], { x: -40, opacity: 0, scale: 0.75, duration: 0.9 }, 0)
+        .to([badgeTxLimit, badgeDonut], { x: 40, opacity: 0, scale: 0.75, duration: 0.9 }, 0)
         .to(phoneContainer, { y: 80, scale: 0.65, opacity: 0, ease: "power2.in", duration: 1 }, 0)
+        .to(phonePhotoOverlay, { opacity: 0, ease: "power2.in", duration: 0.9 }, 0)
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
 
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
+        .to(phoneBody, { opacity: 1, duration: 0.2 }, 1.7)
         .to(phoneContainer, { y: -60, scale: 0.85, opacity: 1, ease: "power3.out", duration: 1.1 }, 1.7)
         .to(screenDashboard, { opacity: 0, ease: "none", duration: 0.3 }, 2.0)
         .to(screenSendMoney, { opacity: 1, ease: "none", duration: 0.3 }, 2.15)
@@ -745,12 +736,12 @@
         .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.5)
 
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.5)
-        .to(phoneContainer, { y: 160, scale: 0.72, opacity: 0.35, ease: "power2.out", duration: 1 }, 4.5)
+        .to(phoneContainer, { y: 160, scale: 0.72, opacity: 1, ease: "power2.out", duration: 1 }, 4.5)
         .to(screenEarning,  { opacity: 0, ease: "none", duration: 0.3 }, 4.7)
         .to(screenCrypto,   { opacity: 1, ease: "none", duration: 0.3 }, 4.9)
-        .to([badgeBtcPerf, badgeExRate], { opacity: 1, scale: 0.82, x: 0, y: 0, duration: 0.8 }, 5.0)
+        .to([badgeBtcPerf], { opacity: 1, scale: 0.82, x: 0, y: 0, duration: 0.8 }, 5.0)
         .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 4.8)
-        .to({}, { duration: 0.4 }, 5.8);
+        .to([panelFuture, phoneContainer], { opacity: 0, scale: 0.9, y: -20, ease: "power2.in", duration: 1.0 }, 6.2);
 
       return () => { tl.kill(); };
     });
@@ -761,6 +752,9 @@
     mm.add("(max-width: 767px)", () => {
       // Phone static at top — no transforms, no screen swaps
       gsap.set(phoneContainer, { clearProps: "x,y,scale,opacity,rotationX,rotationY,rotationZ" });
+      gsap.set(phonePhotoOverlay, { opacity: 1 });
+      gsap.set(phoneBody, { opacity: 0 });
+
       gsap.set(screenDashboard, { opacity: 1 });
       gsap.set([screenSendMoney, screenEarning, screenCrypto], { opacity: 0 });
 

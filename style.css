@@ -832,6 +832,28 @@ body {
   pointer-events: none;
 }
 
+/* New Phone Photo Overlay (Hand holding phone) */
+.phone-photo-overlay-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 112vh;
+  aspect-ratio: 580 / 678;
+  transform: translate(-50%, -38%);
+  pointer-events: none;
+  z-index: 22;
+  user-select: none;
+  will-change: opacity, transform;
+}
+
+.new-phone-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 25px 50px rgba(15, 23, 42, 0.22));
+}
+
 .phone-3d-body {
   width: 100%;
   height: 100%;
@@ -918,6 +940,13 @@ body {
   object-fit: contain;
   object-position: center top;
   display: block;
+  padding-top: 15px; /* Moves UI down so text fits properly */
+}
+
+/* Specific resize for One Button section photo */
+#screenEarning img {
+  padding: 30px 15px; /* Make it slightly smaller to fit better */
+  transform: scale(0.95);
 }
 
 /* Exact Stage 1 Phone App UI (Replicating Reference Design Image) */
@@ -1326,13 +1355,13 @@ body {
    ========================================================================== */
 .floating-stat-badge {
   position: absolute;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.15); /* Translucent glass */
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 18px;
   padding: 10px 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.6);
   z-index: 25;
   display: flex;
   align-items: center;
@@ -1343,13 +1372,13 @@ body {
 }
 
 /* Orbiting Phone Widgets Positioned Cleanly Around 3D Phone Frame */
-.badge-visitors-green { top: 6%; left: -180px; flex-direction: column; align-items: flex-start; gap: 3px; min-width: 175px; } /* Spark Project Card */
-.badge-btc-perf { top: 32%; left: -150px; } /* Brain Rot Shield */
-.badge-visitors-coral { top: 60%; left: -155px; } /* Monkey Cash Rewards */
-.badge-tx-limit { bottom: 4%; left: -160px; } /* Venture Club Graduate */
+.badge-visitors-green { top: 6%; left: -210px; flex-direction: column; align-items: flex-start; gap: 3px; min-width: 175px; } /* Spark Project Card */
+.badge-btc-perf { top: 32%; left: -190px; } /* Brain Rot Shield */
+.badge-visitors-coral { top: 60%; left: -190px; } /* Monkey Cash Rewards */
+.badge-tx-limit { bottom: 4%; left: -210px; } /* Venture Club Graduate */
 
-.badge-donut-chart { top: 16%; right: -150px; flex-direction: column; align-items: flex-start; min-width: 165px; padding: 10px 12px; } /* Builder Crew */
-.badge-exchange-rate { top: 52%; right: -140px; } /* Spark Action Box */
+.badge-donut-chart { top: 16%; left: -180px; right: auto; flex-direction: column; align-items: flex-start; min-width: 165px; padding: 10px 12px; } /* Builder Crew */
+.badge-exchange-rate { top: 76%; left: -160px; right: auto; } /* Spark Action Box */
 
 .badge-title-sm {
   font-size: 0.7rem;
@@ -1503,12 +1532,12 @@ body {
     transform: scale(0.85);
     max-width: 175px;
   }
-  .badge-visitors-green { top: 6%; left: -140px; }
-  .badge-btc-perf { top: 32%; left: -125px; }
-  .badge-visitors-coral { top: 60%; left: -130px; }
-  .badge-tx-limit { bottom: 4%; left: -130px; }
-  .badge-donut-chart { top: 16%; right: -125px; }
-  .badge-exchange-rate { top: 52%; right: -120px; }
+  .badge-visitors-green { top: 6%; left: -160px; }
+  .badge-btc-perf { top: 32%; left: -150px; }
+  .badge-visitors-coral { top: 60%; left: -150px; }
+  .badge-tx-limit { bottom: 4%; left: -160px; }
+  .badge-donut-chart { top: 16%; left: -140px; right: auto; }
+  .badge-exchange-rate { top: 76%; left: -130px; right: auto; }
 
   .hero-title-slim { font-size: clamp(2.1rem, 3.8vw, 3rem); }
   .hero-title-container-left { max-width: 330px; }
@@ -1643,10 +1672,10 @@ body {
     max-width: 145px !important;
   }
 
-  /* What to Spark Widget: Lower-Right of Phone */
+  /* What to Spark Widget: Lower-Left of Phone */
   .badge-exchange-rate {
     top: 58% !important;
-    right: -12px !important;
+    left: -12px !important;
     max-width: 145px !important;
   }
 
@@ -1657,10 +1686,11 @@ body {
     max-width: 150px !important;
   }
 
-  /* Builder Crew: Upper-Right of Phone */
+  /* Builder Crew: Upper-Left of Phone */
   .badge-donut-chart {
-    top: 10% !important;
-    right: -8px !important;
+    top: 75% !important;
+    left: -8px !important;
+    right: auto !important;
     max-width: 145px !important;
   }
 
