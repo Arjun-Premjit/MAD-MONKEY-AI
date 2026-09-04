@@ -308,6 +308,23 @@
           </h2>
         </div>
 
+        <!-- CAMPUS SLIDE: endlessly scrolling college community -->
+        <div class="stage-panel campus-panel" id="campuses">
+          <div class="campus-track-wrap">
+            <div class="campus-heading"><strong>100+ builders</strong> are creating the future on Mad Monkey AI</div>
+            <div class="campus-track" aria-label="Partner colleges">
+              <div class="campus-card"><img src="iit-bombay.png" alt="Indian Institute of Technology, Bombay logo"><span>Indian Institute of Technology, Bombay</span></div>
+              <div class="campus-card"><img src="bits-pilani.png" alt="BITS Pilani logo"><span>BITS Pilani</span></div>
+              <div class="campus-card"><img src="vit.png" alt="Vellore Institute of Technology, Chennai logo"><span>Vellore Institute of Technology, Chennai</span></div>
+              <div class="campus-card"><img src="stanford.png" alt="Stanford University logo"><span>Stanford University</span></div>
+              <div class="campus-card"><img src="iit-bombay.png" alt="Indian Institute of Technology, Bombay logo"><span>Indian Institute of Technology, Bombay</span></div>
+              <div class="campus-card"><img src="bits-pilani.png" alt="BITS Pilani logo"><span>BITS Pilani</span></div>
+              <div class="campus-card"><img src="vit.png" alt="Vellore Institute of Technology, Chennai logo"><span>Vellore Institute of Technology, Chennai</span></div>
+              <div class="campus-card"><img src="stanford.png" alt="Stanford University logo"><span>Stanford University</span></div>
+            </div>
+          </div>
+        </div>
+
         <!-- STAGE 3: BUILT FOR SIMPLICITY -->
         <div class="stage-panel" id="features">
           <div></div> <!-- Space reserved for Phone -->
@@ -348,11 +365,13 @@
         <!-- STAGE 4: HOW SPARK WORKS / TIMELINE -->
         <div class="stage-panel" id="how-spark-works">
           <div class="finance-left">
-            <h2 class="section-heading">One Button.<br>Infinite <span class="gradient-text">Spark</span> Possibilities.
-            </h2>
+            <div class="primitive-kicker"><i class="bi bi-lightning-charge-fill"></i> THE CORE PRIMITIVE</div>
+            <h2 class="section-heading">One Button.<br>Infinite <span class="gradient-text">Spark</span> Possibilities.</h2>
+            <p class="finance-intro">A Spark is a time-limited collaboration post. Describe what you need, find your team, and start building within 24–72 hours.</p>
 
             <div class="accordion-list">
               <div class="accordion-item-glass active">
+                <span class="step-number">01</span>
                 <div class="accordion-header-row">
                   <span>01. Describe Your Need</span>
                   <i class="bi bi-chevron-down text-dark"></i>
@@ -363,6 +382,7 @@
               </div>
 
               <div class="accordion-item-glass">
+                <span class="step-number">02</span>
                 <div class="accordion-header-row">
                   <span>02. People Apply</span>
                   <i class="bi bi-chevron-right text-muted"></i>
@@ -373,6 +393,7 @@
               </div>
 
               <div class="accordion-item-glass">
+                <span class="step-number">03</span>
                 <div class="accordion-header-row">
                   <span>03. Pick Your Team</span>
                   <i class="bi bi-chevron-right text-muted"></i>
@@ -383,6 +404,7 @@
               </div>
 
               <div class="accordion-item-glass">
+                <span class="step-number">04</span>
                 <div class="accordion-header-row">
                   <span>04. Build Together</span>
                   <i class="bi bi-chevron-right text-muted"></i>
@@ -402,20 +424,20 @@
             <h2 class="section-heading">Don't search for help.<br><span class="gradient-text">Spark it</span></h2>
             <p class="section-subtext mb-0">Your next co-founder, collaborator, or opportunity is one Spark away.</p>
 
-            <!-- Action Buttons: Download App & Join Venture Club -->
+            <!-- Action Buttons: App Store and Google Play -->
             <div class="action-row">
               <a href="https://apps.apple.com/in/app/mad-monkey-ai/id6737187047" target="_blank"
-                class="glass-btn glass-btn-brand">
-                <i class="bi bi-apple fs-5"></i> Download App
+                class="store-download-button">
+                <img src="https://cdn.simpleicons.org/apple/ffffff" alt="Apple logo"> App Store
               </a>
-              <a href="venture_club.html" class="glass-btn glass-btn-white-pill">
-                Join Venture Club <i class="bi bi-arrow-up-right ms-1"></i>
+              <a href="https://play.google.com/store" target="_blank" class="store-download-button">
+                <img src="https://cdn.simpleicons.org/googleplay/4285f4" alt="Google Play logo"> Google Play
               </a>
             </div>
 
-            <!-- Email Subscription Box with Simple Black Subscribe Button -->
+            <div class="download-note">Free to download · Every user earns Monkey Cash</div>
             <div class="download-subscribe-box">
-              <div class="subscribe-label">Never miss startup grants, demo days & releases</div>
+              <div class="subscribe-label">Never miss startup grants, demo days &amp; releases</div>
               <form class="subscribe-input-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Mad Monkey AI!');">
                 <input type="email" class="subscribe-input-field" placeholder="Your email address" required>
                 <button type="submit" class="btn-simple-black">Subscribe</button>
@@ -549,6 +571,7 @@
     const phoneContainer  = document.getElementById("phoneContainer");
     const panelHero       = document.getElementById("hero");
     const panelStatement  = document.getElementById("about");
+    const panelCampuses   = document.getElementById("campuses");
     const panelSimplicity = document.getElementById("features");
     const panelFinance    = document.getElementById("how-spark-works");
     const panelFuture     = document.getElementById("download");
@@ -571,7 +594,7 @@
     // ═══════════════════════════════════════════════════════════════
     mm.add("(min-width: 1024px)", () => {
       gsap.set(panelHero, { opacity: 1, scale: 1, y: 0 });
-      gsap.set([panelStatement, panelSimplicity, panelFinance, panelFuture], { opacity: 0, scale: 0.95, y: 20 });
+      gsap.set([panelStatement, panelCampuses, panelSimplicity, panelFinance, panelFuture], { opacity: 0, scale: 0.95, y: 20 });
       gsap.set(phoneContainer, { x: 0, y: 0, scale: 1, opacity: 1, rotationX: 0, rotationY: 0, rotationZ: 0 });
       
       // Phone overlay (hand) starts visible, 3D bezel hidden
@@ -600,27 +623,30 @@
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
       // B: Statement → Features
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
-        .to(phoneBody, { opacity: 1, duration: 0.2 }, 1.7)
-        .to(phoneContainer, { x: "-28vw", y: 0, scale: 1, opacity: 1, ease: "power3.out", duration: 1.1 }, 1.7)
-        .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.45 }, 1.95)
-        .to(screenSendMoney, { opacity: 1, ease: "power1.inOut", duration: 0.45 }, 1.95)
-        .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 2.1)
+        .to(panelCampuses, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 0.9 }, 2.0)
+        .to(panelCampuses, { opacity: 1, duration: 0.7 }, 2.9)
+        .to(panelCampuses, { opacity: 0, scale: 0.96, y: -24, ease: "power2.in", duration: 0.6 }, 3.1)
+        .to(phoneBody, { opacity: 1, duration: 0.2 }, 3.7)
+        .to(phoneContainer, { y: -60, scale: 0.85, opacity: 1, ease: "power3.out", duration: 1.1 }, 3.7)
+        .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 3.9)
+        .to(screenSendMoney, { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 3.9)
+        .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.9)
       // C: Features → How Spark Works
-        .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 3.1)
-        .to(phoneContainer, { x: "28vw", y: 0, scale: 1, ease: "power3.out", duration: 1.1 }, 3.1)
-        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.45 }, 3.35)
-        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.45 }, 3.35)
-        .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.5)
+        .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.9)
+        .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.24, 220), 390), y: 0, scale: () => Math.min(Math.max(window.innerWidth / 1440, 0.82), 1), ease: "power3.out", duration: 1.1 }, 4.9)
+        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.45 }, 5.9)
+        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.45 }, 5.9)
+        .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 6.0)
       // D: How Spark Works → Download
-        .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.5)
+        .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 7.0)
         // Clear the phone before the Download slide enters.
-        .to(phoneContainer, { x: 0, y: 120, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 4.35)
-        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.35 }, 4.75)
-        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.35 }, 4.75)
-        .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 4.8)
+        .to(phoneContainer, { x: 0, y: 120, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 6.85)
+        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.35 }, 7.25)
+        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.35 }, 7.25)
+        .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 7.3)
       // E: Hold the independent Download slide, then fade it for the footer handoff.
-        .to(panelFuture, { opacity: 1, duration: 1.1 }, 5.8)
-        .to(panelFuture, { opacity: 0, scale: 0.97, y: -18, ease: "power1.inOut", duration: 1.4 }, 6.9);
+        .to(panelFuture, { opacity: 1, duration: 1.1 }, 8.1)
+        .to(panelFuture, { opacity: 0, scale: 0.97, y: -18, ease: "power1.inOut", duration: 1.4 }, 9.2);
 
       return () => { tl.kill(); };
     });
@@ -630,7 +656,7 @@
     // ═══════════════════════════════════════════════════════════════
     mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
       gsap.set(panelHero, { opacity: 1, scale: 1, y: 0 });
-      gsap.set([panelStatement, panelSimplicity, panelFinance, panelFuture], { opacity: 0, scale: 0.95, y: 20 });
+      gsap.set([panelStatement, panelCampuses, panelSimplicity, panelFinance, panelFuture], { opacity: 0, scale: 0.95, y: 20 });
       gsap.set(phoneContainer, { x: 0, y: 0, scale: 0.85, opacity: 1, rotationX: 0, rotationY: 0, rotationZ: 0 });
       
       gsap.set(phonePhotoOverlay, { opacity: 1 });
@@ -657,24 +683,28 @@
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
 
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
+        .to(panelCampuses, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 0.9 }, 2.0)
+        .to(panelCampuses, { opacity: 1, duration: 0.7 }, 2.9)
+        .to(panelCampuses, { opacity: 0, scale: 0.96, y: -24, ease: "power2.in", duration: 0.6 }, 3.1)
         .to(phoneBody, { opacity: 1, duration: 0.2 }, 1.7)
-        .to(phoneContainer, { y: -60, scale: 0.85, opacity: 1, ease: "power3.out", duration: 1.1 }, 1.7)
+          .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.38, 300), 500), y: -60, scale: () => Math.min(Math.max(window.innerWidth / 1440, 0.82), 1), opacity: 1, ease: "power3.out", duration: 1.1 }, 3.7)
         .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 2.0)
-        .to(screenSendMoney, { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 2.0)
-        .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 2.1)
+          .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.5, 300), 430), y: -60, scale: () => Math.min(Math.max(window.innerWidth / 1024, 0.72), 0.9), opacity: 1, ease: "power3.out", duration: 1.1 }, 3.7)
+        .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.7)
 
-        .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 3.1)
-        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 3.3)
-        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 3.3)
-        .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.5)
+        .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.9)
+        .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.4, 280), 390), y: 0, scale: () => Math.min(Math.max(window.innerWidth / 1024, 0.72), 0.9), ease: "power3.out", duration: 1.1 }, 4.9)
+        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 5.9)
+        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 5.9)
+        .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 6.0)
 
-        .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.5)
-        .to(phoneContainer, { y: 120, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 4.35)
-        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 4.7)
-        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.3 }, 4.7)
-        .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 4.8)
-        .to(panelFuture, { opacity: 1, duration: 1.1 }, 5.8)
-        .to(panelFuture, { opacity: 0, scale: 0.97, y: -18, ease: "power1.inOut", duration: 1.4 }, 6.9);
+        .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 7.0)
+        .to(phoneContainer, { y: 120, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 6.85)
+        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 7.25)
+        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.3 }, 7.25)
+        .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 7.3)
+        .to(panelFuture, { opacity: 1, duration: 1.1 }, 8.1)
+        .to(panelFuture, { opacity: 0, scale: 0.97, y: -18, ease: "power1.inOut", duration: 1.4 }, 9.2);
 
       return () => { tl.kill(); };
     });
@@ -693,9 +723,9 @@
 
       // Hero immediately visible; other panels fade in as they enter viewport
       gsap.set(panelHero, { opacity: 1, y: 0, scale: 1 });
-      gsap.set([panelStatement, panelSimplicity, panelFinance, panelFuture], { opacity: 0, y: 40 });
+      gsap.set([panelStatement, panelCampuses, panelSimplicity, panelFinance, panelFuture], { opacity: 0, y: 40 });
 
-      [panelStatement, panelSimplicity, panelFinance, panelFuture].forEach(panel => {
+      [panelStatement, panelCampuses, panelSimplicity, panelFinance, panelFuture].forEach(panel => {
         gsap.to(panel, {
           opacity: 1, y: 0,
           duration: 0.75, ease: "power3.out",
@@ -710,7 +740,7 @@
 
       return () => {
         ScrollTrigger.getAll().forEach(st => st.kill());
-        gsap.set([panelHero, panelStatement, panelSimplicity, panelFinance, panelFuture],
+        gsap.set([panelHero, panelStatement, panelCampuses, panelSimplicity, panelFinance, panelFuture],
           { clearProps: "opacity,y,scale" });
       };
     });
@@ -730,9 +760,9 @@
             const scrollMap = {
               '#hero':            0.00,
               '#about':           0.18,
-              '#features':        0.40,
-              '#how-spark-works': 0.62,
-              '#download':        0.84
+              '#features':        0.52,
+              '#how-spark-works': 0.72,
+              '#download':        0.72
             };
             const progress = scrollMap[targetId];
             if (progress !== undefined) {
@@ -742,6 +772,17 @@
           }
         }
       });
+    });
+
+    document.querySelector('.glass-btn-white')?.addEventListener('click', (event) => {
+      event.preventDefault();
+      const target = document.querySelector('#download');
+      if (window.innerWidth < 768) {
+        if (target) lenis.scrollTo(target, { offset: -80, duration: 1.2 });
+        return;
+      }
+      const totalScroll = document.querySelector('.scroll-viewport').scrollHeight - window.innerHeight;
+      lenis.scrollTo(0.72 * totalScroll, { duration: 1.4 });
     });
 
     // ─── 8. Accordion interactivity ──────────────────────────────────
