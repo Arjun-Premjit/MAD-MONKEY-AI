@@ -184,7 +184,7 @@ body {
 }
 
 .brand-logo-outer:hover {
-  transform: scale(1.03);
+  transform: scale(1);
 }
 
 .brand-logo-img-lg,
@@ -368,8 +368,8 @@ body {
 .scroll-viewport {
   position: relative;
   width: 100vw;
-  min-height: 480vh;   /* vh fallback for older browsers */
-  min-height: 480dvh;  /* dynamic viewport height — footer comes right after slide is scrolled */
+  min-height: 400vh;   /* vh fallback for older browsers */
+  min-height: 400dvh;  /* footer follows the final slide without an empty tail */
   z-index: 10;
 }
 
@@ -440,13 +440,16 @@ body {
 
 /* Hero Right Description Container - Slightly Bigger Font, Adjusted Upwards */
 .hero-desc-container-right {
+  position: absolute;
+  left: calc(50% + 420px);
+  width: min(350px, calc(50% - 420px));
   max-width: 350px;
   z-index: 10;
-  margin-top: 60px; /* Adjusted above a little */
+  margin-top: 60px;
 }
 
 .hero-desc-right-slim {
-  font-size: 0.94rem; /* Slightly bigger font */
+  font-size: 20px;
   line-height: 1.6;
   color: #334155;
   font-weight: 400;
@@ -535,6 +538,14 @@ body {
   color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 28px;
+}
+
+#download .section-heading {
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+}
+
+#download .section-subtext {
+  font-size: 1.15rem;
 }
 
 .feature-grid {
@@ -832,6 +843,33 @@ body {
   pointer-events: none;
 }
 
+.section-phone-widget {
+  position: absolute;
+  z-index: 26;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 172px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  color: #0f172a;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.section-phone-widget i { font-size: 1.1rem; }
+.section-phone-widget span { display: flex; flex-direction: column; gap: 2px; }
+.section-phone-widget strong { font-size: 0.74rem; }
+.section-phone-widget small { color: #475569; font-size: 0.62rem; }
+.widget-discover-crew { top: 16%; left: -145px; }
+.widget-discover-sparks { top: 51%; left: -155px; }
+.widget-profile-match { top: 30%; right: -175px; }
+
 /* New Phone Photo Overlay (Hand holding phone) */
 .phone-photo-overlay-wrap {
   position: absolute;
@@ -853,6 +891,29 @@ body {
   display: block;
   filter: drop-shadow(0 25px 50px rgba(15, 23, 42, 0.22));
 }
+
+/* Calibrated over the six cards in the photo so their surface matches the iOS header glass. */
+.ios-widget-glass {
+  position: absolute;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 18px;
+  box-shadow:
+    0 6px 18px rgba(15, 23, 42, 0.05),
+    inset 0 1px 2px rgba(255, 255, 255, 0.62),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.10);
+  pointer-events: none;
+}
+
+.ios-widget-project { top: 9%; left: 2%; width: 24%; height: 13%; }
+.ios-widget-builder { top: 12%; left: 75%; width: 24%; height: 12%; }
+.ios-widget-shield { top: 29%; left: 2%; width: 24%; height: 10%; }
+.ios-widget-spark { top: 38%; left: 78%; width: 21%; height: 8%; }
+.ios-widget-rewards { top: 48%; left: 2%; width: 24%; height: 8%; }
+.ios-widget-venture { top: 66%; left: 2%; width: 20%; height: 8%; }
 
 .phone-3d-body {
   width: 100%;
@@ -895,7 +956,7 @@ body {
 .phone-screen {
   width: 100%;
   height: 100%;
-  background: #f8fafc;
+  background: transparent;
   border-radius: 36px;
   overflow: hidden;
   position: relative;
@@ -930,23 +991,61 @@ body {
 /* Full-bleed photo screen — image fills phone screen, fully visible (no crop) */
 .app-screen-photo {
   padding: 0 !important;
-  background: #f8fafc !important;
+  background: transparent !important;
   overflow: hidden;
 }
+
+.phone-ui-widget {
+  position: absolute;
+  z-index: 3;
+  max-width: 74%;
+  padding: 7px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.78);
+  color: #0f172a;
+  font-size: 0.62rem;
+  line-height: 1.25;
+  backdrop-filter: blur(12px) saturate(165%);
+  -webkit-backdrop-filter: blur(12px) saturate(165%);
+  pointer-events: none;
+}
+
+.phone-ui-widget strong,
+.phone-ui-widget span {
+  display: block;
+}
+
+.phone-ui-widget strong {
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.phone-ui-widget span {
+  color: #334155;
+  margin-top: 2px;
+}
+
+.discover-widget-online { top: 16%; right: 5%; }
+.discover-widget-saved { bottom: 19%; left: 5%; }
+.profile-widget-brief { top: 18%; left: 5%; }
+.profile-widget-match { bottom: 20%; right: 5%; }
 
 .app-screen-photo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: fill;
   object-position: center top;
   display: block;
-  padding-top: 15px; /* Moves UI down so text fits properly */
+  padding: 0;
+  transform: none;
 }
 
 /* Specific resize for One Button section photo */
 #screenEarning img {
-  padding: 30px 15px; /* Make it slightly smaller to fit better */
-  transform: scale(0.95);
+  padding: 0;
+  transform: none;
 }
 
 /* Exact Stage 1 Phone App UI (Replicating Reference Design Image) */
@@ -1362,7 +1461,7 @@ body {
   border-radius: 18px;
   padding: 10px 14px;
   box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.6);
-  z-index: 25;
+  z-index: 8;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1371,14 +1470,11 @@ body {
   max-width: 200px;
 }
 
-/* Orbiting Phone Widgets Positioned Cleanly Around 3D Phone Frame */
-.badge-visitors-green { top: 6%; left: -210px; flex-direction: column; align-items: flex-start; gap: 3px; min-width: 175px; } /* Spark Project Card */
-.badge-btc-perf { top: 32%; left: -190px; } /* Brain Rot Shield */
-.badge-visitors-coral { top: 60%; left: -190px; } /* Monkey Cash Rewards */
-.badge-tx-limit { bottom: 4%; left: -210px; } /* Venture Club Graduate */
-
-.badge-donut-chart { top: 16%; left: -180px; right: auto; flex-direction: column; align-items: flex-start; min-width: 165px; padding: 10px 12px; } /* Builder Crew */
-.badge-exchange-rate { top: 76%; left: -160px; right: auto; } /* Spark Action Box */
+/* Keep each unique widget outside the text columns around the phone. */
+.badge-btc-perf { top: 28%; left: -230px; }
+.badge-visitors-coral { top: 62%; left: -230px; }
+.badge-donut-chart { top: 22%; right: -230px; left: auto; flex-direction: column; align-items: flex-start; min-width: 165px; padding: 10px 12px; }
+.badge-tx-limit { bottom: 7%; right: -230px; left: auto; }
 
 .badge-title-sm {
   font-size: 0.7rem;
@@ -1402,6 +1498,8 @@ body {
 .footer-section {
   position: relative;
   z-index: 30;
+  width: 100%;
+  margin-top: -8px;
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -1482,7 +1580,10 @@ body {
 
 .newsletter-input-wrapper {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 7px;
+  width: min(260px, 100%);
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid var(--glass-border);
   border-radius: 999px;
@@ -1497,16 +1598,34 @@ body {
   font-size: 0.86rem;
   color: var(--text-dark);
   width: 100%;
+  min-height: 34px;
+}
+
+.newsletter-subscribe-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 34px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .watermark-logo {
   position: absolute;
-  bottom: -40px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   font-size: clamp(6rem, 16vw, 18rem);
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.07);
   letter-spacing: -0.05em;
   pointer-events: none;
   user-select: none;
@@ -1532,16 +1651,14 @@ body {
     transform: scale(0.85);
     max-width: 175px;
   }
-  .badge-visitors-green { top: 6%; left: -160px; }
-  .badge-btc-perf { top: 32%; left: -150px; }
-  .badge-visitors-coral { top: 60%; left: -150px; }
-  .badge-tx-limit { bottom: 4%; left: -160px; }
-  .badge-donut-chart { top: 16%; left: -140px; right: auto; }
-  .badge-exchange-rate { top: 76%; left: -130px; right: auto; }
+  .badge-btc-perf { top: 28%; left: -175px; }
+  .badge-visitors-coral { top: 62%; left: -175px; }
+  .badge-tx-limit { bottom: 7%; right: -175px; left: auto; }
+  .badge-donut-chart { top: 22%; right: -175px; left: auto; }
 
   .hero-title-slim { font-size: clamp(2.1rem, 3.8vw, 3rem); }
   .hero-title-container-left { max-width: 330px; }
-  .hero-desc-container-right { max-width: 290px; }
+  .hero-desc-container-right { left: calc(50% + 280px); width: calc(50% - 280px); }
   .simplicity-right, .finance-left { max-width: 420px; }
 }
 
@@ -1567,12 +1684,10 @@ body {
     max-width: 165px;
     z-index: 25;
   }
-  .badge-visitors-green { top: 6%; left: -130px; }
-  .badge-btc-perf { top: 32%; left: -120px; }
-  .badge-visitors-coral { top: 60%; left: -120px; }
-  .badge-tx-limit { bottom: 4%; left: -120px; }
-  .badge-donut-chart { top: 16%; right: -120px; }
-  .badge-exchange-rate { top: 52%; right: -115px; }
+  .badge-btc-perf { top: 28%; left: -145px; }
+  .badge-visitors-coral { top: 62%; left: -145px; }
+  .badge-tx-limit { bottom: 7%; right: -145px; left: auto; }
+  .badge-donut-chart { top: 22%; right: -145px; left: auto; }
 
   /* Phone: slightly smaller */
   .phone-perspective-container { width: 255px; height: 500px; }
@@ -1587,7 +1702,7 @@ body {
   /* Content areas */
   .hero-title-slim { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
   .hero-title-container-left { max-width: 275px; }
-  .hero-desc-container-right { max-width: 240px; }
+  .hero-desc-container-right { position: absolute; left: calc(50% + 260px); width: calc(50% - 280px); max-width: 240px; }
   .simplicity-right, .finance-left { max-width: 390px; }
 
   /* Footer */
@@ -1606,6 +1721,10 @@ body {
 @media (max-width: 767px) {
   /* Prevent any horizontal overflow from absolutely-positioned elements */
   html, body { overflow-x: clip; width: 100%; }
+
+  .section-phone-widget { display: none; }
+
+  .footer-section { margin-top: 0; }
 
   /* ── Header: compact single row — logo left, download button right, no nav pill ── */
   .top-header-wrapper {
@@ -1729,7 +1848,7 @@ body {
   /* Hero */
   .hero-title-container-left { max-width: 100%; margin: 0 0 18px 0; }
   .hero-title-slim { font-size: clamp(1.9rem, 8vw, 2.6rem); }
-  .hero-desc-container-right { max-width: 100%; margin: 0; }
+  .hero-desc-container-right { position: relative; left: auto; width: auto; max-width: 100%; margin: 0; }
 
   /* Statement */
   .statement-panel {

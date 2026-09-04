@@ -109,6 +109,12 @@
         <!-- NEW PHONE PHOTO OVERLAY (Hand + UI) shown only on first slide -->
         <div class="phone-photo-overlay-wrap" id="phonePhotoOverlay">
           <img src="NEW PHONE PHOTO.png" class="new-phone-photo-img" alt="Phone with Hand">
+          <span class="ios-widget-glass ios-widget-project" aria-hidden="true"></span>
+          <span class="ios-widget-glass ios-widget-builder" aria-hidden="true"></span>
+          <span class="ios-widget-glass ios-widget-shield" aria-hidden="true"></span>
+          <span class="ios-widget-glass ios-widget-spark" aria-hidden="true"></span>
+          <span class="ios-widget-glass ios-widget-rewards" aria-hidden="true"></span>
+          <span class="ios-widget-glass ios-widget-venture" aria-hidden="true"></span>
         </div>
 
         <div class="phone-3d-body" id="phoneBody">
@@ -264,56 +270,6 @@
               </div>
             </div>
 
-          </div>
-        </div>
-
-
-
-        <!-- LAYER 4: FLOATING INSIGHT CARDS (Actual Phone App Widgets Orbiting Outer Frame) -->
-        <!-- Widget 1: Spark Project Post Card (Rahul Krishnan - Smart Irrigation) - REMOVED (Duplicate) -->
-        <!-- Widget 2: Brain Rot Meter / Screen Time Shield -->
-        <div class="floating-stat-badge badge-btc-perf" id="badgeBtcPerf">
-          <i class="bi bi-shield-check text-success fs-5"></i>
-          <div>
-            <div class="text-muted fw-medium" style="font-size: 0.62rem;">Brain Rot Meter</div>
-            <div class="fw-bold text-dark" style="font-size: 0.82rem;">Screen Time Shield</div>
-            <div class="text-success fw-bold" style="font-size: 0.64rem;">+100K Reclaimed</div>
-          </div>
-        </div>
-
-        <!-- Widget 3: Monkey Cash Rewards Card -->
-        <div class="floating-stat-badge badge-visitors-coral" id="badgeVisitors2">
-          <i class="bi bi-gift-fill text-dark fs-5"></i>
-          <div>
-            <div class="fw-bold text-dark" style="font-size: 0.82rem;">Monkey Cash 🪙</div>
-            <div class="text-muted fw-semibold" style="font-size: 0.64rem;">Amazon · Swiggy · Netflix</div>
-          </div>
-        </div>
-
-        <!-- Widget 4: Builder Crew / Active Applicants Matching Widget -->
-        <div class="floating-stat-badge badge-donut-chart" id="badgeDonut">
-          <div class="d-flex justify-content-between align-items-center w-100 mb-1">
-            <span class="badge-title-sm mb-0">Builder Crew</span>
-            <span class="badge bg-success" style="font-size: 0.58rem; padding: 2px 6px;">24-72h</span>
-          </div>
-          <div class="d-flex gap-1 align-items-center my-1">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=60&q=80"
-              style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" title="Olivia (AI)">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=60&q=80"
-              style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" title="Alex (Growth)">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=60&q=80"
-              style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" title="Henry (Design)">
-          </div>
-          <div class="fw-bold text-dark" style="font-size: 0.68rem;">Team Assembled</div>
-        </div>
-
-        <!-- Widget 5: Spark Action Box - REMOVED (Duplicate) -->
-        <!-- Widget 6: Venture Club Graduate -->
-        <div class="floating-stat-badge badge-tx-limit" id="badgeTxLimit">
-          <i class="bi bi-award-fill text-warning fs-5"></i>
-          <div>
-            <div class="fw-bold text-dark" style="font-size: 0.78rem;">Venture Club</div>
-            <div class="text-success fw-bold" style="font-size: 0.68rem;">Graduate ↗</div>
           </div>
         </div>
 
@@ -489,13 +445,6 @@
           <p class="text-muted small mb-4" style="line-height: 1.7; max-width: 280px;">The social network that builds
             companies. Built for the next generation of founders worldwide.</p>
 
-          <div class="newsletter-box">
-            <div class="fw-bold text-dark small mb-1">Never miss startup grants & demo days</div>
-            <div class="newsletter-input-wrapper">
-              <input type="email" placeholder="Your Email Address">
-              <a href="#" class="glass-btn glass-btn-brand py-2 px-3" style="font-size: 0.78rem;">Subscribe ↗</a>
-            </div>
-          </div>
         </div>
 
         <div>
@@ -604,12 +553,6 @@
     const panelFinance    = document.getElementById("how-spark-works");
     const panelFuture     = document.getElementById("download");
 
-    const badgeVisitors2  = document.getElementById("badgeVisitors2");
-    const badgeTxLimit    = document.getElementById("badgeTxLimit");
-    const badgeDonut      = document.getElementById("badgeDonut");
-    const badgeBtcPerf    = document.getElementById("badgeBtcPerf");
-    const allBadges = [badgeVisitors2, badgeTxLimit, badgeDonut, badgeBtcPerf];
-
     const screenDashboard = document.getElementById("screenDashboard");
     const screenSendMoney = document.getElementById("screenSendMoney");
     const screenEarning   = document.getElementById("screenEarning");
@@ -637,14 +580,11 @@
       
       gsap.set(screenDashboard, { opacity: 1 });
       gsap.set([screenSendMoney, screenEarning, screenCrypto], { opacity: 0 });
-      // Screen Time Shield and What to Spark start VISIBLE on the home screen!
-      gsap.set(allBadges, { opacity: 1, scale: 1, x: 0, y: 0, display: "flex" });
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".scroll-viewport",
           start: "top top",
-          end: "bottom bottom",
+          end: "bottom bottom-=475px",
           scrub: 1,
           pin: "#pinnedStage",
           anticipatePin: 1,
@@ -655,8 +595,6 @@
       // A: Hero → Statement
       tl
         .to(panelHero, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 1 }, 0)
-        .to([badgeVisitors2, badgeBtcPerf], { x: -60, y: -20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
-        .to([badgeTxLimit, badgeDonut], { x: 60, y: 20, opacity: 0, scale: 0.82, ease: "power2.in", duration: 0.9 }, 0)
         .to(phoneContainer, { y: 120, scale: 0.72, opacity: 0, ease: "power2.in", duration: 1 }, 0)
         .to(phonePhotoOverlay, { opacity: 0, ease: "power2.in", duration: 0.9 }, 0)
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
@@ -664,25 +602,25 @@
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
         .to(phoneBody, { opacity: 1, duration: 0.2 }, 1.7)
         .to(phoneContainer, { x: "-28vw", y: 0, scale: 1, opacity: 1, ease: "power3.out", duration: 1.1 }, 1.7)
-        .to(screenDashboard, { opacity: 0, ease: "none", duration: 0.35 }, 1.95)
-        .to(screenSendMoney, { opacity: 1, ease: "none", duration: 0.35 }, 2.15)
+        .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.45 }, 1.95)
+        .to(screenSendMoney, { opacity: 1, ease: "power1.inOut", duration: 0.45 }, 1.95)
         .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 2.1)
       // C: Features → How Spark Works
         .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 3.1)
         .to(phoneContainer, { x: "28vw", y: 0, scale: 1, ease: "power3.out", duration: 1.1 }, 3.1)
-        .to(screenSendMoney, { opacity: 0, ease: "none", duration: 0.35 }, 3.35)
-        .to(screenEarning,   { opacity: 1, ease: "none", duration: 0.35 }, 3.55)
+        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.45 }, 3.35)
+        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.45 }, 3.35)
         .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.5)
       // D: How Spark Works → Download
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.5)
-        // Phone shifts down to lower half so Download title, buttons & subscribe are 100% visible
-        .to(phoneContainer, { x: 0, y: 200, scale: 0.76, opacity: 1, ease: "power3.out", duration: 1.1 }, 4.5)
-        .to(screenEarning,  { opacity: 0, ease: "none", duration: 0.35 }, 4.75)
-        .to(screenCrypto,   { opacity: 1, ease: "none", duration: 0.35 }, 4.95)
-        .to([badgeBtcPerf], { opacity: 1, scale: 1, x: 0, y: 0, ease: "power3.out", duration: 0.8 }, 5.0)
+        // Clear the phone before the Download slide enters.
+        .to(phoneContainer, { x: 0, y: 120, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 4.35)
+        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.35 }, 4.75)
+        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.35 }, 4.75)
         .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 4.8)
-      // E: Fade out Download slide before footer appears
-        .to([panelFuture, phoneContainer], { opacity: 0, scale: 0.9, y: -20, ease: "power2.in", duration: 1.0 }, 6.2);
+      // E: Hold the independent Download slide, then fade it for the footer handoff.
+        .to(panelFuture, { opacity: 1, duration: 1.1 }, 5.8)
+        .to(panelFuture, { opacity: 0, scale: 0.97, y: -18, ease: "power1.inOut", duration: 1.4 }, 6.9);
 
       return () => { tl.kill(); };
     });
@@ -700,14 +638,11 @@
 
       gsap.set(screenDashboard, { opacity: 1 });
       gsap.set([screenSendMoney, screenEarning, screenCrypto], { opacity: 0 });
-      // Widgets visible on tablet home screen
-      gsap.set(allBadges, { opacity: 1, scale: 0.82, x: 0, y: 0, display: "flex" });
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".scroll-viewport",
           start: "top top",
-          end: "bottom bottom",
+          end: "bottom bottom-=475px",
           scrub: 1,
           pin: "#pinnedStage",
           anticipatePin: 1,
@@ -717,8 +652,6 @@
 
       tl
         .to(panelHero, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 1 }, 0)
-        .to([badgeVisitors2, badgeBtcPerf], { x: -40, opacity: 0, scale: 0.75, duration: 0.9 }, 0)
-        .to([badgeTxLimit, badgeDonut], { x: 40, opacity: 0, scale: 0.75, duration: 0.9 }, 0)
         .to(phoneContainer, { y: 80, scale: 0.65, opacity: 0, ease: "power2.in", duration: 1 }, 0)
         .to(phonePhotoOverlay, { opacity: 0, ease: "power2.in", duration: 0.9 }, 0)
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
@@ -726,22 +659,22 @@
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
         .to(phoneBody, { opacity: 1, duration: 0.2 }, 1.7)
         .to(phoneContainer, { y: -60, scale: 0.85, opacity: 1, ease: "power3.out", duration: 1.1 }, 1.7)
-        .to(screenDashboard, { opacity: 0, ease: "none", duration: 0.3 }, 2.0)
-        .to(screenSendMoney, { opacity: 1, ease: "none", duration: 0.3 }, 2.15)
+        .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 2.0)
+        .to(screenSendMoney, { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 2.0)
         .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 2.1)
 
         .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 3.1)
-        .to(screenSendMoney, { opacity: 0, ease: "none", duration: 0.3 }, 3.3)
-        .to(screenEarning,   { opacity: 1, ease: "none", duration: 0.3 }, 3.5)
+        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 3.3)
+        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 3.3)
         .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.5)
 
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.5)
-        .to(phoneContainer, { y: 160, scale: 0.72, opacity: 1, ease: "power2.out", duration: 1 }, 4.5)
-        .to(screenEarning,  { opacity: 0, ease: "none", duration: 0.3 }, 4.7)
-        .to(screenCrypto,   { opacity: 1, ease: "none", duration: 0.3 }, 4.9)
-        .to([badgeBtcPerf], { opacity: 1, scale: 0.82, x: 0, y: 0, duration: 0.8 }, 5.0)
+        .to(phoneContainer, { y: 120, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 4.35)
+        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 4.7)
+        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.3 }, 4.7)
         .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 4.8)
-        .to([panelFuture, phoneContainer], { opacity: 0, scale: 0.9, y: -20, ease: "power2.in", duration: 1.0 }, 6.2);
+        .to(panelFuture, { opacity: 1, duration: 1.1 }, 5.8)
+        .to(panelFuture, { opacity: 0, scale: 0.97, y: -18, ease: "power1.inOut", duration: 1.4 }, 6.9);
 
       return () => { tl.kill(); };
     });
@@ -757,9 +690,6 @@
 
       gsap.set(screenDashboard, { opacity: 1 });
       gsap.set([screenSendMoney, screenEarning, screenCrypto], { opacity: 0 });
-
-      // Screen Time Shield & What to Spark (plus top badges) visible on mobile!
-      gsap.set([badgeBtcPerf, badgeExRate, badgeVisitors1, badgeDonut], { opacity: 1, scale: 1, clearProps: "display" });
 
       // Hero immediately visible; other panels fade in as they enter viewport
       gsap.set(panelHero, { opacity: 1, y: 0, scale: 1 });
