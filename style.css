@@ -2085,10 +2085,6 @@ body {
 .campus-card img { width: clamp(76px, 6vw, 100px); height: clamp(76px, 6vw, 100px); object-fit: contain; opacity: 0.9; mix-blend-mode: multiply; }
 .campus-card span { font-size: clamp(0.98rem, 1.25vw, 1.2rem); font-weight: 700; line-height: 1.25; white-space: normal; color: #0f172a; }
 
-.campus-track .campus-card:first-child,
-.campus-track .campus-card:last-child {
-  border-radius: 50px;
-}
 .campus-wordmark { flex-direction: column; gap: 3px; }
 .campus-wordmark .campus-mark { font-size: 1.1rem; letter-spacing: 0.08em; }
 
