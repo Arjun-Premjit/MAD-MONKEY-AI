@@ -763,8 +763,8 @@
               '#hero':            0.00,
               '#about':           0.18,
               '#features':        0.52,
-              '#how-spark-works': 0.72,
-              '#download':        0.72
+              '#how-spark-works': 0.66,
+              '#download':        0.85
             };
             const progress = scrollMap[targetId];
             if (progress !== undefined) {
@@ -784,7 +784,7 @@
         return;
       }
       const totalScroll = document.querySelector('.scroll-viewport').scrollHeight - window.innerHeight;
-      lenis.scrollTo(0.72 * totalScroll, { duration: 1.4 });
+      lenis.scrollTo(0.85 * totalScroll, { duration: 1.4 });
     });
 
     // ─── 8. Accordion interactivity ──────────────────────────────────
