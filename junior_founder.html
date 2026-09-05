@@ -1,16 +1,14 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Venture Club | Mad Monkey AI</title>
+  <title>Mad Monkey App</title>
   
   <!-- Bootstrap 5 CSS & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
   
   <style>
     :root {
@@ -260,49 +258,94 @@ session_start();
 </head>
 <body>
 
-  <!-- NAVBAR MATCHING HOMEPAGE -->
-  <nav class="navbar navbar-expand-xl sticky-top border-bottom py-3">
-    <div class="container-fluid px-lg-5">
-      <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="index.php">
-        mad<span class="text-gradient">monkey ai</span>
-      </a>
-      
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- TOP HEADER NAVIGATION BAR -->
+  <div class="top-header-wrapper" id="topHeader">
+    <!-- Official Mad Monkey AI Logo -->
+    <a href="index.html" class="brand-logo-outer">
+      <img src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" class="brand-logo-img-lg">
+    </a>
 
-      <div class="collapse navbar-collapse" id="navContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-xl-3">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#how-it-works">How Spark Works</a></li>
-          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-       <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle active fw-bold text-gradient" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Clubs
-  </a>
-  <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2">
-    <li><a class="dropdown-item fw-semibold rounded-3 py-2 " href="venture_club.php">Venture Club</a></li>
-    <li><a class="dropdown-item fw-semibold rounded-3 py-2 text-gradient" href="junior_founder.php">High School-Junior Founders</a></li>
-  </ul>
-</li>
-          <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="foundingmembers.html">Founding Members</a></li>
-          <li class="nav-item"><a class="nav-link" href="directors.html">Directors</a></li>
-        </ul>
+    <!-- Mobile Hamburger Toggle (3 Black Lines on Transparent Background) -->
+    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation menu" type="button">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
 
-        <div class="d-flex align-items-center gap-3">
-          <button class="btn btn-brand-gradient btn-brand-pulse rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#ventureModal">
-            Download App <i class="bi bi-box-arrow-up-right ms-1"></i>
-          </button>
-          <a href="#" class="fs-7 fw-semibold text-decoration-none text-dark d-none d-sm-inline">Sign In</a>
+    <!-- Glass Capsule Header (Desktop / Tablet) -->
+    <header class="ios-glass-nav-pill">
+      <ul class="nav-links-menu">
+        <li><a href="index.html#hero">Home</a></li>
+        <li><a href="index.html#how-spark-works">How Spark Works</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#about">About</a></li>
+
+        <!-- Clubs Dropdown Menu -->
+        <li class="dropdown-nav-item">
+          <a class="dropdown-toggle fw-bold text-dark active" href="#" role="button" id="clubsDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Clubs <i class="bi bi-chevron-down ms-1" style="font-size: 0.72rem;"></i>
+          </a>
+          <ul class="dropdown-menu-glass" aria-labelledby="clubsDropdown">
+            <li>
+              <a class="dropdown-item" href="venture_club.html">
+                <i class="bi bi-rocket-takeoff text-dark me-1"></i> Venture Club
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item active" href="junior_founder.html">
+                <i class="bi bi-backpack text-dark me-1"></i> High School-Junior Founders
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="foundingmembers.html">Founding Members</a></li>
+        <li><a href="directors.html">Directors</a></li>
+      </ul>
+    </header>
+
+    <!-- Clean Solid White Download App Button -->
+    <a href="index.html#download" class="glass-btn-white">
+      Download App
+    </a>
+  </div>
+
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+    <div class="mobile-nav-drawer-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-drawer-panel">
+      <div class="mobile-nav-drawer-header">
+        <span class="mobile-nav-drawer-title">Mad Monkey AI</span>
+        <button class="mobile-nav-close-btn" id="mobileNavCloseBtn" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="mobile-nav-drawer-body">
+        <a href="index.html#hero" class="mobile-nav-link">Home</a>
+        <a href="index.html#how-spark-works" class="mobile-nav-link">How Spark Works</a>
+        <a href="index.html#features" class="mobile-nav-link">Features</a>
+        <a href="index.html#about" class="mobile-nav-link">About</a>
+
+        <div class="mobile-nav-group-label">CLUBS</div>
+        <a href="venture_club.html" class="mobile-nav-link mobile-nav-sub">🚀 Venture Club</a>
+        <a href="junior_founder.html" class="mobile-nav-link mobile-nav-sub active">🎒 High School-Junior Founders</a>
+
+        <div class="mobile-nav-divider"></div>
+        <a href="leaderboard.html" class="mobile-nav-link">Leaderboard</a>
+        <a href="foundingmembers.html" class="mobile-nav-link">Founding Members</a>
+        <a href="directors.html" class="mobile-nav-link">Directors</a>
+        <a href="applydirectorintern.html" class="mobile-nav-link">Apply as Director / Intern</a>
+
+        <div class="mobile-nav-footer">
+          <a href="index.html#download" class="mobile-nav-cta-btn">Download App</a>
         </div>
       </div>
     </div>
-  </nav>
+  </div>
+  <script src="/nav.js"></script>
 
   <!-- HERO SECTION -->
-  <section class="py-5 text-center container px-4 animate-fade-in">
+  <section class="py-5 text-center container px-4 animate-fade-in" style="padding-top: 110px !important;">
     <div class="py-4">
       <span class="section-badge mb-3">✦ VENTURE CLUB ✦</span>
       <h1 class="hero-title my-3">
@@ -486,7 +529,7 @@ session_start();
         <button class="btn btn-brand-gradient py-3 px-4 fs-6" data-bs-toggle="modal" data-bs-target="#ventureModal">
           Submit Your Idea <i class="bi bi-arrow-right ms-1"></i>
         </button>
-        <a href="index.php" class="btn btn-outline-purple py-3 px-4 fs-6 text-decoration-none">
+        <a href="venture_club.html" class="btn btn-outline-purple py-3 px-4 fs-6 text-decoration-none">
           Already in college? Try Venture Club <i class="bi bi-arrow-right ms-1"></i>
         </a>
       </div>

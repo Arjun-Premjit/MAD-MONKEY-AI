@@ -1,0 +1,6 @@
+{
+  "name": "Mad Monkey App",
+  "description": "Mad Monkey App — Stop Scrolling. Start Building. Student builder network and campus leaderboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

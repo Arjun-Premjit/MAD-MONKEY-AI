@@ -16,13 +16,22 @@ export default defineConfig(({ mode }) => {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
       rollupOptions: {
-        input: 'index1.html'
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          leaderboard: path.resolve(__dirname, 'leaderboard.html'),
+          directors: path.resolve(__dirname, 'directors.html'),
+          foundingmembers: path.resolve(__dirname, 'foundingmembers.html'),
+          venture_club: path.resolve(__dirname, 'venture_club.html'),
+          junior_founder: path.resolve(__dirname, 'junior_founder.html'),
+          applydirectorintern: path.resolve(__dirname, 'applydirectorintern.html'),
+        }
       }
     },
     plugins: [
       react(),
       tailwindcss(),
       figmaSiteConfiguration(siteConfiguration),
+      mockFormSubmitPlugin(),
       figmaErrorOverlayReplay(),
       figmaReactRefreshBoundaryFallback(),
       figmaMakeKitPlugin({ storiesGlob: '/src/**/*.stories.{ts,tsx,js,jsx}' }),
@@ -33,17 +42,35 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
-      host: process.env.FIGMA_DEV_SERVER_HOST || '0.0.0.0',
-      port: parseInt(process.env.PORT || '8443'),
+      host: '0.0.0.0',
+      port: 3000,
       strictPort: true,
+      allowedHosts: true,
       watch: { ignored: ['**/.figma/**'] },
     },
     preview: {
-      host: process.env.FIGMA_DEV_SERVER_HOST || '0.0.0.0',
-      port: parseInt(process.env.PORT || '8443'),
+      host: '0.0.0.0',
+      port: 3000,
     },
   }
 })
+
+function mockFormSubmitPlugin(): Plugin {
+  return {
+    name: 'mock-form-submit',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const url = req.url || ''
+        if ((url.includes('submit_application.php') || url.includes('submit_venture.php')) && req.method === 'POST') {
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify({ status: 'success', message: 'Application submitted successfully! Our team will reach out soon.' }))
+          return
+        }
+        next()
+      })
+    }
+  }
+}
 
 type FigmaSiteConfiguration = {
   title?: string
@@ -84,7 +111,7 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
     return html.replace(`<!-- ${slotName} -->`, content)
   }
 
-  const title = config.title ?? "Figma Make App"
+  const title = config.title ?? "Mad Monkey App"
   const description = config.description ?? ''
   const favicon = config.icons?.icon ?? ''
   const socialImage = config.openGraph?.image ?? ''
