@@ -1,0 +1,4 @@
+{
+  "buildCommand": "echo 'Skipping Vite build for Vercel, serving static files.'",
+  "outputDirectory": "."
+}

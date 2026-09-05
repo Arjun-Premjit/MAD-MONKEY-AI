@@ -1799,9 +1799,69 @@ body {
     width: calc(100% - 20px);
     top: max(8px, env(safe-area-inset-top));
     gap: 8px;
+    position: relative;
   }
   .brand-logo-img-lg { height: 50px; }
-  .ios-glass-nav-pill { display: none !important; }
+  
+  .mobile-nav-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    color: var(--text-dark);
+  }
+
+  .ios-glass-nav-pill {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    width: 250px;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 16px;
+    padding: 20px !important;
+    flex-direction: column !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    display: flex !important;
+  }
+
+  .ios-glass-nav-pill.show-mobile {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links-menu {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .nav-links-menu li {
+    width: 100%;
+  }
+
+  .nav-links-menu li a {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+
+  .nav-links-menu li a:hover,
+  .nav-links-menu li a.active {
+    background: rgba(0,0,0,0.05);
+  }
   .glass-btn-white { padding: 8px 14px; font-size: 0.8rem; }
 
   /* ── Scroll-viewport: natural content height on mobile ── */

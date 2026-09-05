@@ -1,0 +1,10 @@
+{
+  "description": "Displays an interactive, sleek leaderboard with a cloud-themed design that seamlessly integrates with your website's style for enhanced user engagement.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
