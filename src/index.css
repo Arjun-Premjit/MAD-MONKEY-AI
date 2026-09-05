@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap');
+@import 'tailwindcss';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+
+@theme inline {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes cloudDrift {
+  0%, 100% { transform: translateX(0px) translateY(0px); }
+  33%       { transform: translateX(14px) translateY(-7px); }
+  66%       { transform: translateX(-9px) translateY(5px); }
+}
+
+@keyframes cloudDriftSlow {
+  0%, 100% { transform: translateX(0px) translateY(0px); }
+  50%       { transform: translateX(-20px) translateY(-9px); }
+}
+
+.cloud-drift      { animation: cloudDrift     20s ease-in-out infinite; }
+.cloud-drift-slow { animation: cloudDriftSlow 28s ease-in-out infinite; }
+.cloud-drift-med  { animation: cloudDrift     24s ease-in-out infinite reverse; }
