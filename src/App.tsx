@@ -284,7 +284,7 @@ export default function App() {
       </div>
 
       {/* Main */}
-      <main className="relative z-10 max-w-2xl mx-auto px-4 pb-24 pt-6">
+      <main className="relative z-10 w-full max-w-5xl mx-auto px-4 pb-24 pt-6">
 
         {/* Live pill */}
         <div className="flex justify-center mb-6">

@@ -1992,7 +1992,8 @@ body {
   #features .simplicity-right { width: 100%; max-width: 100%; text-align: center; margin: 0 auto; }
   .section-heading { font-size: clamp(1.7rem, 7vw, 2.2rem); text-align: center; }
   .section-subtext { text-align: center; }
-  .feature-grid { grid-template-columns: 1fr; gap: 10px; text-align: left; } /* Keep cards left aligned for readability */
+  .feature-grid { grid-template-columns: 1fr; gap: 10px; text-align: center; } /* Keep cards centered for consistency */
+  .feature-icon { margin: 0 auto 14px auto; }
 
   /* How Spark Works */
   .finance-left { width: 100%; max-width: 100%; text-align: center; }
