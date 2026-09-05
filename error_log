@@ -1,0 +1,20 @@
+[22-Aug-2026 20:15:55 UTC] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home/madmonkey/public_html/websiteaug/submit_application.php on line 11
+[22-Aug-2026 20:15:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/madmonkey/public_html/websiteaug/submit_application.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/madmonkey/public_html/websiteaug/submit_application.php on line 11
+[22-Aug-2026 20:15:59 UTC] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home/madmonkey/public_html/websiteaug/submit_application.php on line 11
+[22-Aug-2026 20:15:59 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/madmonkey/public_html/websiteaug/submit_application.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/madmonkey/public_html/websiteaug/submit_application.php on line 11
+[22-Aug-2026 20:16:48 UTC] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home/madmonkey/public_html/websiteaug/submit_application.php on line 11
+[22-Aug-2026 20:16:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/madmonkey/public_html/websiteaug/submit_application.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/madmonkey/public_html/websiteaug/submit_application.php on line 11
+[22-Aug-2026 20:16:51 UTC] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home/madmonkey/public_html/websiteaug/submit_application.php on line 11
+[22-Aug-2026 20:16:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/madmonkey/public_html/websiteaug/submit_application.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/madmonkey/public_html/websiteaug/submit_application.php on line 11

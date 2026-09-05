@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Mad Monkey App</title>
+  <title>Mad Monkey AI — Stop Scrolling. Start Building.</title>
   <meta name="description"
     content="Put a signal out into the world—and real human power lands on your doorstep within 24 to 72 hours. One Spark connects you, and every Spark earns.">
 
@@ -54,15 +54,13 @@
   <div class="top-header-wrapper" id="topHeader">
 
     <!-- Official Mad Monkey AI Logo -->
-    <a href="index.html" class="brand-logo-outer">
+    <a href="#" class="brand-logo-outer">
       <img src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" class="brand-logo-img-lg">
     </a>
 
-    <!-- Mobile Hamburger Toggle (3 Black Lines on Transparent Background) -->
-    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation menu" type="button">
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
+    <!-- Mobile Hamburger Toggle -->
+    <button class="mobile-nav-toggle btn p-0 ms-auto d-md-none" onclick="document.querySelector('.ios-glass-nav-pill').classList.toggle('show-mobile')">
+      <i class="bi bi-list fs-2 text-dark"></i>
     </button>
 
     <!-- Glass Capsule Header (Home to Directors Alone) -->
@@ -86,7 +84,7 @@
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="junior_founder.html">
+              <a class="dropdown-item" href="junior_founder.php">
                 <i class="bi bi-backpack text-dark me-1"></i> High School-Junior Founders
               </a>
             </li>
@@ -105,38 +103,6 @@
     </a>
 
   </div>
-
-  <!-- Mobile Navigation Drawer Overlay -->
-  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
-    <div class="mobile-nav-drawer-backdrop" id="mobileNavBackdrop"></div>
-    <div class="mobile-nav-drawer-panel">
-      <div class="mobile-nav-drawer-header">
-        <span class="mobile-nav-drawer-title">Mad Monkey AI</span>
-        <button class="mobile-nav-close-btn" id="mobileNavCloseBtn" aria-label="Close menu">&times;</button>
-      </div>
-      <div class="mobile-nav-drawer-body">
-        <a href="#hero" class="mobile-nav-link active">Home</a>
-        <a href="#how-spark-works" class="mobile-nav-link">How Spark Works</a>
-        <a href="#features" class="mobile-nav-link">Features</a>
-        <a href="#about" class="mobile-nav-link">About</a>
-
-        <div class="mobile-nav-group-label">CLUBS</div>
-        <a href="venture_club.html" class="mobile-nav-link mobile-nav-sub">🚀 Venture Club</a>
-        <a href="junior_founder.html" class="mobile-nav-link mobile-nav-sub">🎒 High School-Junior Founders</a>
-
-        <div class="mobile-nav-divider"></div>
-        <a href="leaderboard.html" class="mobile-nav-link">Leaderboard</a>
-        <a href="foundingmembers.html" class="mobile-nav-link">Founding Members</a>
-        <a href="directors.html" class="mobile-nav-link">Directors</a>
-        <a href="applydirectorintern.html" class="mobile-nav-link">Apply as Director / Intern</a>
-
-        <div class="mobile-nav-footer">
-          <a href="#download" class="mobile-nav-cta-btn">Download App</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="/nav.js"></script>
 
   <!-- LAYER 2, 3, 4: MAIN SCROLL VIEWPORT & THREE-COLUMN STAGE TRACK -->
   <main class="scroll-viewport">

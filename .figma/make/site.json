@@ -1,8 +1,7 @@
 {
-  "title": "Mad Monkey App",
-  "description": "Put a signal out into the world—and real human power lands on your doorstep within 24 to 72 hours. One Spark connects you, and every Spark earns.",
+  "description": "Displays an interactive, sleek leaderboard with a cloud-themed design that seamlessly integrates with your website's style for enhanced user engagement.",
   "robots": {
-    "index": true
+    "index": false
   },
   "accessibility": {
     "addBypassLinks": false,
