@@ -17,9 +17,11 @@ export default defineConfig(({ mode }) => {
       minify: !emitSourcemaps,
       rollupOptions: {
         input: {
-          main: 'index1.html',
-          foundingmembers: 'foundingmembers-src.html',
-          directors: 'directors-src.html'
+          main: path.resolve(__dirname, 'index.html'),
+          index1: path.resolve(__dirname, 'index1.html'),
+          leaderboard: path.resolve(__dirname, 'leaderboard.html'),
+          directors: path.resolve(__dirname, 'directors.html'),
+          foundingmembers: path.resolve(__dirname, 'foundingmembers.html'),
         }
       }
     },
@@ -37,14 +39,14 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
-      host: process.env.FIGMA_DEV_SERVER_HOST || '0.0.0.0',
-      port: parseInt(process.env.PORT || '8443'),
-      strictPort: true,
+      host: '0.0.0.0',
+      port: 3000,
+      strictPort: false,
       watch: { ignored: ['**/.figma/**'] },
     },
     preview: {
-      host: process.env.FIGMA_DEV_SERVER_HOST || '0.0.0.0',
-      port: parseInt(process.env.PORT || '8443'),
+      host: '0.0.0.0',
+      port: 3000,
     },
   }
 })
