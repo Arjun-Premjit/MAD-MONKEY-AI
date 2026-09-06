@@ -12,36 +12,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
     <style>
-      /* Smooth mobile toggle */
-      @media (max-width: 991px) {
-        .ios-glass-nav-pill.show-mobile {
-          display: flex !important;
-          flex-direction: column;
-          position: absolute;
-          top: 60px;
-          left: 12px;
-          right: 12px;
-          width: calc(100% - 24px) !important;
-          background: rgba(255, 255, 255, 0.96) !important;
-          backdrop-filter: blur(24px) !important;
-          border: 1px solid rgba(215, 230, 248, 0.8) !important;
-          border-radius: 20px !important;
-          padding: 16px !important;
-          box-shadow: 0 16px 40px rgba(12, 30, 61, 0.12) !important;
-        }
-        .ios-glass-nav-pill.show-mobile .nav-links-menu {
-          flex-direction: column;
-          width: 100%;
-          gap: 8px;
-        }
-        .ios-glass-nav-pill.show-mobile .nav-links-menu li {
-          width: 100%;
-        }
-        .ios-glass-nav-pill.show-mobile .nav-links-menu a {
-          display: block;
-          padding: 10px 14px;
-          width: 100%;
-        }
+      /* Light Host Grotesk Font across the entire Leaderboard page */
+      body, h1, h2, h3, h4, h5, h6, p, span, a, button, input, label, select, textarea, div, th, td, li, ul, strong, b {
+        font-family: 'Host Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      }
+      body {
+        font-weight: 300 !important;
+        letter-spacing: -0.012em;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 400 !important;
+        letter-spacing: -0.025em;
+      }
+      .fw-bold, .fw-bolder, strong, b {
+        font-weight: 500 !important;
+      }
+      .fw-semibold, .fw-medium {
+        font-weight: 400 !important;
+      }
+      .fw-light {
+        font-weight: 300 !important;
       }
 
       /* Leaderboard Row Card in Very Slight Light Blue */
@@ -138,7 +128,7 @@
       }
     </style>
   </head>
-  <body class="simplicity-page-bg">
+  <body class="simplicity-page-bg host-grotesk-page">
     <!-- Cloud Background Drift -->
     <div class="simplicity-cloud-drift">
       <div style="position: absolute; top: 5%; left: 10%; width: 400px; height: 250px; background: radial-gradient(circle, rgba(225, 239, 254, 0.5) 0%, rgba(246, 249, 252, 0) 70%); filter: blur(50px);"></div>
@@ -152,9 +142,11 @@
         <img src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" class="brand-logo-img-lg">
       </a>
       
-      <!-- Mobile Hamburger Toggle -->
-      <button class="mobile-nav-toggle btn p-0 ms-auto d-md-none" onclick="document.querySelector('.ios-glass-nav-pill').classList.toggle('show-mobile')">
-        <i class="bi bi-list fs-2" style="color: #0c1e3d;"></i>
+      <!-- Mobile Navigation Toggle (Aligned to left, next to the logo) -->
+      <button class="mobile-nav-toggle d-md-none" onclick="document.querySelector('.ios-glass-nav-pill').classList.toggle('show-mobile')" aria-label="Toggle navigation menu">
+        <i class="bi bi-list fs-5"></i>
+        <span>Menu</span>
+        <i class="bi bi-chevron-down ms-1" style="font-size: 0.7rem;"></i>
       </button>
 
       <!-- Glass Capsule Header -->
@@ -164,19 +156,27 @@
           <li><a href="index.html#how-spark-works" style="color: #485c7b;">How Spark Works</a></li>
           <li><a href="index.html#features" style="color: #485c7b;">Features</a></li>
           <li><a href="index.html#about" style="color: #485c7b;">About</a></li>
-          <li class="dropdown-nav-item" style="position: relative;">
-            <a class="dropdown-toggle fw-bold" href="#" role="button" id="clubsDropdown" onclick="this.nextElementSibling.classList.toggle('show'); return false;" style="color: #485c7b; display: flex; align-items: center;">
+          <li class="dropdown-nav-item">
+            <a class="dropdown-toggle fw-bold" href="#" role="button" id="clubsDropdown" onclick="event.preventDefault(); this.closest('.dropdown-nav-item').classList.toggle('active-click');" style="color: #485c7b; display: flex; align-items: center;">
               Clubs <i class="bi bi-chevron-down ms-1" style="font-size: 0.72rem;"></i>
             </a>
-            <ul class="dropdown-menu-glass" style="display: none; position: absolute; top: 100%; left: 0; background: rgba(255, 255, 255, 0.96); border: 1px solid rgba(215, 230, 248, 0.85); border-radius: 14px; padding: 8px; box-shadow: 0 10px 30px rgba(12, 30, 61, 0.08); z-index: 1000; min-width: 220px; list-style: none;">
+            <ul class="dropdown-menu-glass">
               <li>
-                <a class="dropdown-item" href="venture_club.html" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: #0c1e3d; text-decoration: none; font-weight: 600; font-size: 0.88rem; border-radius: 8px;">
-                  <i class="bi bi-rocket-takeoff" style="color: #1d4ed8;"></i> Venture Club
+                <a class="dropdown-item" href="venture_club.html">
+                  <span class="item-icon"><i class="bi bi-rocket-takeoff"></i></span>
+                  <span class="item-text-wrap">
+                    <span class="item-title">Venture Club</span>
+                    <span class="item-desc">College & student startups</span>
+                  </span>
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="junior_founder.php" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: #0c1e3d; text-decoration: none; font-weight: 600; font-size: 0.88rem; border-radius: 8px;">
-                  <i class="bi bi-backpack" style="color: #1d4ed8;"></i> High School-Junior Founders
+                <a class="dropdown-item" href="junior_founder.html">
+                  <span class="item-icon"><i class="bi bi-backpack"></i></span>
+                  <span class="item-text-wrap">
+                    <span class="item-title">High School-Junior Founders</span>
+                    <span class="item-desc">Grades 9 to 12 track</span>
+                  </span>
                 </a>
               </li>
             </ul>

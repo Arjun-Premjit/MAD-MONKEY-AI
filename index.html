@@ -59,9 +59,11 @@
       <img src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" class="brand-logo-img-lg">
     </a>
 
-    <!-- Mobile Hamburger Toggle -->
-    <button class="mobile-nav-toggle btn p-0 ms-auto d-md-none" onclick="document.querySelector('.ios-glass-nav-pill').classList.toggle('show-mobile')">
-      <i class="bi bi-list fs-2 text-dark"></i>
+    <!-- Mobile Navigation Toggle (Aligned to left, next to the logo) -->
+    <button class="mobile-nav-toggle d-md-none" onclick="document.querySelector('.ios-glass-nav-pill').classList.toggle('show-mobile')" aria-label="Toggle navigation menu">
+      <i class="bi bi-list fs-5"></i>
+      <span>Menu</span>
+      <i class="bi bi-chevron-down ms-1" style="font-size: 0.7rem;"></i>
     </button>
 
     <!-- Glass Capsule Header (Home to Directors Alone) -->
@@ -75,18 +77,26 @@
         <!-- Clubs Dropdown Menu (Triggers on Hover or Click) -->
         <li class="dropdown-nav-item">
           <a class="dropdown-toggle fw-bold text-dark" href="#" role="button" id="clubsDropdown"
-            data-bs-toggle="dropdown" aria-expanded="false">
+            onclick="event.preventDefault(); this.closest('.dropdown-nav-item').classList.toggle('active-click');">
             Clubs <i class="bi bi-chevron-down ms-1" style="font-size: 0.72rem;"></i>
           </a>
           <ul class="dropdown-menu-glass" aria-labelledby="clubsDropdown">
             <li>
               <a class="dropdown-item" href="venture_club.html">
-                <i class="bi bi-rocket-takeoff text-dark me-1"></i> Venture Club
+                <span class="item-icon"><i class="bi bi-rocket-takeoff"></i></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">Venture Club</span>
+                  <span class="item-desc">College & student startups</span>
+                </span>
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="junior_founder.php">
-                <i class="bi bi-backpack text-dark me-1"></i> High School-Junior Founders
+              <a class="dropdown-item" href="junior_founder.html">
+                <span class="item-icon"><i class="bi bi-backpack"></i></span>
+                <span class="item-text-wrap">
+                  <span class="item-title">High School-Junior Founders</span>
+                  <span class="item-desc">Grades 9 to 12 track</span>
+                </span>
               </a>
             </li>
           </ul>

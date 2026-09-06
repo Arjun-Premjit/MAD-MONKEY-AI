@@ -282,8 +282,8 @@ session_start();
     Clubs
   </a>
   <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2">
-    <li><a class="dropdown-item fw-semibold rounded-3 py-2 " href="venture_club.php">Venture Club</a></li>
-    <li><a class="dropdown-item fw-semibold rounded-3 py-2 text-gradient" href="junior_founder.php">High School-Junior Founders</a></li>
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2 " href="venture_club.html">Venture Club</a></li>
+    <li><a class="dropdown-item fw-semibold rounded-3 py-2 text-gradient" href="junior_founder.html">High School-Junior Founders</a></li>
   </ul>
 </li>
           <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
