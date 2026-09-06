@@ -3,16 +3,471 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mad Monkey App - Founding Directors</title>
+    <title>Mad Monkey AI — Founding Directors</title>
     <meta name="description" content="Campus and City Directors leading the verified student founder ecosystem.">
     <!-- Google Fonts & Bootstrap Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Host+Grotesk:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* Smooth mobile toggle */
+      @media (max-width: 991px) {
+        .ios-glass-nav-pill.show-mobile {
+          display: flex !important;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          left: 12px;
+          right: 12px;
+          width: calc(100% - 24px) !important;
+          background: rgba(255, 255, 255, 0.96) !important;
+          backdrop-filter: blur(24px) !important;
+          border: 1px solid rgba(215, 230, 248, 0.8) !important;
+          border-radius: 20px !important;
+          padding: 16px !important;
+          box-shadow: 0 16px 40px rgba(12, 30, 61, 0.12) !important;
+        }
+        .ios-glass-nav-pill.show-mobile .nav-links-menu {
+          flex-direction: column;
+          width: 100%;
+          gap: 8px;
+        }
+        .ios-glass-nav-pill.show-mobile .nav-links-menu li {
+          width: 100%;
+        }
+        .ios-glass-nav-pill.show-mobile .nav-links-menu a {
+          display: block;
+          padding: 10px 14px;
+          width: 100%;
+        }
+      }
+
+      /* Director Card in Very Slight Light Blue */
+      .dir-card {
+        background: rgba(243, 247, 253, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(215, 230, 248, 0.85);
+        border-radius: 22px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 4px 18px rgba(12, 30, 61, 0.03), 0 1px 3px rgba(12, 30, 61, 0.02);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      }
+      .dir-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(186, 214, 245, 0.95);
+        box-shadow: 0 12px 30px rgba(12, 30, 61, 0.07);
+      }
+      .dir-avatar-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: #e4effb;
+        color: #0c1e3d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.05rem;
+        border: 1px solid rgba(215, 230, 248, 0.9);
+      }
+      .dir-pill-metric {
+        background: #e9f2fc;
+        color: #0c1e3d;
+        border: 1px solid rgba(205, 224, 248, 0.7);
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 6px 12px;
+        border-radius: 8px;
+      }
+      .dir-open-badge {
+        background: #fef3c7;
+        color: #92400e;
+        border: 1px solid #fde68a;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 9999px;
+      }
+    </style>
   </head>
-  <body class="m-0 p-0 overflow-x-hidden">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="simplicity-page-bg">
+    <!-- Cloud Background Drift -->
+    <div class="simplicity-cloud-drift">
+      <div style="position: absolute; top: 10%; left: 6%; width: 440px; height: 280px; background: radial-gradient(circle, rgba(225, 239, 254, 0.5) 0%, rgba(246, 249, 252, 0) 70%); filter: blur(50px);"></div>
+      <div style="position: absolute; top: 40%; right: 6%; width: 480px; height: 300px; background: radial-gradient(circle, rgba(220, 236, 253, 0.45) 0%, rgba(246, 249, 252, 0) 70%); filter: blur(60px);"></div>
+    </div>
+
+    <!-- TOP HEADER NAVIGATION BAR -->
+    <div class="top-header-wrapper" id="topHeader" style="position: sticky; top: 15px; z-index: 1000; margin: 0 auto; transform: none; left: 0; right: 0;">
+      <!-- Official Mad Monkey AI Logo -->
+      <a href="index.html" class="brand-logo-outer">
+        <img src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" class="brand-logo-img-lg">
+      </a>
+      
+      <!-- Mobile Hamburger Toggle -->
+      <button class="mobile-nav-toggle btn p-0 ms-auto d-md-none" onclick="document.querySelector('.ios-glass-nav-pill').classList.toggle('show-mobile')">
+        <i class="bi bi-list fs-2" style="color: #0c1e3d;"></i>
+      </button>
+
+      <!-- Glass Capsule Header -->
+      <header class="ios-glass-nav-pill" style="background: rgba(255, 255, 255, 0.88); border: 1px solid rgba(215, 230, 248, 0.85); box-shadow: 0 4px 20px rgba(12, 30, 61, 0.05);">
+        <ul class="nav-links-menu">
+          <li><a href="index.html" style="color: #485c7b;">Home</a></li>
+          <li><a href="index.html#how-spark-works" style="color: #485c7b;">How Spark Works</a></li>
+          <li><a href="index.html#features" style="color: #485c7b;">Features</a></li>
+          <li><a href="index.html#about" style="color: #485c7b;">About</a></li>
+          <li class="dropdown-nav-item" style="position: relative;">
+            <a class="dropdown-toggle fw-bold" href="#" role="button" id="clubsDropdown" onclick="this.nextElementSibling.classList.toggle('show'); return false;" style="color: #485c7b; display: flex; align-items: center;">
+              Clubs <i class="bi bi-chevron-down ms-1" style="font-size: 0.72rem;"></i>
+            </a>
+            <ul class="dropdown-menu-glass" style="display: none; position: absolute; top: 100%; left: 0; background: rgba(255, 255, 255, 0.96); border: 1px solid rgba(215, 230, 248, 0.85); border-radius: 14px; padding: 8px; box-shadow: 0 10px 30px rgba(12, 30, 61, 0.08); z-index: 1000; min-width: 220px; list-style: none;">
+              <li>
+                <a class="dropdown-item" href="venture_club.html" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: #0c1e3d; text-decoration: none; font-weight: 600; font-size: 0.88rem; border-radius: 8px;">
+                  <i class="bi bi-rocket-takeoff" style="color: #1d4ed8;"></i> Venture Club
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="junior_founder.php" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: #0c1e3d; text-decoration: none; font-weight: 600; font-size: 0.88rem; border-radius: 8px;">
+                  <i class="bi bi-backpack" style="color: #1d4ed8;"></i> High School-Junior Founders
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="leaderboard.html" style="color: #485c7b;">Leaderboard</a></li>
+          <li><a href="foundingmembers.html" style="color: #485c7b;">Founding Members</a></li>
+          <li><a href="directors.html" class="active" style="background: #e4effb; color: #0c1e3d; font-weight: 700; border-radius: 9999px;">Directors</a></li>
+        </ul>
+      </header>
+
+      <!-- Clean Download App Button -->
+      <a href="index.html#download" class="glass-btn-white" style="background: #0c1e3d; color: #ffffff; border: 1px solid #0c1e3d; box-shadow: 0 4px 14px rgba(12, 30, 61, 0.18);">
+        Download App
+      </a>
+    </div>
+
+    <!-- MAIN DIRECTORS CONTAINER -->
+    <main class="simplicity-main-wrapper">
+      <!-- 1. Status Badge -->
+      <div class="simplicity-pill-badge">
+        <span class="dot"></span>
+        <span>Leadership & Ecosystem Governance</span>
+      </div>
+
+      <!-- 2. Hero Headline -->
+      <h1 class="simplicity-h1">
+        Board of Directors.
+      </h1>
+
+      <!-- 3. Subtitle -->
+      <p class="simplicity-h2-sub">The leaders driving Spark across campuses.</p>
+
+      <!-- 4. Description -->
+      <p class="simplicity-lead-text">
+        Campus and City Directors lead the verified student founder ecosystem, validating milestones, organizing pilot demo days, and onboarding local merchant partners.
+      </p>
+
+      <!-- 5. 4 Statistics Cards in Very Slight Light Blue -->
+      <div class="simplicity-stats-grid">
+        <div class="simplicity-stat-card">
+          <span class="simplicity-stat-val">32</span>
+          <span class="simplicity-stat-lbl">Campus Directors</span>
+        </div>
+        <div class="simplicity-stat-card">
+          <span class="simplicity-stat-val">12</span>
+          <span class="simplicity-stat-lbl">City Hubs</span>
+        </div>
+        <div class="simplicity-stat-card">
+          <span class="simplicity-stat-val">45+</span>
+          <span class="simplicity-stat-lbl">Partner Campuses</span>
+        </div>
+        <div class="simplicity-stat-card">
+          <span class="simplicity-stat-val">2.4k</span>
+          <span class="simplicity-stat-lbl">Active Builders</span>
+        </div>
+      </div>
+
+      <!-- 6. Region Toggle -->
+      <div style="margin-bottom: 16px; display: flex; justify-content: center; width: 100%;">
+        <div class="simplicity-toggle-pill">
+          <button id="btnIndia" class="simplicity-toggle-btn active" onclick="switchCountry('India')">
+            <strong>IN</strong> &nbsp;India
+          </button>
+          <button id="btnUSA" class="simplicity-toggle-btn" onclick="switchCountry('USA')">
+            <strong>US</strong> &nbsp;USA
+          </button>
+        </div>
+      </div>
+
+      <!-- 7. Role Toggle -->
+      <div style="margin-bottom: 24px; display: flex; justify-content: center; gap: 10px; width: 100%;">
+        <button id="btnCampus" class="simplicity-toggle-btn active" style="padding: 10px 22px; font-size: 0.88rem; border: 1px solid rgba(215, 230, 248, 0.85);" onclick="switchRole('campus')">
+          Campus Directors
+        </button>
+        <button id="btnCity" class="simplicity-toggle-btn" style="padding: 10px 22px; font-size: 0.88rem; border: 1px solid rgba(215, 230, 248, 0.85); background: rgba(243, 247, 253, 0.9);" onclick="switchRole('city')">
+          City Directors
+        </button>
+      </div>
+
+      <!-- 8. Directors Grid -->
+      <div id="directorsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; width: 100%; max-width: 920px;">
+        <!-- Injected via Vanilla JS -->
+      </div>
+    </main>
+
+    <!-- DATA & SCRIPT -->
+    <script>
+      const DIRECTORS_DATA = {
+        India: {
+          campus: [
+            {
+              name: "Tanvir Ahmed",
+              city: "Bangalore",
+              subtitle: "Christ University, Bangalore",
+              initials: "TA",
+              role: "CAMPUS DIRECTOR",
+              turf: "Koramangala + Indiranagar · 5 active merchants",
+              ventures: "17",
+              revenue: "4",
+              walkIns: "340",
+              isOpen: false
+            },
+            {
+              name: "Sneha Rao",
+              city: "Bangalore",
+              subtitle: "PES University, Bangalore",
+              initials: "SR",
+              role: "CAMPUS DIRECTOR",
+              turf: "Jayanagar + JP Nagar · 4 active merchants",
+              ventures: "11",
+              revenue: "2",
+              walkIns: "218",
+              isOpen: false
+            },
+            {
+              name: "Slot 2 Open",
+              city: "Bangalore",
+              subtitle: "RV College of Engineering, Bangalore",
+              initials: "RV",
+              role: "CAMPUS DIRECTOR",
+              turf: "Mysore Road corridor · Applications open",
+              isOpen: true,
+              claimText: "Apply for RVCE Slot"
+            },
+            {
+              name: "Karthik Raja",
+              city: "Chennai",
+              subtitle: "Chennai Inst. of Technology, Chennai",
+              initials: "KR",
+              role: "CAMPUS DIRECTOR",
+              turf: "Kundrathur + Porur · 6 active merchants",
+              ventures: "14",
+              revenue: "3",
+              walkIns: "290",
+              isOpen: false
+            },
+            {
+              name: "Aditya Deshmukh",
+              city: "Pune",
+              subtitle: "Symbiosis, Pune",
+              initials: "AD",
+              role: "CAMPUS DIRECTOR",
+              turf: "Viman Nagar + Senapati Bapat Rd · 4 active merchants",
+              ventures: "11",
+              revenue: "2",
+              walkIns: "195",
+              isOpen: false
+            },
+            {
+              name: "Slot 1 Open",
+              city: "Mumbai",
+              subtitle: "IIT Bombay, Powai, Mumbai",
+              initials: "IB",
+              role: "CAMPUS DIRECTOR",
+              turf: "Powai Valley tech ecosystem · Co-Director open",
+              isOpen: true,
+              claimText: "Apply for IIT Bombay Slot"
+            }
+          ],
+          city: [
+            {
+              name: "Rahul Verma",
+              city: "Bangalore",
+              subtitle: "City Director — Bangalore Hub",
+              initials: "RV",
+              role: "CITY DIRECTOR",
+              turf: "12 Campuses · 48 Merchant Partners",
+              ventures: "58",
+              revenue: "14",
+              walkIns: "1,240",
+              isOpen: false
+            },
+            {
+              name: "Pooja Sundaram",
+              city: "Chennai",
+              subtitle: "City Director — Chennai Hub",
+              initials: "PS",
+              role: "CITY DIRECTOR",
+              turf: "8 Campuses · 32 Merchant Partners",
+              ventures: "36",
+              revenue: "9",
+              walkIns: "820",
+              isOpen: false
+            }
+          ]
+        },
+        USA: {
+          campus: [
+            {
+              name: "Jordan Mills",
+              city: "Richmond, VA",
+              subtitle: "VCU, Richmond, Virginia",
+              initials: "JM",
+              role: "CAMPUS DIRECTOR",
+              turf: "Broad Street pilot corridor · 3 merchant prospects",
+              ventures: "4",
+              revenue: "1",
+              walkIns: "85",
+              isOpen: false
+            },
+            {
+              name: "Slot 1 Open",
+              city: "Charlottesville, VA",
+              subtitle: "University of Virginia, Charlottesville",
+              initials: "UV",
+              role: "CAMPUS DIRECTOR",
+              turf: "Corner district + Central Grounds · Applications open",
+              isOpen: true,
+              claimText: "Claim UVA Directorship"
+            }
+          ],
+          city: [
+            {
+              name: "Marcus Vance",
+              city: "Richmond, VA",
+              subtitle: "City Director — Virginia Metro Hub",
+              initials: "MV",
+              role: "CITY DIRECTOR",
+              turf: "VCU, UR, and Short Pump commercial corridor",
+              ventures: "8",
+              revenue: "2",
+              walkIns: "160",
+              isOpen: false
+            }
+          ]
+        }
+      };
+
+      let currentCountry = "India";
+      let currentRole = "campus";
+
+      function switchCountry(country) {
+        currentCountry = country;
+        document.getElementById("btnIndia").classList.toggle("active", country === "India");
+        document.getElementById("btnUSA").classList.toggle("active", country === "USA");
+        renderDirectors();
+      }
+
+      function switchRole(role) {
+        currentRole = role;
+        const btnCampus = document.getElementById("btnCampus");
+        const btnCity = document.getElementById("btnCity");
+
+        if (role === "campus") {
+          btnCampus.className = "simplicity-toggle-btn active";
+          btnCampus.style.background = "#0c1e3d";
+          btnCampus.style.color = "#ffffff";
+          btnCity.className = "simplicity-toggle-btn";
+          btnCity.style.background = "rgba(243, 247, 253, 0.9)";
+          btnCity.style.color = "#485c7b";
+        } else {
+          btnCity.className = "simplicity-toggle-btn active";
+          btnCity.style.background = "#0c1e3d";
+          btnCity.style.color = "#ffffff";
+          btnCampus.className = "simplicity-toggle-btn";
+          btnCampus.style.background = "rgba(243, 247, 253, 0.9)";
+          btnCampus.style.color = "#485c7b";
+        }
+        renderDirectors();
+      }
+
+      function renderDirectors() {
+        const list = (DIRECTORS_DATA[currentCountry] && DIRECTORS_DATA[currentCountry][currentRole]) || [];
+        const container = document.getElementById("directorsGrid");
+
+        if (list.length === 0) {
+          container.innerHTML = `
+            <div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: #485c7b;">
+              No directorships available in this region.
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = list.map(d => {
+          if (d.isOpen) {
+            return `
+              <div class="dir-card" style="border-style: dashed; border-color: rgba(37, 99, 235, 0.4); background: rgba(240, 246, 254, 0.7);">
+                <div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <div class="dir-avatar-circle" style="background: #ffffff; color: #2563eb; border-color: #bfdbfe;">
+                      <i class="bi bi-plus-lg"></i>
+                    </div>
+                    <span class="dir-open-badge">Slot Open</span>
+                  </div>
+                  <h3 style="color: #0c1e3d; font-size: 1.15rem; font-weight: 700; margin: 0 0 4px;">${d.name}</h3>
+                  <p style="color: #485c7b; font-size: 0.85rem; font-weight: 500; margin: 0 0 10px;">${d.subtitle}</p>
+                  <p style="color: #627896; font-size: 0.82rem; margin: 0 0 16px;">${d.turf}</p>
+                </div>
+                <div>
+                  <a href="https://madmonkey.ai" style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #0c1e3d; color: #ffffff; text-decoration: none; border-radius: 12px; font-size: 0.85rem; font-weight: 700; transition: background 0.2s ease;">
+                    ${d.claimText || "Apply as Director"} &nbsp;<i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            `;
+          }
+
+          return `
+            <div class="dir-card">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                  <div class="dir-avatar-circle">${d.initials}</div>
+                  <span style="background: #e0edfb; color: #1d4ed8; font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">
+                    ${d.role}
+                  </span>
+                </div>
+                <h3 style="color: #0c1e3d; font-size: 1.15rem; font-weight: 700; margin: 0 0 4px;">${d.name}</h3>
+                <p style="color: #485c7b; font-size: 0.85rem; font-weight: 500; margin: 0 0 8px;">${d.subtitle}</p>
+                <p style="color: #627896; font-size: 0.82rem; margin: 0 0 16px;">${d.turf}</p>
+              </div>
+              <div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
+                  <span class="dir-pill-metric">${d.ventures} Ventures</span>
+                  <span class="dir-pill-metric">${d.revenue} Revenue</span>
+                  <span class="dir-pill-metric">${d.walkIns} Walk-Ins</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid rgba(215, 230, 248, 0.8);">
+                  <span style="color: #627896; font-size: 0.78rem;">Verified Director</span>
+                  <span style="color: #2563eb; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                    <i class="bi bi-shield-check"></i> Active Hub
+                  </span>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        renderDirectors();
+      });
+      renderDirectors();
+    </script>
   </body>
 </html>

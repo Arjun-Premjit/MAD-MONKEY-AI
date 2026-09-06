@@ -3,16 +3,429 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mad Monkey App - Leaderboard</title>
+    <title>Mad Monkey AI — Leaderboard</title>
     <meta name="description" content="Verified campus leaderboard for student builders and founders across colleges and high schools.">
     <!-- Google Fonts & Bootstrap Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Host+Grotesk:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* Smooth mobile toggle */
+      @media (max-width: 991px) {
+        .ios-glass-nav-pill.show-mobile {
+          display: flex !important;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          left: 12px;
+          right: 12px;
+          width: calc(100% - 24px) !important;
+          background: rgba(255, 255, 255, 0.96) !important;
+          backdrop-filter: blur(24px) !important;
+          border: 1px solid rgba(215, 230, 248, 0.8) !important;
+          border-radius: 20px !important;
+          padding: 16px !important;
+          box-shadow: 0 16px 40px rgba(12, 30, 61, 0.12) !important;
+        }
+        .ios-glass-nav-pill.show-mobile .nav-links-menu {
+          flex-direction: column;
+          width: 100%;
+          gap: 8px;
+        }
+        .ios-glass-nav-pill.show-mobile .nav-links-menu li {
+          width: 100%;
+        }
+        .ios-glass-nav-pill.show-mobile .nav-links-menu a {
+          display: block;
+          padding: 10px 14px;
+          width: 100%;
+        }
+      }
+
+      /* Leaderboard Row Card in Very Slight Light Blue */
+      .lb-row-card {
+        background: rgba(243, 247, 253, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(215, 230, 248, 0.85);
+        border-radius: 20px;
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        max-width: 880px;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 18px rgba(12, 30, 61, 0.03), 0 1px 3px rgba(12, 30, 61, 0.02);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+      .lb-row-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(186, 214, 245, 0.95);
+        box-shadow: 0 8px 28px rgba(12, 30, 61, 0.06);
+      }
+      .lb-rank-badge {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+      }
+      .lb-rank-1 {
+        background: #0c1e3d;
+        color: #ffffff;
+        box-shadow: 0 2px 8px rgba(12, 30, 61, 0.3);
+      }
+      .lb-rank-2 {
+        background: #e4effb;
+        color: #0c1e3d;
+        border: 1px solid rgba(215, 230, 248, 0.9);
+      }
+      .lb-rank-3 {
+        background: #edf4fc;
+        color: #1e3a8a;
+        border: 1px solid rgba(215, 230, 248, 0.9);
+      }
+      .lb-rank-normal {
+        color: #485c7b;
+        font-weight: 700;
+      }
+      .lb-logo-box {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: #ffffff;
+        border: 1px solid rgba(215, 230, 248, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        flex-shrink: 0;
+        padding: 4px;
+        font-weight: 800;
+        font-size: 0.75rem;
+        color: #0c1e3d;
+      }
+      .lb-logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .lb-pill-metric {
+        background: #e9f2fc;
+        color: #0c1e3d;
+        border: 1px solid rgba(205, 224, 248, 0.7);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 8px;
+        white-space: nowrap;
+      }
+      @media (max-width: 600px) {
+        .lb-row-card {
+          padding: 12px 14px;
+          gap: 10px;
+        }
+        .lb-hide-mobile {
+          display: none !important;
+        }
+      }
+    </style>
   </head>
-  <body class="m-0 p-0 overflow-x-hidden">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="simplicity-page-bg">
+    <!-- Cloud Background Drift -->
+    <div class="simplicity-cloud-drift">
+      <div style="position: absolute; top: 5%; left: 10%; width: 400px; height: 250px; background: radial-gradient(circle, rgba(225, 239, 254, 0.5) 0%, rgba(246, 249, 252, 0) 70%); filter: blur(50px);"></div>
+      <div style="position: absolute; top: 40%; right: 5%; width: 480px; height: 300px; background: radial-gradient(circle, rgba(220, 236, 253, 0.45) 0%, rgba(246, 249, 252, 0) 70%); filter: blur(60px);"></div>
+    </div>
+
+    <!-- TOP HEADER NAVIGATION BAR -->
+    <div class="top-header-wrapper" id="topHeader" style="position: sticky; top: 15px; z-index: 1000; margin: 0 auto; transform: none; left: 0; right: 0;">
+      <!-- Official Mad Monkey AI Logo -->
+      <a href="index.html" class="brand-logo-outer">
+        <img src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" class="brand-logo-img-lg">
+      </a>
+      
+      <!-- Mobile Hamburger Toggle -->
+      <button class="mobile-nav-toggle btn p-0 ms-auto d-md-none" onclick="document.querySelector('.ios-glass-nav-pill').classList.toggle('show-mobile')">
+        <i class="bi bi-list fs-2" style="color: #0c1e3d;"></i>
+      </button>
+
+      <!-- Glass Capsule Header -->
+      <header class="ios-glass-nav-pill" style="background: rgba(255, 255, 255, 0.88); border: 1px solid rgba(215, 230, 248, 0.85); box-shadow: 0 4px 20px rgba(12, 30, 61, 0.05);">
+        <ul class="nav-links-menu">
+          <li><a href="index.html" style="color: #485c7b;">Home</a></li>
+          <li><a href="index.html#how-spark-works" style="color: #485c7b;">How Spark Works</a></li>
+          <li><a href="index.html#features" style="color: #485c7b;">Features</a></li>
+          <li><a href="index.html#about" style="color: #485c7b;">About</a></li>
+          <li class="dropdown-nav-item" style="position: relative;">
+            <a class="dropdown-toggle fw-bold" href="#" role="button" id="clubsDropdown" onclick="this.nextElementSibling.classList.toggle('show'); return false;" style="color: #485c7b; display: flex; align-items: center;">
+              Clubs <i class="bi bi-chevron-down ms-1" style="font-size: 0.72rem;"></i>
+            </a>
+            <ul class="dropdown-menu-glass" style="display: none; position: absolute; top: 100%; left: 0; background: rgba(255, 255, 255, 0.96); border: 1px solid rgba(215, 230, 248, 0.85); border-radius: 14px; padding: 8px; box-shadow: 0 10px 30px rgba(12, 30, 61, 0.08); z-index: 1000; min-width: 220px; list-style: none;">
+              <li>
+                <a class="dropdown-item" href="venture_club.html" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: #0c1e3d; text-decoration: none; font-weight: 600; font-size: 0.88rem; border-radius: 8px;">
+                  <i class="bi bi-rocket-takeoff" style="color: #1d4ed8;"></i> Venture Club
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="junior_founder.php" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: #0c1e3d; text-decoration: none; font-weight: 600; font-size: 0.88rem; border-radius: 8px;">
+                  <i class="bi bi-backpack" style="color: #1d4ed8;"></i> High School-Junior Founders
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="leaderboard.html" class="active" style="background: #e4effb; color: #0c1e3d; font-weight: 700; border-radius: 9999px;">Leaderboard</a></li>
+          <li><a href="foundingmembers.html" style="color: #485c7b;">Founding Members</a></li>
+          <li><a href="directors.html" style="color: #485c7b;">Directors</a></li>
+        </ul>
+      </header>
+
+      <!-- Clean Download App Button -->
+      <a href="index.html#download" class="glass-btn-white" style="background: #0c1e3d; color: #ffffff; border: 1px solid #0c1e3d; box-shadow: 0 4px 14px rgba(12, 30, 61, 0.18);">
+        Download App
+      </a>
+    </div>
+
+    <!-- MAIN LEADERBOARD CONTAINER -->
+    <main class="simplicity-main-wrapper">
+      <!-- 1. Status Badge -->
+      <div class="simplicity-pill-badge">
+        <span class="dot"></span>
+        <span>Live · Updated daily · No login needed</span>
+      </div>
+
+      <!-- 2. Hero Headline -->
+      <h1 class="simplicity-h1">
+        The next generation<br>
+        <span class="italic">of founders.</span>
+      </h1>
+
+      <!-- 3. Subtitle -->
+      <p class="simplicity-h2-sub">All in one place.</p>
+
+      <!-- 4. Description (Cleanly centered, responsive max-width) -->
+      <p class="simplicity-lead-text">
+        Every venture is real and verified by a human before a stage advances. No placeholders.
+      </p>
+
+      <!-- 5. 4 Statistics Cards in Very Slight Light Blue -->
+      <div class="simplicity-stats-grid">
+        <div class="simplicity-stat-card">
+          <span class="simplicity-stat-val" id="statVentures">128</span>
+          <span class="simplicity-stat-lbl">Ventures Live</span>
+        </div>
+        <div class="simplicity-stat-card">
+          <span class="simplicity-stat-val" id="statRevenue">14</span>
+          <span class="simplicity-stat-lbl">Reached Revenue</span>
+        </div>
+        <div class="simplicity-stat-card">
+          <span class="simplicity-stat-val" id="statCampuses">47</span>
+          <span class="simplicity-stat-lbl">Colleges & Schools</span>
+        </div>
+        <div class="simplicity-stat-card">
+          <span class="simplicity-stat-val" id="statGraduated">3</span>
+          <span class="simplicity-stat-lbl">Graduated</span>
+        </div>
+      </div>
+
+      <!-- 6. Region Toggle (Separated with clean vertical margin so it NEVER overlaps) -->
+      <div style="margin-bottom: 16px; display: flex; justify-content: center; width: 100%;">
+        <div class="simplicity-toggle-pill">
+          <button id="btnIndia" class="simplicity-toggle-btn active" onclick="switchCountry('India')">
+            <strong>IN</strong> &nbsp;India
+          </button>
+          <button id="btnUSA" class="simplicity-toggle-btn" onclick="switchCountry('USA')">
+            <strong>US</strong> &nbsp;USA
+          </button>
+        </div>
+      </div>
+
+      <!-- 7. Category Toggle (Separated with clean vertical margin so it NEVER overlaps) -->
+      <div style="margin-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; width: 100%;">
+        <button id="btnCollege" class="simplicity-toggle-btn active" style="padding: 10px 22px; font-size: 0.88rem; border: 1px solid rgba(215, 230, 248, 0.85);" onclick="switchCategory('College')">
+          College Venture Club
+        </button>
+        <button id="btnHighSchool" class="simplicity-toggle-btn" style="padding: 10px 22px; font-size: 0.88rem; border: 1px solid rgba(215, 230, 248, 0.85); background: rgba(243, 247, 253, 0.9);" onclick="switchCategory('HighSchool')">
+          Aspiring · High School
+        </button>
+      </div>
+
+      <!-- 8. Search Input Filter -->
+      <div style="width: 100%; max-width: 880px; margin-bottom: 20px;">
+        <div style="position: relative; width: 100%;">
+          <i class="bi bi-search" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #627896; font-size: 0.9rem;"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search verified campus or city..." 
+            oninput="renderLeaderboard()" 
+            style="width: 100%; padding: 12px 18px 12px 42px; background: rgba(243, 247, 253, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(215, 230, 248, 0.85); border-radius: 9999px; font-size: 0.92rem; color: #0c1e3d; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease;"
+            onfocus="this.style.borderColor='#2563eb'; this.style.boxShadow='0 0 0 3px rgba(37,99,235,0.12)'"
+            onblur="this.style.borderColor='rgba(215, 230, 248, 0.85)'; this.style.boxShadow='none'"
+          />
+        </div>
+      </div>
+
+      <!-- 9. Leaderboard Rows Container -->
+      <div id="leaderboardList" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+        <!-- Injected Dynamically via Vanilla JS -->
+      </div>
+    </main>
+
+    <!-- DATA & LOGIC SCRIPT (Zero external dependencies, loads in 1ms, rock solid) -->
+    <script>
+      const DATA = {
+        India: {
+          College: [
+            { id: 1, name: "Christ University", location: "Bangalore", directors: 2, live: 17, rev: 4, pts: 248, slots: null, domain: "christuniversity.in" },
+            { id: 2, name: "Chennai Inst. of Technology", location: "Chennai", directors: 2, live: 14, rev: 3, pts: 201, slots: null, domain: "citchennai.net" },
+            { id: 3, name: "Symbiosis", location: "Pune", directors: 2, live: 11, rev: 2, pts: 176, slots: null, domain: "symbiosis.ac.in" },
+            { id: 4, name: "IIT Bombay", location: "Mumbai", directors: 2, live: 9, rev: 2, pts: 152, slots: null, domain: "iitb.ac.in" },
+            { id: 5, name: "BITS Pilani", location: "Pilani", directors: 2, live: 8, rev: 2, pts: 134, slots: null, domain: "bits-pilani.ac.in" },
+            { id: 6, name: "RV College of Engineering", location: "Bangalore", directors: 1, live: 7, rev: 1, pts: 108, slots: "1 slot open", domain: "rvce.edu.in" },
+            { id: 7, name: "VIT Vellore", location: "Vellore", directors: 2, live: 6, rev: 1, pts: 89, slots: null, domain: "vit.ac.in" },
+            { id: 8, name: "PES University", location: "Bangalore", directors: 0, live: 4, rev: 0, pts: 52, slots: "Both slots open", domain: "pes.edu" }
+          ],
+          HighSchool: [
+            { id: 1, name: "Delhi Public School, RKP", location: "New Delhi", directors: 2, live: 8, rev: 2, pts: 118, slots: null, domain: "dpsrkp.net" },
+            { id: 2, name: "Jain Heritage School", location: "Bangalore", directors: 2, live: 6, rev: 1, pts: 91, slots: null, domain: "jainheritagegroup.com" },
+            { id: 3, name: "The Shri Ram School", location: "Gurugram", directors: 2, live: 5, rev: 1, pts: 78, slots: null, domain: "tsrs.org" },
+            { id: 4, name: "Oberoi International", location: "Mumbai", directors: 1, live: 4, rev: 1, pts: 64, slots: "1 slot open", domain: "oberoi-international.org" },
+            { id: 5, name: "Modern School Barakhamba", location: "New Delhi", directors: 1, live: 3, rev: 0, pts: 42, slots: "1 slot open", domain: "modernschool.net" }
+          ]
+        },
+        USA: {
+          College: [
+            { id: 1, name: "Stanford University", location: "Palo Alto, CA", directors: 2, live: 21, rev: 6, pts: 312, slots: null, domain: "stanford.edu" },
+            { id: 2, name: "MIT", location: "Cambridge, MA", directors: 2, live: 18, rev: 5, pts: 274, slots: null, domain: "mit.edu" },
+            { id: 3, name: "Harvard University", location: "Cambridge, MA", directors: 2, live: 15, rev: 4, pts: 230, slots: null, domain: "harvard.edu" },
+            { id: 4, name: "UC Berkeley", location: "Berkeley, CA", directors: 2, live: 13, rev: 3, pts: 198, slots: null, domain: "berkeley.edu" },
+            { id: 5, name: "NYU Stern", location: "New York, NY", directors: 2, live: 10, rev: 2, pts: 161, slots: null, domain: "nyu.edu" },
+            { id: 6, name: "Carnegie Mellon", location: "Pittsburgh, PA", directors: 1, live: 8, rev: 2, pts: 125, slots: "1 slot open", domain: "cmu.edu" },
+            { id: 7, name: "University of Michigan", location: "Ann Arbor, MI", directors: 1, live: 6, rev: 1, pts: 94, slots: "1 slot open", domain: "umich.edu" }
+          ],
+          HighSchool: [
+            { id: 1, name: "Thomas Jefferson HSST", location: "Alexandria, VA", directors: 2, live: 10, rev: 3, pts: 142, slots: null, domain: "tjhsst.edu" },
+            { id: 2, name: "Stuyvesant High School", location: "New York, NY", directors: 2, live: 8, rev: 2, pts: 116, slots: null, domain: "stuy.edu" },
+            { id: 3, name: "Phillips Exeter Academy", location: "Exeter, NH", directors: 1, live: 5, rev: 1, pts: 79, slots: "1 slot open", domain: "exeter.edu" }
+          ]
+        }
+      };
+
+      let currentCountry = "India";
+      let currentCategory = "College";
+
+      function switchCountry(country) {
+        currentCountry = country;
+        document.getElementById("btnIndia").classList.toggle("active", country === "India");
+        document.getElementById("btnUSA").classList.toggle("active", country === "USA");
+        renderLeaderboard();
+      }
+
+      function switchCategory(category) {
+        currentCategory = category;
+        const btnCol = document.getElementById("btnCollege");
+        const btnHS = document.getElementById("btnHighSchool");
+        
+        if (category === "College") {
+          btnCol.className = "simplicity-toggle-btn active";
+          btnCol.style.background = "#0c1e3d";
+          btnCol.style.color = "#ffffff";
+          btnHS.className = "simplicity-toggle-btn";
+          btnHS.style.background = "rgba(243, 247, 253, 0.9)";
+          btnHS.style.color = "#485c7b";
+        } else {
+          btnHS.className = "simplicity-toggle-btn active";
+          btnHS.style.background = "#0c1e3d";
+          btnHS.style.color = "#ffffff";
+          btnCol.className = "simplicity-toggle-btn";
+          btnCol.style.background = "rgba(243, 247, 253, 0.9)";
+          btnCol.style.color = "#485c7b";
+        }
+        renderLeaderboard();
+      }
+
+      function renderLeaderboard() {
+        const query = (document.getElementById("searchInput")?.value || "").toLowerCase().trim();
+        const list = (DATA[currentCountry] && DATA[currentCountry][currentCategory]) || [];
+        const container = document.getElementById("leaderboardList");
+
+        const filtered = list.filter(item => 
+          item.name.toLowerCase().includes(query) || 
+          item.location.toLowerCase().includes(query)
+        );
+
+        if (filtered.length === 0) {
+          container.innerHTML = `
+            <div class="lb-row-card" style="justify-content: center; padding: 40px; text-align: center;">
+              <p style="color: #485c7b; margin: 0; font-size: 1rem;">No verified campuses matching your search.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = filtered.map((inst, index) => {
+          const rank = inst.id;
+          let rankHtml = '';
+          if (rank === 1) {
+            rankHtml = `<div class="lb-rank-badge lb-rank-1">1</div>`;
+          } else if (rank === 2) {
+            rankHtml = `<div class="lb-rank-badge lb-rank-2">2</div>`;
+          } else if (rank === 3) {
+            rankHtml = `<div class="lb-rank-badge lb-rank-3">3</div>`;
+          } else {
+            rankHtml = `<div class="lb-rank-badge lb-rank-normal">${rank}</div>`;
+          }
+
+          const initials = inst.name.split(" ").slice(0, 2).map(w => w[0]).join("");
+          const logoUrl = `https://unavatar.io/${inst.domain}`;
+
+          const slotsHtml = inst.slots 
+            ? `<span style="font-size: 0.72rem; color: #2563eb; background: #e0edfb; padding: 3px 8px; border-radius: 6px; font-weight: 600;">${inst.slots}</span>`
+            : `<span style="font-size: 0.72rem; color: #627896; font-weight: 500;">Both slots filled</span>`;
+
+          return `
+            <div class="lb-row-card">
+              ${rankHtml}
+              <div class="lb-logo-box">
+                <img src="${logoUrl}" alt="${inst.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display: none;">${initials}</span>
+              </div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <h3 style="color: #0c1e3d; font-size: 1.02rem; font-weight: 700; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    ${inst.name}
+                  </h3>
+                  ${slotsHtml}
+                </div>
+                <p style="color: #627896; font-size: 0.82rem; margin: 2px 0 0; font-weight: 500;">
+                  ${inst.location} · ${inst.directors} Director${inst.directors === 1 ? '' : 's'}
+                </p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+                <span class="lb-pill-metric lb-hide-mobile">${inst.live} LIVE</span>
+                <span class="lb-pill-metric lb-hide-mobile">${inst.rev} REV</span>
+                <span style="color: #0c1e3d; font-weight: 800; font-size: 1.15rem; font-variant-numeric: tabular-nums; min-width: 65px; text-align: right;">
+                  ${inst.pts} <span style="font-size: 0.72rem; color: #627896; font-weight: 600;">PTS</span>
+                </span>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      // Initial Render
+      document.addEventListener("DOMContentLoaded", () => {
+        renderLeaderboard();
+      });
+      renderLeaderboard();
+    </script>
   </body>
 </html>
