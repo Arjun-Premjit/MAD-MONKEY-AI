@@ -800,10 +800,32 @@
       });
     });
 
-    // ─── 9. Post-load ScrollTrigger refresh ──────────────────────────
+    // ─── 9. Post-load ScrollTrigger refresh & Hash navigation ────────
     // Waits for fonts/images to fully settle before computing pin positions
     window.addEventListener('load', () => {
-      setTimeout(() => ScrollTrigger.refresh(), 200);
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+        if (window.location.hash) {
+          const targetId = window.location.hash;
+          if (window.innerWidth < 768) {
+            const el = document.querySelector(targetId);
+            if (el) lenis.scrollTo(el, { offset: -80, immediate: true });
+          } else {
+            const scrollMap = {
+              '#hero':            0.00,
+              '#about':           0.18,
+              '#features':        0.52,
+              '#how-spark-works': 0.66,
+              '#download':        0.85
+            };
+            const progress = scrollMap[targetId];
+            if (progress !== undefined) {
+              const totalScroll = document.querySelector('.scroll-viewport').scrollHeight - window.innerHeight;
+              lenis.scrollTo(progress * totalScroll, { immediate: true });
+            }
+          }
+        }
+      }, 200);
     });
   </script>
 </body>
