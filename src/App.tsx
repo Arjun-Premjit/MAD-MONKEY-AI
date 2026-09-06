@@ -156,7 +156,7 @@ function LeaderboardRow({ inst, index }: { inst: Institution; index: number }) {
 
   return (
     <div
-      className="relative flex items-center gap-4 px-5 py-4 rounded-[22px] cursor-default"
+      className="relative flex items-center gap-2 sm:gap-4 px-3 sm:px-5 py-3 sm:py-4 rounded-[22px] cursor-default"
       style={{
         ...rowStyle,
         animation: "fadeInUp 0.45s ease-out both",
@@ -168,11 +168,11 @@ function LeaderboardRow({ inst, index }: { inst: Institution; index: number }) {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Rank number */}
-      <div className="w-9 flex items-center justify-center shrink-0">
-        {rank === 1 && <span className="text-base font-black text-black tracking-tight">01</span>}
-        {rank === 2 && <span className="text-base font-bold text-black/60 tracking-tight">02</span>}
-        {rank === 3 && <span className="text-base font-bold text-black/45 tracking-tight">03</span>}
-        {rank > 3  && <span className="text-sm font-semibold text-black/28 tracking-tight">{String(rank).padStart(2,"0")}</span>}
+      <div className="w-7 sm:w-9 flex items-center justify-center shrink-0">
+        {rank === 1 && <span className="text-sm sm:text-base font-black text-black tracking-tight">01</span>}
+        {rank === 2 && <span className="text-sm sm:text-base font-bold text-black/60 tracking-tight">02</span>}
+        {rank === 3 && <span className="text-sm sm:text-base font-bold text-black/45 tracking-tight">03</span>}
+        {rank > 3  && <span className="text-xs sm:text-sm font-semibold text-black/28 tracking-tight">{String(rank).padStart(2,"0")}</span>}
       </div>
 
       {/* Hairline divider */}
@@ -208,38 +208,38 @@ function LeaderboardRow({ inst, index }: { inst: Institution; index: number }) {
       </div>
 
       {/* Stat pills */}
-      <div className="flex items-center gap-3 shrink-0">
+      <div className="flex items-center gap-1 sm:gap-3 shrink-0">
         {/* Live */}
         <div
-          className="flex flex-col items-center justify-center w-12 h-12 rounded-2xl"
+          className="flex flex-col items-center justify-center w-8 h-8 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl"
           style={{
             background: "rgba(0,0,0,0.04)",
             border: "1px solid rgba(0,0,0,0.06)",
           }}
         >
-          <span className="text-sm font-bold text-black leading-tight">{inst.live}</span>
+          <span className="text-xs sm:text-sm font-bold text-black leading-tight">{inst.live}</span>
           <span className="text-[10px] font-semibold text-black/30 uppercase tracking-wide hidden sm:block">Live</span>
         </div>
         {/* Rev */}
         <div
-          className="flex flex-col items-center justify-center w-12 h-12 rounded-2xl"
+          className="flex flex-col items-center justify-center w-8 h-8 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl"
           style={{
             background: inst.rev > 0 ? "rgba(0,0,0,0.06)" : "rgba(0,0,0,0.025)",
             border: "1px solid rgba(0,0,0,0.06)",
           }}
         >
-          <span className={`text-sm font-bold leading-tight ${inst.rev > 0 ? "text-black" : "text-black/18"}`}>{inst.rev}</span>
+          <span className={`text-xs sm:text-sm font-bold leading-tight ${inst.rev > 0 ? "text-black" : "text-black/18"}`}>{inst.rev}</span>
           <span className="text-[10px] font-semibold text-black/30 uppercase tracking-wide hidden sm:block">Rev</span>
         </div>
         {/* Pts */}
         <div
-          className="flex flex-col items-center justify-center w-14 h-12 rounded-2xl"
+          className="flex flex-col items-center justify-center w-10 h-8 sm:w-14 sm:h-12 rounded-xl sm:rounded-2xl"
           style={{
             background: rank === 1 ? "rgba(0,0,0,0.09)" : "rgba(0,0,0,0.04)",
             border: rank <= 3 ? "1px solid rgba(0,0,0,0.1)" : "1px solid rgba(0,0,0,0.06)",
           }}
         >
-          <span className={`font-black leading-tight ${rank === 1 ? "text-base text-black" : "text-sm text-black/65"}`}>{inst.pts}</span>
+          <span className={`font-black leading-tight ${rank === 1 ? "text-sm sm:text-base text-black" : "text-xs sm:text-sm text-black/65"}`}>{inst.pts}</span>
           <span className="text-[10px] font-semibold text-black/30 uppercase tracking-wide hidden sm:block">Pts</span>
         </div>
       </div>

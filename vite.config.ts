@@ -16,7 +16,11 @@ export default defineConfig(({ mode }) => {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
       rollupOptions: {
-        input: 'index1.html'
+        input: {
+          main: 'index1.html',
+          foundingmembers: 'foundingmembers-src.html',
+          directors: 'directors-src.html'
+        }
       }
     },
     plugins: [
