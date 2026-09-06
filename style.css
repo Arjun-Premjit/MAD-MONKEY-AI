@@ -1163,7 +1163,7 @@ body.host-grotesk-page {
 .phone-screen {
   width: 100%;
   height: 100%;
-  background: transparent;
+  background: #f8fafc;
   border-radius: 36px;
   overflow: hidden;
   position: relative;
@@ -1198,7 +1198,7 @@ body.host-grotesk-page {
 /* Full-bleed photo screen — image fills phone screen, fully visible (no crop) */
 .app-screen-photo {
   padding: 0 !important;
-  background: transparent !important;
+  background: #f8fafc !important;
   overflow: hidden;
 }
 
@@ -1875,13 +1875,13 @@ body.host-grotesk-page {
 }
 
 /* ==========================================================================
-   RESPONSIVE — TABLET & SMALL LAPTOPS (768px – 1180px)
+   RESPONSIVE — TABLET & SMALL LAPTOPS (768px – 1024px)
    ========================================================================== */
-@media (min-width: 768px) and (max-width: 1180px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   /* Header: keep single row, no stacking, comfortable readable sizing */
   .top-header-wrapper {
     flex-direction: row;
-    width: min(calc(100% - 16px), 1180px);
+    width: min(calc(100% - 16px), 1024px);
     gap: clamp(4px, 1vw, 8px);
     top: 10px;
     padding: 0 4px;
@@ -1916,124 +1916,178 @@ body.host-grotesk-page {
     flex-shrink: 0;
   }
 
-  /* Floating badges: prevent overlapping text columns on tablet */
-  .floating-stat-badge {
-    display: none !important;
-  }
-
-  /* Stage wrapper: tablet responsive height and margins */
+  /* Stage wrapper: tablet dynamic height, spacing and margins */
   .stage-wrapper {
-    width: min(calc(100% - 32px), 1040px);
-    height: min(86dvh, 780px);
-    min-height: 560px;
+    width: min(calc(100% - 36px), 1020px);
+    height: min(88dvh, 800px);
+    min-height: 580px;
     padding: 0 8px;
   }
 
-  /* Phone & Photo overlay: dynamically proportioned for tablet viewport */
+  /* Phone & Photo overlay: dynamically proportioned for tablet viewport matching desktop */
   .phone-perspective-container {
-    width: clamp(200px, 22vw, 240px);
-    height: clamp(390px, 44vw, 470px);
+    width: clamp(230px, 25vw, 280px);
+    height: clamp(450px, 49vw, 550px);
     top: 52%;
   }
   .phone-photo-overlay-wrap {
-    height: clamp(420px, 58vh, 540px) !important;
-    max-width: 82vw !important;
-    transform: translate(-50%, -36%) !important;
+    height: clamp(520px, 76dvh, 670px) !important;
+    max-width: 86vw !important;
+    transform: translate(-50%, -38%) !important;
   }
 
   /* Hero Content areas — proportional widths preventing text/phone collisions */
   .hero-title-container-left {
-    width: clamp(210px, 30%, 300px);
-    max-width: 300px;
+    width: clamp(210px, 28%, 290px);
+    max-width: 290px;
     margin-top: 0;
   }
   .hero-title-slim {
-    font-size: clamp(1.85rem, 3.4vw, 2.5rem);
-    line-height: 1.15;
+    font-size: clamp(2rem, 3.4vw, 2.75rem);
+    line-height: 1.12;
   }
   .hero-desc-container-right {
     position: absolute;
     right: 0;
     left: auto;
-    width: clamp(190px, 26%, 250px);
-    max-width: 250px;
-    margin-top: 10px;
+    width: clamp(190px, 25%, 260px);
+    max-width: 260px;
+    margin-top: 15px;
   }
   .hero-desc-right-slim {
-    font-size: clamp(0.88rem, 1.4vw, 1.02rem);
+    font-size: clamp(0.85rem, 1.3vw, 0.98rem);
     line-height: 1.55;
   }
 
-  /* Features & How Spark Works on Tablet: generous readable cards */
+  /* Statement text */
+  .statement-text {
+    font-size: clamp(1.85rem, 3.2vw, 2.45rem);
+    max-width: 780px;
+    text-align: center;
+    line-height: 1.25;
+  }
+
+  /* Campuses on tablet */
+  .campus-track-wrap {
+    width: min(100%, 1000px);
+  }
+  .campus-heading {
+    font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+    margin-bottom: 22px;
+  }
+  .campus-card {
+    width: clamp(230px, 26vw, 310px);
+    min-height: 92px;
+    padding: 12px 16px;
+  }
+  .campus-card img {
+    width: 64px;
+    height: 64px;
+  }
+  .campus-card span {
+    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  }
+
+  /* Features & How Spark Works on Tablet: generous readable cards matching desktop */
   #features .simplicity-right {
-    width: clamp(280px, 42%, 420px);
-    max-width: 420px;
+    width: clamp(290px, 44%, 430px);
+    max-width: 430px;
+    margin-left: 0;
+    margin-right: auto;
   }
   .feature-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .glass-card, .feature-card {
-    padding: 15px 14px;
-    border-radius: 16px;
-  }
-  .feature-icon {
-    width: 34px;
-    height: 34px;
-    font-size: 1rem;
-    margin-bottom: 8px;
-  }
-  .feature-title {
-    font-size: 0.92rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .feature-desc {
-    font-size: 0.8rem;
-    line-height: 1.45;
-  }
-
-  .finance-left {
-    width: clamp(280px, 42%, 420px);
-    max-width: 420px;
-    margin-left: 0;
-  }
-  #how-spark-works {
-    padding-top: 40px;
-  }
-  .accordion-list {
-    grid-template-columns: 1fr;
     gap: 10px;
   }
+  .glass-card, .feature-card {
+    padding: 13px 12px;
+    border-radius: 14px;
+  }
+  .feature-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  .feature-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .feature-desc {
+    font-size: 0.76rem;
+    line-height: 1.4;
+  }
+
+  /* How Spark Works: 2x2 grid matching desktop layout */
+  #how-spark-works {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 36px;
+  }
+  .finance-left {
+    width: clamp(290px, 44%, 430px);
+    max-width: 430px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  .primitive-kicker {
+    font-size: 0.72rem;
+    margin-bottom: 6px;
+  }
+  .finance-intro {
+    font-size: 0.86rem;
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+  .accordion-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 14px;
+  }
   .accordion-item-glass {
-    min-height: auto;
-    padding: 16px 14px;
-    border-radius: 16px;
+    min-height: 144px;
+    padding: 34px 12px 12px;
+    border-radius: 14px;
+    position: relative;
   }
   .step-number {
-    position: static;
-    transform: none;
-    margin-bottom: 6px;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0;
     width: 28px;
     height: 28px;
-    font-size: 0.74rem;
+    font-size: 0.7rem;
   }
   .accordion-header-row {
-    font-size: 0.88rem;
+    font-size: 0.8rem;
     font-weight: 700;
   }
   .accordion-body-text {
-    font-size: 0.82rem;
-    line-height: 1.5;
-    margin-top: 6px;
+    font-size: 0.74rem;
+    line-height: 1.4;
+    margin-top: 5px;
   }
 
   /* Stage 5 Download */
   #download .section-heading {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 3.8vw, 2.9rem);
+    line-height: 1.15;
   }
   #download .section-subtext {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+  .action-row {
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .download-subscribe-box {
+    max-width: 420px;
+    margin-top: 20px;
   }
 
   /* Footer */

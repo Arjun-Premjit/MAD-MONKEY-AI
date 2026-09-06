@@ -608,9 +608,9 @@
 
 
     // ═══════════════════════════════════════════════════════════════
-    // DESKTOP (>= 1024px) — Full cinematic pinned scroll experience
+    // DESKTOP (>= 1025px) — Full cinematic pinned scroll experience
     // ═══════════════════════════════════════════════════════════════
-    mm.add("(min-width: 1024px)", () => {
+    mm.add("(min-width: 1025px)", () => {
       gsap.set(panelHero, { opacity: 1, scale: 1, y: 0 });
       gsap.set([panelStatement, panelCampuses, panelSimplicity, panelFinance, panelFuture], { opacity: 0, scale: 0.95, y: 20 });
       gsap.set(phoneContainer, { x: 0, y: 0, scale: 1, opacity: 1, rotationX: 0, rotationY: 0, rotationZ: 0 });
@@ -639,28 +639,28 @@
         .to(phoneContainer, { y: 120, scale: 0.72, opacity: 0, ease: "power2.in", duration: 1 }, 0)
         .to(phonePhotoOverlay, { opacity: 0, ease: "power2.in", duration: 0.9 }, 0)
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
-      // B: Statement → Features
+      // B: Statement → Campuses → Features
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
         .to(panelCampuses, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 0.9 }, 2.0)
         .to(panelCampuses, { opacity: 1, duration: 0.7 }, 2.9)
         .to(panelCampuses, { opacity: 0, scale: 0.96, y: -24, ease: "power2.in", duration: 0.6 }, 3.1)
-        .to(phoneBody, { opacity: 1, duration: 0.2 }, 3.7)
+        .to(phoneBody, { opacity: 1, duration: 0.2 }, 3.65)
         .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.24, 220), 390), y: -60, scale: () => Math.min(Math.max(window.innerWidth / 1440, 0.82), 1), opacity: 1, ease: "power3.out", duration: 1.1 }, 3.7)
-        .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 3.9)
-        .to(screenSendMoney, { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 3.9)
+        .to(screenSendMoney, { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 3.7)
+        .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 4.0)
         .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.9)
       // C: Features → How Spark Works
         .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.9)
         .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.24, 220), 390), y: 0, scale: () => Math.min(Math.max(window.innerWidth / 1440, 0.82), 1), ease: "power3.out", duration: 1.1 }, 4.9)
-        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.45 }, 5.9)
-        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.45 }, 5.9)
+        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 5.7)
+        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 6.0)
         .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 6.0)
       // D: How Spark Works → Download
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 7.0)
         // Clear the phone before the Download slide enters.
         .to(phoneContainer, { x: 0, y: 120, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 6.85)
-        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.35 }, 7.25)
-        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.35 }, 7.25)
+        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.35 }, 7.1)
+        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 7.35)
         .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 7.3)
       // E: Hold the independent Download slide, then fade it for the footer handoff.
         .to(panelFuture, { opacity: 1, duration: 1.1 }, 8.1)
@@ -670,12 +670,12 @@
     });
 
     // ═══════════════════════════════════════════════════════════════
-    // TABLET (768px - 1023px) — Pinned scroll, widgets visible
+    // TABLET (768px - 1024px) — Pinned scroll, matching desktop output
     // ═══════════════════════════════════════════════════════════════
-    mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
+    mm.add("(min-width: 768px) and (max-width: 1024px)", () => {
       gsap.set(panelHero, { opacity: 1, scale: 1, y: 0 });
       gsap.set([panelStatement, panelCampuses, panelSimplicity, panelFinance, panelFuture], { opacity: 0, scale: 0.95, y: 20 });
-      gsap.set(phoneContainer, { x: 0, y: 0, scale: 0.85, opacity: 1, rotationX: 0, rotationY: 0, rotationZ: 0 });
+      gsap.set(phoneContainer, { x: 0, y: 0, scale: 1, opacity: 1, rotationX: 0, rotationY: 0, rotationZ: 0 });
       
       gsap.set(phonePhotoOverlay, { opacity: 1 });
       gsap.set(phoneBody, { opacity: 0 });
@@ -694,33 +694,52 @@
         }
       });
 
+      // A: Hero → Statement
       tl
         .to(panelHero, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 1 }, 0)
-        .to(phoneContainer, { y: 80, scale: 0.65, opacity: 0, ease: "power2.in", duration: 1 }, 0)
+        .to(phoneContainer, { y: 110, scale: 0.72, opacity: 0, ease: "power2.in", duration: 1 }, 0)
         .to(phonePhotoOverlay, { opacity: 0, ease: "power2.in", duration: 0.9 }, 0)
         .to(panelStatement, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.1 }, 0.7)
 
+      // B: Statement → Campuses → Features
         .to(panelStatement, { opacity: 0, scale: 0.9, y: -40, ease: "power2.in", duration: 0.9 }, 1.7)
         .to(panelCampuses, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 0.9 }, 2.0)
         .to(panelCampuses, { opacity: 1, duration: 0.7 }, 2.9)
         .to(panelCampuses, { opacity: 0, scale: 0.96, y: -24, ease: "power2.in", duration: 0.6 }, 3.1)
-        .to(phoneBody, { opacity: 1, duration: 0.2 }, 1.7)
-          .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.38, 300), 500), y: -60, scale: () => Math.min(Math.max(window.innerWidth / 1440, 0.82), 1), opacity: 1, ease: "power3.out", duration: 1.1 }, 3.7)
-        .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 2.0)
-          .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.5, 300), 430), y: -60, scale: () => Math.min(Math.max(window.innerWidth / 1024, 0.72), 0.9), opacity: 1, ease: "power3.out", duration: 1.1 }, 3.7)
-        .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.7)
+        .to(phoneBody, { opacity: 1, duration: 0.2 }, 3.65)
+        .to(phoneContainer, {
+          x: () => Math.round(Math.min(Math.max(window.innerWidth * 0.24, 180), 260)),
+          y: -40,
+          scale: () => Math.min(Math.max(window.innerWidth / 1024, 0.88), 1),
+          opacity: 1,
+          ease: "power3.out",
+          duration: 1.1
+        }, 3.7)
+        .to(screenSendMoney, { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 3.7)
+        .to(screenDashboard, { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 4.0)
+        .to(panelSimplicity, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 3.9)
 
+      // C: Features → How Spark Works
         .to(panelSimplicity, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 4.9)
-        .to(phoneContainer, { x: () => Math.min(Math.max(window.innerWidth * 0.4, 280), 390), y: 0, scale: () => Math.min(Math.max(window.innerWidth / 1024, 0.72), 0.9), ease: "power3.out", duration: 1.1 }, 4.9)
-        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.4 }, 5.9)
-        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 5.9)
+        .to(phoneContainer, {
+          x: () => Math.round(Math.min(Math.max(window.innerWidth * 0.24, 180), 260)),
+          y: 0,
+          scale: () => Math.min(Math.max(window.innerWidth / 1024, 0.88), 1),
+          ease: "power3.out",
+          duration: 1.1
+        }, 4.9)
+        .to(screenEarning,   { opacity: 1, ease: "power1.inOut", duration: 0.4 }, 5.7)
+        .to(screenSendMoney, { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 6.0)
         .to(panelFinance, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1 }, 6.0)
 
+      // D: How Spark Works → Download
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 7.0)
-        .to(phoneContainer, { y: 120, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 6.85)
-        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 7.25)
-        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.3 }, 7.25)
+        .to(phoneContainer, { x: 0, y: 110, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 6.85)
+        .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.35 }, 7.1)
+        .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 7.35)
         .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 7.3)
+
+      // E: Hold Download, then fade out
         .to(panelFuture, { opacity: 1, duration: 1.1 }, 8.1)
         .to(panelFuture, { opacity: 0, scale: 0.97, y: -18, ease: "power1.inOut", duration: 1.4 }, 9.2);
 
@@ -838,6 +857,32 @@
         }
       }, 200);
     });
+
+    // ─── 10. Device orientation & dynamic rotation handler ───────────
+    let lastWidth = window.innerWidth;
+    let rotationTimeout = null;
+
+    const handleOrientationOrResize = () => {
+      clearTimeout(rotationTimeout);
+      rotationTimeout = setTimeout(() => {
+        const currentWidth = window.innerWidth;
+        // Trigger refresh if width changed significantly (orientation flip or split view)
+        if (Math.abs(currentWidth - lastWidth) > 30) {
+          lastWidth = currentWidth;
+          ScrollTrigger.refresh();
+        }
+      }, 250);
+    };
+
+    if (window.screen && window.screen.orientation) {
+      window.screen.orientation.addEventListener('change', () => {
+        setTimeout(() => ScrollTrigger.refresh(), 250);
+      });
+    }
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => ScrollTrigger.refresh(), 250);
+    });
+    window.addEventListener('resize', handleOrientationOrResize, { passive: true });
   </script>
 </body>
 
