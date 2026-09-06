@@ -262,84 +262,22 @@ export default function GlassHeader({ currentView, onNavigate }: GlassHeaderProp
         </div>
       </div>
 
-      {/* Mobile Vertical Header (Aligned to left near logo with full Glassmorphism) */}
+      {/* Mobile Vertical Header (Aligned to leftmost with vertical Clubs dropdown just right of clubs on hover) */}
       {mobileMenuOpen && (
-        <div
-          className="md:hidden pointer-events-auto mt-2 w-full max-w-[340px] mr-auto ml-0 rounded-3xl p-3 flex flex-col gap-2 shadow-[0_24px_60px_rgba(12,30,61,0.16),0_4px_16px_rgba(12,30,61,0.05),inset_0_1px_2px_rgba(255,255,255,0.95)] animate-in fade-in duration-200"
-          style={{
-            background: "rgba(255, 255, 255, 0.78)",
-            backdropFilter: "blur(40px) saturate(200%)",
-            WebkitBackdropFilter: "blur(40px) saturate(200%)",
-            border: "1px solid rgba(255, 255, 255, 0.9)",
-          }}
-        >
-          {/* Main Navigation Glass Options */}
-          <a
-            href="/index.html"
-            className="px-3.5 py-2 rounded-2xl text-[13.5px] font-medium text-[#0c1e3d] flex items-center justify-between transition-all hover:bg-white/90 active:scale-[0.99]"
+        <div className="md:hidden pointer-events-auto mt-2 ml-0 mr-auto flex items-start gap-2 animate-in fade-in duration-200">
+          {/* Main Navigation Glass Options (Column 1: Vertically stacked in glassmorphism) */}
+          <div
+            className="w-[160px] rounded-3xl p-2 flex flex-col gap-1.5 shadow-[0_24px_60px_rgba(12,30,61,0.16),0_4px_16px_rgba(12,30,61,0.05),inset_0_1px_2px_rgba(255,255,255,0.95)]"
             style={{
-              background: "rgba(255, 255, 255, 0.66)",
-              backdropFilter: "blur(20px) saturate(180%)",
-              WebkitBackdropFilter: "blur(20px) saturate(180%)",
-              border: "1px solid rgba(255, 255, 255, 0.88)",
-              boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+              background: "rgba(255, 255, 255, 0.82)",
+              backdropFilter: "blur(40px) saturate(200%)",
+              WebkitBackdropFilter: "blur(40px) saturate(200%)",
+              border: "1px solid rgba(255, 255, 255, 0.95)",
             }}
           >
-            <span>Home</span>
-            <i className="bi bi-chevron-right text-[11px] opacity-40" />
-          </a>
-
-          <a
-            href="/index.html#how-spark-works"
-            className="px-3.5 py-2 rounded-2xl text-[13.5px] font-medium text-[#0c1e3d] flex items-center justify-between transition-all hover:bg-white/90 active:scale-[0.99]"
-            style={{
-              background: "rgba(255, 255, 255, 0.66)",
-              backdropFilter: "blur(20px) saturate(180%)",
-              WebkitBackdropFilter: "blur(20px) saturate(180%)",
-              border: "1px solid rgba(255, 255, 255, 0.88)",
-              boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
-            }}
-          >
-            <span>How Spark Works</span>
-            <i className="bi bi-chevron-right text-[11px] opacity-40" />
-          </a>
-
-          <a
-            href="/index.html#features"
-            className="px-3.5 py-2 rounded-2xl text-[13.5px] font-medium text-[#0c1e3d] flex items-center justify-between transition-all hover:bg-white/90 active:scale-[0.99]"
-            style={{
-              background: "rgba(255, 255, 255, 0.66)",
-              backdropFilter: "blur(20px) saturate(180%)",
-              WebkitBackdropFilter: "blur(20px) saturate(180%)",
-              border: "1px solid rgba(255, 255, 255, 0.88)",
-              boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
-            }}
-          >
-            <span>Features</span>
-            <i className="bi bi-chevron-right text-[11px] opacity-40" />
-          </a>
-
-          <a
-            href="/index.html#about"
-            className="px-3.5 py-2 rounded-2xl text-[13.5px] font-medium text-[#0c1e3d] flex items-center justify-between transition-all hover:bg-white/90 active:scale-[0.99]"
-            style={{
-              background: "rgba(255, 255, 255, 0.66)",
-              backdropFilter: "blur(20px) saturate(180%)",
-              WebkitBackdropFilter: "blur(20px) saturate(180%)",
-              border: "1px solid rgba(255, 255, 255, 0.88)",
-              boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
-            }}
-          >
-            <span>About</span>
-            <i className="bi bi-chevron-right text-[11px] opacity-40" />
-          </a>
-
-          {/* Vertical Clubs Option with Vertical Dropdown in Glassmorphism */}
-          <div className="flex flex-col gap-1.5 w-full">
-            <button
-              type="button"
-              onClick={() => setMobileClubsOpen(!mobileClubsOpen)}
-              className="px-3.5 py-2 rounded-2xl text-[13.5px] font-semibold text-[#0c1e3d] flex items-center justify-between transition-all hover:bg-white/90 active:scale-[0.99]"
+            <a
+              href="/index.html"
+              className="px-3 py-1.5 rounded-xl text-[13px] font-medium text-[#0c1e3d] flex items-center justify-between transition-all hover:bg-white/90 active:scale-[0.99]"
               style={{
                 background: "rgba(255, 255, 255, 0.72)",
                 backdropFilter: "blur(20px) saturate(180%)",
@@ -348,152 +286,224 @@ export default function GlassHeader({ currentView, onNavigate }: GlassHeaderProp
                 boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
               }}
             >
-              <span className="flex items-center gap-2">
-                <i className="bi bi-diagram-3 text-[#1d4ed8]" />
-                <span>Clubs</span>
-              </span>
-              <i className={`bi bi-chevron-down text-[12px] text-[#0c1e3d]/60 transition-transform duration-200 ${mobileClubsOpen ? "rotate-180" : ""}`} />
-            </button>
+              <span>Home</span>
+              <i className="bi bi-chevron-right text-[10px] opacity-40" />
+            </a>
 
-            {/* Vertical Dropdown Panel in Glassmorphism */}
-            {mobileClubsOpen && (
-              <div
-                className="flex flex-col gap-1.5 p-1.5 rounded-2xl animate-in fade-in duration-150"
+            <a
+              href="/index.html#how-spark-works"
+              className="px-3 py-1.5 rounded-xl text-[13px] font-medium text-[#0c1e3d] flex items-center justify-between transition-all hover:bg-white/90 active:scale-[0.99]"
+              style={{
+                background: "rgba(255, 255, 255, 0.72)",
+                backdropFilter: "blur(20px) saturate(180%)",
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                border: "1px solid rgba(255, 255, 255, 0.9)",
+                boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+              }}
+            >
+              <span>How Spark Works</span>
+              <i className="bi bi-chevron-right text-[10px] opacity-40" />
+            </a>
+
+            <a
+              href="/index.html#features"
+              className="px-3 py-1.5 rounded-xl text-[13px] font-medium text-[#0c1e3d] flex items-center justify-between transition-all hover:bg-white/90 active:scale-[0.99]"
+              style={{
+                background: "rgba(255, 255, 255, 0.72)",
+                backdropFilter: "blur(20px) saturate(180%)",
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                border: "1px solid rgba(255, 255, 255, 0.9)",
+                boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+              }}
+            >
+              <span>Features</span>
+              <i className="bi bi-chevron-right text-[10px] opacity-40" />
+            </a>
+
+            <a
+              href="/index.html#about"
+              className="px-3 py-1.5 rounded-xl text-[13px] font-medium text-[#0c1e3d] flex items-center justify-between transition-all hover:bg-white/90 active:scale-[0.99]"
+              style={{
+                background: "rgba(255, 255, 255, 0.72)",
+                backdropFilter: "blur(20px) saturate(180%)",
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                border: "1px solid rgba(255, 255, 255, 0.9)",
+                boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+              }}
+            >
+              <span>About</span>
+              <i className="bi bi-chevron-right text-[10px] opacity-40" />
+            </a>
+
+            {/* Vertical Clubs Option in Main Dropdown with Hover Trigger */}
+            <div
+              className="relative w-full"
+              onMouseEnter={() => setMobileClubsOpen(true)}
+              onMouseLeave={() => setMobileClubsOpen(false)}
+            >
+              <button
+                type="button"
+                onClick={() => setMobileClubsOpen((prev) => !prev)}
+                className={`px-3 py-1.5 rounded-xl text-[13px] font-semibold flex items-center justify-between w-full transition-all active:scale-[0.99] cursor-pointer ${
+                  mobileClubsOpen ? "text-[#1d4ed8] bg-white shadow-sm" : "text-[#0c1e3d] hover:bg-white/90"
+                }`}
                 style={{
-                  background: "rgba(234, 243, 254, 0.72)",
-                  backdropFilter: "blur(24px) saturate(190%)",
-                  WebkitBackdropFilter: "blur(24px) saturate(190%)",
-                  border: "1px solid rgba(255, 255, 255, 0.9)",
-                  boxShadow: "inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 8px 24px rgba(12, 30, 61, 0.05)",
+                  background: mobileClubsOpen ? "rgba(255, 255, 255, 0.96)" : "rgba(255, 255, 255, 0.72)",
+                  backdropFilter: "blur(20px) saturate(180%)",
+                  WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                  border: mobileClubsOpen ? "1px solid rgba(186, 214, 245, 0.95)" : "1px solid rgba(255, 255, 255, 0.9)",
+                  boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
                 }}
               >
-                <a
-                  href="/venture_club.html"
-                  className="px-2.5 py-2 rounded-xl text-[13px] font-medium text-[#0c1e3d] hover:text-[#1d4ed8] flex items-center gap-2.5 transition-all active:scale-[0.99]"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.82)",
-                    backdropFilter: "blur(16px)",
-                    WebkitBackdropFilter: "blur(16px)",
-                    border: "1px solid rgba(255, 255, 255, 0.95)",
-                    boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
-                  }}
-                >
-                  <span
-                    className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
-                    style={{
-                      background: "rgba(234, 242, 252, 0.92)",
-                      border: "1px solid rgba(255, 255, 255, 0.85)",
-                      color: "#1d4ed8",
-                    }}
-                  >
-                    <i className="bi bi-rocket-takeoff text-[13px]" />
-                  </span>
-                  <div className="flex flex-col">
-                    <span className="font-semibold leading-tight text-[12.5px]">Venture Club</span>
-                    <span className="text-[10.5px] opacity-60">College & student startups</span>
-                  </div>
-                </a>
+                <span className="flex items-center gap-1.5">
+                  <i className="bi bi-diagram-3 text-[#1d4ed8]" />
+                  <span>Clubs</span>
+                </span>
+                <i className="bi bi-chevron-right text-[10px] opacity-70" />
+              </button>
 
-                <a
-                  href="/junior_founder.html"
-                  className="px-2.5 py-2 rounded-xl text-[13px] font-medium text-[#0c1e3d] hover:text-[#1d4ed8] flex items-center gap-2.5 transition-all active:scale-[0.99]"
+              {/* Hover bridge to keep dropdown open during mouse glide */}
+              <div className="absolute top-0 bottom-0 -right-3 w-4 pointer-events-auto" />
+
+              {/* Clubs Vertical Dropdown APPEARS JUST RIGHT TO CLUBS OPTION ONLY ON HOVER */}
+              {mobileClubsOpen && (
+                <div
+                  className="absolute left-[calc(100%+8px)] top-0 w-[175px] rounded-3xl p-2 flex flex-col gap-1.5 shadow-[0_20px_50px_rgba(12,30,61,0.14),inset_0_1px_2px_rgba(255,255,255,0.95)] animate-in fade-in duration-150 z-50 pointer-events-auto"
                   style={{
-                    background: "rgba(255, 255, 255, 0.82)",
-                    backdropFilter: "blur(16px)",
-                    WebkitBackdropFilter: "blur(16px)",
+                    background: "rgba(234, 243, 254, 0.9)",
+                    backdropFilter: "blur(36px) saturate(190%)",
+                    WebkitBackdropFilter: "blur(36px) saturate(190%)",
                     border: "1px solid rgba(255, 255, 255, 0.95)",
-                    boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
                   }}
                 >
-                  <span
-                    className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+                  <a
+                    href="/venture_club.html"
+                    className="p-2 rounded-xl text-[12.5px] font-medium text-[#0c1e3d] hover:text-[#1d4ed8] flex items-center gap-2 transition-all active:scale-[0.99]"
                     style={{
-                      background: "rgba(234, 242, 252, 0.92)",
-                      border: "1px solid rgba(255, 255, 255, 0.85)",
-                      color: "#1d4ed8",
+                      background: "rgba(255, 255, 255, 0.86)",
+                      backdropFilter: "blur(16px)",
+                      WebkitBackdropFilter: "blur(16px)",
+                      border: "1px solid rgba(255, 255, 255, 0.95)",
+                      boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
                     }}
                   >
-                    <i className="bi bi-backpack text-[13px]" />
-                  </span>
-                  <div className="flex flex-col">
-                    <span className="font-semibold leading-tight text-[12.5px]">High School-Junior Founders</span>
-                    <span className="text-[10.5px] opacity-60">Grades 9 to 12 track</span>
-                  </div>
-                </a>
-              </div>
-            )}
+                    <span
+                      className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+                      style={{
+                        background: "rgba(234, 242, 252, 0.92)",
+                        border: "1px solid rgba(255, 255, 255, 0.85)",
+                        color: "#1d4ed8",
+                      }}
+                    >
+                      <i className="bi bi-rocket-takeoff text-[13px]" />
+                    </span>
+                    <div className="flex flex-col min-w-0">
+                      <span className="font-semibold leading-tight text-[12px]">Venture Club</span>
+                      <span className="text-[10px] text-[#627896] leading-tight">College & student startups</span>
+                    </div>
+                  </a>
+
+                  <a
+                    href="/junior_founder.html"
+                    className="p-2 rounded-xl text-[12.5px] font-medium text-[#0c1e3d] hover:text-[#1d4ed8] flex items-center gap-2 transition-all active:scale-[0.99]"
+                    style={{
+                      background: "rgba(255, 255, 255, 0.86)",
+                      backdropFilter: "blur(16px)",
+                      WebkitBackdropFilter: "blur(16px)",
+                      border: "1px solid rgba(255, 255, 255, 0.95)",
+                      boxShadow: "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+                    }}
+                  >
+                    <span
+                      className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+                      style={{
+                        background: "rgba(234, 242, 252, 0.92)",
+                        border: "1px solid rgba(255, 255, 255, 0.85)",
+                        color: "#1d4ed8",
+                      }}
+                    >
+                      <i className="bi bi-backpack text-[13px]" />
+                    </span>
+                    <div className="flex flex-col min-w-0">
+                      <span className="font-semibold leading-tight text-[12px]">High School-Junior Founders</span>
+                      <span className="text-[10px] text-[#627896] leading-tight">Grades 9 to 12 track</span>
+                    </div>
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Interactive Views in Glassmorphism */}
+            <button
+              type="button"
+              onClick={(e) => handleNavClick("leaderboard", e)}
+              className={`px-3 py-1.5 rounded-xl text-[13px] font-medium flex items-center justify-between transition-all active:scale-[0.99] ${
+                currentView === "leaderboard" ? "text-[#1d4ed8] font-bold" : "text-[#0c1e3d]"
+              }`}
+              style={{
+                background: currentView === "leaderboard" ? "rgba(255, 255, 255, 0.96)" : "rgba(255, 255, 255, 0.72)",
+                backdropFilter: "blur(20px) saturate(180%)",
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                border: currentView === "leaderboard" ? "1px solid rgba(186, 214, 245, 0.95)" : "1px solid rgba(255, 255, 255, 0.9)",
+                boxShadow: currentView === "leaderboard" ? "0 4px 16px rgba(29, 78, 216, 0.1), inset 0 1px 1px #fff" : "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+              }}
+            >
+              <span>Leaderboard</span>
+              <i className="bi bi-trophy text-[11px] opacity-60" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => handleNavClick("foundingmembers", e)}
+              className={`px-3 py-1.5 rounded-xl text-[13px] font-medium flex items-center justify-between transition-all active:scale-[0.99] ${
+                currentView === "foundingmembers" ? "text-[#1d4ed8] font-bold" : "text-[#0c1e3d]"
+              }`}
+              style={{
+                background: currentView === "foundingmembers" ? "rgba(255, 255, 255, 0.96)" : "rgba(255, 255, 255, 0.72)",
+                backdropFilter: "blur(20px) saturate(180%)",
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                border: currentView === "foundingmembers" ? "1px solid rgba(186, 214, 245, 0.95)" : "1px solid rgba(255, 255, 255, 0.9)",
+                boxShadow: currentView === "foundingmembers" ? "0 4px 16px rgba(29, 78, 216, 0.1), inset 0 1px 1px #fff" : "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+              }}
+            >
+              <span>Founding Members</span>
+              <i className="bi bi-people text-[11px] opacity-60" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => handleNavClick("directors", e)}
+              className={`px-3 py-1.5 rounded-xl text-[13px] font-medium flex items-center justify-between transition-all active:scale-[0.99] ${
+                currentView === "directors" ? "text-[#1d4ed8] font-bold" : "text-[#0c1e3d]"
+              }`}
+              style={{
+                background: currentView === "directors" ? "rgba(255, 255, 255, 0.96)" : "rgba(255, 255, 255, 0.72)",
+                backdropFilter: "blur(20px) saturate(180%)",
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                border: currentView === "directors" ? "1px solid rgba(186, 214, 245, 0.95)" : "1px solid rgba(255, 255, 255, 0.9)",
+                boxShadow: currentView === "directors" ? "0 4px 16px rgba(29, 78, 216, 0.1), inset 0 1px 1px #fff" : "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+              }}
+            >
+              <span>Directors</span>
+              <i className="bi bi-briefcase text-[11px] opacity-60" />
+            </button>
+
+            {/* Download App CTA */}
+            <a
+              href="/index.html#download"
+              className="mt-1 text-center py-2 px-3 rounded-xl font-bold text-[12.5px] text-[#0c1e3d] flex items-center justify-center gap-1.5 transition-all active:scale-[0.99]"
+              style={{
+                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(234, 242, 252, 0.94))",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 1)",
+                boxShadow: "0 4px 12px rgba(12, 30, 61, 0.06), inset 0 1px 0 #fff",
+              }}
+            >
+              <i className="bi bi-cloud-arrow-down text-[#1d4ed8]" />
+              <span>Download App</span>
+            </a>
           </div>
-
-          {/* Interactive Views in Glassmorphism */}
-          <button
-            type="button"
-            onClick={(e) => handleNavClick("leaderboard", e)}
-            className={`px-3.5 py-2 rounded-2xl text-[13.5px] font-medium flex items-center justify-between transition-all active:scale-[0.99] ${
-              currentView === "leaderboard" ? "text-[#1d4ed8] font-bold" : "text-[#0c1e3d]"
-            }`}
-            style={{
-              background: currentView === "leaderboard" ? "rgba(255, 255, 255, 0.96)" : "rgba(255, 255, 255, 0.66)",
-              backdropFilter: "blur(20px) saturate(180%)",
-              WebkitBackdropFilter: "blur(20px) saturate(180%)",
-              border: currentView === "leaderboard" ? "1px solid rgba(186, 214, 245, 0.95)" : "1px solid rgba(255, 255, 255, 0.88)",
-              boxShadow: currentView === "leaderboard" ? "0 4px 16px rgba(29, 78, 216, 0.1), inset 0 1px 1px #fff" : "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
-            }}
-          >
-            <span>Leaderboard</span>
-            <i className="bi bi-trophy text-[12px] opacity-60" />
-          </button>
-
-          <button
-            type="button"
-            onClick={(e) => handleNavClick("foundingmembers", e)}
-            className={`px-3.5 py-2 rounded-2xl text-[13.5px] font-medium flex items-center justify-between transition-all active:scale-[0.99] ${
-              currentView === "foundingmembers" ? "text-[#1d4ed8] font-bold" : "text-[#0c1e3d]"
-            }`}
-            style={{
-              background: currentView === "foundingmembers" ? "rgba(255, 255, 255, 0.96)" : "rgba(255, 255, 255, 0.66)",
-              backdropFilter: "blur(20px) saturate(180%)",
-              WebkitBackdropFilter: "blur(20px) saturate(180%)",
-              border: currentView === "foundingmembers" ? "1px solid rgba(186, 214, 245, 0.95)" : "1px solid rgba(255, 255, 255, 0.88)",
-              boxShadow: currentView === "foundingmembers" ? "0 4px 16px rgba(29, 78, 216, 0.1), inset 0 1px 1px #fff" : "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
-            }}
-          >
-            <span>Founding Members</span>
-            <i className="bi bi-people text-[12px] opacity-60" />
-          </button>
-
-          <button
-            type="button"
-            onClick={(e) => handleNavClick("directors", e)}
-            className={`px-3.5 py-2 rounded-2xl text-[13.5px] font-medium flex items-center justify-between transition-all active:scale-[0.99] ${
-              currentView === "directors" ? "text-[#1d4ed8] font-bold" : "text-[#0c1e3d]"
-            }`}
-            style={{
-              background: currentView === "directors" ? "rgba(255, 255, 255, 0.96)" : "rgba(255, 255, 255, 0.66)",
-              backdropFilter: "blur(20px) saturate(180%)",
-              WebkitBackdropFilter: "blur(20px) saturate(180%)",
-              border: currentView === "directors" ? "1px solid rgba(186, 214, 245, 0.95)" : "1px solid rgba(255, 255, 255, 0.88)",
-              boxShadow: currentView === "directors" ? "0 4px 16px rgba(29, 78, 216, 0.1), inset 0 1px 1px #fff" : "0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
-            }}
-          >
-            <span>Directors</span>
-            <i className="bi bi-briefcase text-[12px] opacity-60" />
-          </button>
-
-          {/* Download App CTA in Glassmorphism */}
-          <a
-            href="/index.html#download"
-            className="mt-1 text-center py-2.5 px-4 rounded-2xl font-bold text-[13.5px] text-[#0c1e3d] flex items-center justify-center gap-2 transition-all active:scale-[0.99]"
-            style={{
-              background: "linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(234, 242, 252, 0.94))",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255, 255, 255, 1)",
-              boxShadow: "0 4px 18px rgba(12, 30, 61, 0.08), inset 0 1px 1px #fff",
-            }}
-          >
-            <i className="bi bi-cloud-arrow-down-fill text-[15px] text-[#1d4ed8]" />
-            <span>Download App</span>
-          </a>
         </div>
       )}
     </header>

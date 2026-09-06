@@ -22,6 +22,8 @@ export default defineConfig(({ mode }) => {
           leaderboard: path.resolve(__dirname, 'leaderboard.html'),
           directors: path.resolve(__dirname, 'directors.html'),
           foundingmembers: path.resolve(__dirname, 'foundingmembers.html'),
+          venture_club: path.resolve(__dirname, 'venture_club.html'),
+          junior_founder: path.resolve(__dirname, 'junior_founder.html'),
         }
       }
     },

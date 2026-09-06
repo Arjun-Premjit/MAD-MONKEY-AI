@@ -1878,125 +1878,124 @@ body.host-grotesk-page {
    RESPONSIVE — TABLET & SMALL LAPTOPS (768px – 1180px)
    ========================================================================== */
 @media (min-width: 768px) and (max-width: 1180px) {
-  /* Header: keep single row, no stacking, fluid dynamic scaling */
+  /* Header: keep single row, no stacking, comfortable readable sizing */
   .top-header-wrapper {
     flex-direction: row;
-    width: min(calc(100% - 20px), 1180px);
-    gap: clamp(4px, 1vw, 10px);
+    width: min(calc(100% - 16px), 1180px);
+    gap: clamp(4px, 1vw, 8px);
+    top: 10px;
+    padding: 0 4px;
   }
   .brand-logo-img-lg {
-    height: clamp(38px, 4.5vw, 50px);
+    height: clamp(34px, 4vw, 42px);
   }
   .ios-glass-nav-pill {
-    height: 44px;
-    padding: 0 clamp(6px, 1vw, 12px);
+    height: 42px;
+    padding: 0 clamp(6px, 1vw, 10px);
     flex: 1;
     min-width: 0;
     max-width: fit-content;
   }
   .nav-links-menu {
-    gap: clamp(1px, 0.4vw, 4px);
+    gap: clamp(2px, 0.5vw, 6px);
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
   }
-  .nav-links-menu a {
-    font-size: clamp(0.62rem, 0.95vw, 0.75rem);
-    padding: 4px clamp(4px, 0.6vw, 7px);
+  .nav-links-menu a,
+  .nav-links-menu .dropdown-toggle {
+    font-size: clamp(0.72rem, 1vw, 0.82rem);
+    padding: 5px clamp(5px, 0.75vw, 9px);
     white-space: nowrap;
+    letter-spacing: -0.01em;
   }
   .glass-btn-white {
-    padding: 8px clamp(10px, 1.2vw, 16px);
-    font-size: clamp(0.72rem, 1vw, 0.8rem);
+    padding: 7px clamp(10px, 1.2vw, 16px);
+    font-size: clamp(0.76rem, 1vw, 0.84rem);
     white-space: nowrap;
     flex-shrink: 0;
   }
 
-  /* Floating badges: dynamically scaled to fit tablet width */
+  /* Floating badges: prevent overlapping text columns on tablet */
   .floating-stat-badge {
-    display: flex !important;
-    opacity: 1 !important;
-    transform: scale(0.72);
-    max-width: 145px !important;
-    z-index: 25;
-  }
-  .badge-btc-perf { top: 24%; left: -120px !important; }
-  .badge-visitors-coral { top: 60%; left: -120px !important; }
-  .badge-tx-limit { bottom: 8%; right: -120px !important; left: auto !important; }
-  .badge-donut-chart { top: 20%; right: -120px !important; left: auto !important; }
-
-  /* Phone & Photo overlay: dynamically proportioned for tablet viewport */
-  .phone-perspective-container {
-    width: clamp(210px, 24vw, 250px);
-    height: clamp(410px, 47vw, 490px);
-    top: 53%;
-  }
-  .phone-photo-overlay-wrap {
-    height: clamp(440px, 64vh, 580px) !important;
-    max-width: 82vw !important;
-    transform: translate(-50%, -36%) !important;
+    display: none !important;
   }
 
   /* Stage wrapper: tablet responsive height and margins */
   .stage-wrapper {
-    width: min(calc(100% - 28px), 940px);
-    height: min(84dvh, 760px);
+    width: min(calc(100% - 32px), 1040px);
+    height: min(86dvh, 780px);
+    min-height: 560px;
+    padding: 0 8px;
+  }
+
+  /* Phone & Photo overlay: dynamically proportioned for tablet viewport */
+  .phone-perspective-container {
+    width: clamp(200px, 22vw, 240px);
+    height: clamp(390px, 44vw, 470px);
+    top: 52%;
+  }
+  .phone-photo-overlay-wrap {
+    height: clamp(420px, 58vh, 540px) !important;
+    max-width: 82vw !important;
+    transform: translate(-50%, -36%) !important;
   }
 
   /* Hero Content areas — proportional widths preventing text/phone collisions */
   .hero-title-container-left {
-    width: clamp(200px, 28%, 280px);
-    max-width: 280px;
-    margin-top: -20px;
+    width: clamp(210px, 30%, 300px);
+    max-width: 300px;
+    margin-top: 0;
   }
   .hero-title-slim {
-    font-size: clamp(1.65rem, 3.2vw, 2.3rem);
-    line-height: 1.1;
+    font-size: clamp(1.85rem, 3.4vw, 2.5rem);
+    line-height: 1.15;
   }
   .hero-desc-container-right {
     position: absolute;
     right: 0;
     left: auto;
-    width: clamp(180px, 25%, 230px);
-    max-width: 230px;
-    margin-top: 30px;
+    width: clamp(190px, 26%, 250px);
+    max-width: 250px;
+    margin-top: 10px;
   }
   .hero-desc-right-slim {
-    font-size: clamp(0.85rem, 1.4vw, 1rem);
-    line-height: 1.5;
+    font-size: clamp(0.88rem, 1.4vw, 1.02rem);
+    line-height: 1.55;
   }
 
-  /* Features & How Spark Works on Tablet */
+  /* Features & How Spark Works on Tablet: generous readable cards */
   #features .simplicity-right {
-    width: clamp(230px, 36%, 330px);
-    max-width: 330px;
+    width: clamp(280px, 42%, 420px);
+    max-width: 420px;
   }
   .feature-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 12px;
   }
   .glass-card, .feature-card {
-    padding: 12px;
-    border-radius: 14px;
+    padding: 15px 14px;
+    border-radius: 16px;
   }
   .feature-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 0.95rem;
-    margin-bottom: 6px;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    margin-bottom: 8px;
   }
   .feature-title {
-    font-size: 0.85rem;
+    font-size: 0.92rem;
+    font-weight: 700;
     margin-bottom: 4px;
   }
   .feature-desc {
-    font-size: 0.74rem;
-    line-height: 1.4;
+    font-size: 0.8rem;
+    line-height: 1.45;
   }
 
   .finance-left {
-    width: clamp(230px, 36%, 330px);
-    max-width: 330px;
+    width: clamp(280px, 42%, 420px);
+    max-width: 420px;
     margin-left: 0;
   }
   #how-spark-works {
@@ -2004,27 +2003,28 @@ body.host-grotesk-page {
   }
   .accordion-list {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 10px;
   }
   .accordion-item-glass {
     min-height: auto;
-    padding: 14px 12px;
-    border-radius: 14px;
+    padding: 16px 14px;
+    border-radius: 16px;
   }
   .step-number {
     position: static;
     transform: none;
-    margin-bottom: 4px;
-    width: 26px;
-    height: 26px;
-    font-size: 0.68rem;
+    margin-bottom: 6px;
+    width: 28px;
+    height: 28px;
+    font-size: 0.74rem;
   }
   .accordion-header-row {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
+    font-weight: 700;
   }
   .accordion-body-text {
-    font-size: 0.76rem;
-    line-height: 1.45;
+    font-size: 0.82rem;
+    line-height: 1.5;
     margin-top: 6px;
   }
 
@@ -2057,33 +2057,34 @@ body.host-grotesk-page {
 
   .footer-section { margin-top: 0; }
 
-  /* ── Header: compact single row — logo left, menu pill left-aligned next to logo, download right ── */
+  /* ── Header: compact single row — logo & menu on leftmost, download button on right ── */
   .top-header-wrapper {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: min(calc(100% - 20px), 1280px);
-    top: max(8px, env(safe-area-inset-top));
-    gap: 10px;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    width: min(calc(100% - 16px), 1280px) !important;
+    top: max(8px, env(safe-area-inset-top)) !important;
+    gap: 8px !important;
+    position: fixed !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
   .brand-logo-outer {
     flex-shrink: 0;
+    margin-right: 0 !important;
   }
-  .brand-logo-img-lg { height: 44px; }
+  .brand-logo-img-lg { height: 42px; }
   
   .mobile-nav-toggle {
     display: inline-flex !important;
     align-items: center;
     gap: 6px;
     height: 38px;
-    padding: 0 14px;
-    background: rgba(255, 255, 255, 0.78) !important;
+    padding: 0 13px;
+    background: rgba(255, 255, 255, 0.82) !important;
     backdrop-filter: blur(30px) saturate(180%);
     -webkit-backdrop-filter: blur(30px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     border-radius: 9999px;
     color: #0c1e3d;
     font-weight: 700;
@@ -2095,117 +2096,174 @@ body.host-grotesk-page {
     margin-right: auto !important;
   }
 
+  .top-header-wrapper .glass-btn-white {
+    margin-left: auto !important;
+  }
+
+  /* Main Dropdown Container: Aligned to the leftmost, accommodates main menu + clubs to the right */
   .ios-glass-nav-pill {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0 !important;
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 8px !important;
     right: auto !important;
-    width: min(330px, calc(100vw - 24px));
-    background: rgba(255, 255, 255, 0.78) !important;
-    backdrop-filter: blur(40px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.9) !important;
-    border-radius: 26px !important;
-    padding: 12px !important;
-    flex-direction: column !important;
-    box-shadow: 0 24px 60px rgba(12, 30, 61, 0.16), 0 4px 16px rgba(12, 30, 61, 0.05), inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    width: auto !important;
+    max-width: calc(100vw - 16px) !important;
+    height: auto !important;
+    min-height: fit-content !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    display: none !important;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-8px);
-    display: flex !important;
+    overflow: visible !important;
     z-index: 1050;
-    max-height: calc(100vh - 80px);
-    overflow-y: auto;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(-6px);
   }
 
   .ios-glass-nav-pill.show-mobile {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
   }
 
+  /* Column 1: Main Header Vertical Dropdown in Glassmorphism */
   .nav-links-menu {
-    flex-direction: column;
-    gap: 7px;
-    align-items: stretch;
-    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    width: clamp(140px, 44vw, 168px) !important;
+    background: rgba(255, 255, 255, 0.82) !important;
+    backdrop-filter: blur(40px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.95) !important;
+    border-radius: 22px !important;
+    padding: 8px !important;
+    box-shadow: 0 20px 50px rgba(12, 30, 61, 0.16), 0 4px 14px rgba(12, 30, 61, 0.05), inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+    list-style: none !important;
+    margin: 0 !important;
+    position: relative !important;
+    overflow: visible !important;
   }
 
   .nav-links-menu li {
-    width: 100%;
+    width: 100% !important;
   }
 
-  /* All mobile options styled in vertical Glassmorphism pills */
+  /* All page items vertically placed in glassmorphism */
   .nav-links-menu li a,
   .nav-links-menu .dropdown-toggle {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
-    padding: 10px 14px !important;
-    border-radius: 14px !important;
-    font-size: 0.88rem !important;
+    padding: 8px 11px !important;
+    border-radius: 13px !important;
+    font-size: 0.82rem !important;
     font-weight: 500 !important;
     color: #0c1e3d !important;
-    background: rgba(255, 255, 255, 0.66) !important;
+    background: rgba(255, 255, 255, 0.72) !important;
     backdrop-filter: blur(20px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
     box-shadow: 0 2px 8px rgba(12, 30, 61, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
     text-decoration: none !important;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
     box-sizing: border-box !important;
+    white-space: nowrap !important;
   }
 
   .nav-links-menu li a:hover,
   .nav-links-menu li a:focus,
   .nav-links-menu li a.active,
-  .nav-links-menu .dropdown-nav-item.active .dropdown-toggle {
-    background: rgba(255, 255, 255, 0.95) !important;
+  .nav-links-menu .dropdown-nav-item:hover .dropdown-toggle,
+  .nav-links-menu .dropdown-nav-item.active .dropdown-toggle,
+  .nav-links-menu .dropdown-nav-item.active-click .dropdown-toggle {
+    background: rgba(255, 255, 255, 0.98) !important;
     border-color: rgba(186, 214, 245, 0.95) !important;
     color: #1d4ed8 !important;
-    box-shadow: 0 4px 18px rgba(29, 78, 216, 0.1), inset 0 1px 1px #fff !important;
-    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(29, 78, 216, 0.12), inset 0 1px 1px #fff !important;
+    font-weight: 600 !important;
   }
 
   .dropdown-nav-item {
-    width: 100%;
-    flex-direction: column !important;
-    align-items: stretch !important;
+    width: 100% !important;
+    position: relative !important;
   }
 
-  /* Vertical Dropdown container in Glassmorphism */
+  /* Hover Bridge between Clubs and right dropdown */
+  .nav-links-menu .dropdown-nav-item::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    right: -12px;
+    width: 16px;
+    background: transparent;
+    pointer-events: auto;
+    z-index: 1055;
+  }
+
+  /* Column 2: Clubs Vertical Dropdown APPEARS JUST RIGHT TO CLUBS ONLY ON HOVER */
   .dropdown-menu-glass {
-    display: flex !important;
+    position: absolute !important;
+    left: calc(100% + 8px) !important;
+    top: 0 !important;
+    right: auto !important;
+    width: clamp(155px, 47vw, 185px) !important;
+    min-width: 0 !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
     flex-direction: column !important;
     gap: 6px !important;
+    transform: translateX(-4px) !important;
+    transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s !important;
+    background: rgba(234, 243, 254, 0.9) !important;
+    backdrop-filter: blur(36px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(190%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 20px 50px rgba(12, 30, 61, 0.14), inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+    margin: 0 !important;
+    border-radius: 20px !important;
+    padding: 7px !important;
+    box-sizing: border-box !important;
+    list-style: none !important;
+    z-index: 1060 !important;
+  }
+
+  /* Show ONLY when hovered upon the Clubs text (or focus / active-click for tap) */
+  .nav-links-menu .dropdown-nav-item:hover .dropdown-menu-glass,
+  .nav-links-menu .dropdown-nav-item:focus-within .dropdown-menu-glass,
+  .nav-links-menu .dropdown-nav-item.active-click .dropdown-menu-glass {
+    display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    position: static !important;
-    transform: none !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    background: rgba(234, 243, 254, 0.72) !important;
-    backdrop-filter: blur(24px) saturate(190%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.9) !important;
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 8px 24px rgba(12, 30, 61, 0.05) !important;
-    margin-top: 5px !important;
-    border-radius: 16px !important;
-    padding: 7px !important;
-    box-sizing: border-box !important;
+    transform: translateX(0) !important;
   }
 
-  /* Dropdown items inside vertical dropdown in Glassmorphism */
+  .dropdown-menu-glass li {
+    width: 100% !important;
+  }
+
+  /* Dropdown items inside vertical Clubs dropdown in Glassmorphism */
   .dropdown-menu-glass .dropdown-item {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
-    padding: 10px 12px !important;
-    border-radius: 12px !important;
-    background: rgba(255, 255, 255, 0.82) !important;
+    gap: 8px !important;
+    padding: 8px 10px !important;
+    border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.86) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
     border: 1px solid rgba(255, 255, 255, 0.95) !important;
@@ -2213,22 +2271,23 @@ body.host-grotesk-page {
     color: #0c1e3d !important;
     transition: all 0.2s ease !important;
     text-decoration: none !important;
+    box-sizing: border-box !important;
   }
 
   .dropdown-menu-glass .dropdown-item:hover,
   .dropdown-menu-glass .dropdown-item:focus,
   .dropdown-menu-glass .dropdown-item.active {
-    background: rgba(255, 255, 255, 0.98) !important;
+    background: rgba(255, 255, 255, 1) !important;
     border-color: rgba(186, 214, 245, 0.95) !important;
-    box-shadow: 0 4px 16px rgba(29, 78, 216, 0.1), inset 0 1px 1px #fff !important;
+    box-shadow: 0 4px 16px rgba(29, 78, 216, 0.12), inset 0 1px 1px #fff !important;
     color: #1d4ed8 !important;
     transform: translateY(-1px);
   }
 
   .dropdown-menu-glass .item-icon {
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 10px !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 9px !important;
     background: rgba(234, 242, 252, 0.92) !important;
     border: 1px solid rgba(255, 255, 255, 0.85) !important;
     color: #1d4ed8 !important;
@@ -2236,6 +2295,29 @@ body.host-grotesk-page {
     align-items: center !important;
     justify-content: center !important;
     flex-shrink: 0 !important;
+    font-size: 0.85rem !important;
+  }
+
+  .dropdown-menu-glass .item-text-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+  }
+
+  .dropdown-menu-glass .item-title {
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    color: #0c1e3d !important;
+    white-space: normal !important;
+  }
+
+  .dropdown-menu-glass .item-desc {
+    font-size: 0.65rem !important;
+    color: #627896 !important;
+    line-height: 1.2 !important;
+    margin-top: 1px !important;
+    white-space: normal !important;
   }
   .glass-btn-white {
     margin-left: auto;
@@ -2675,6 +2757,13 @@ body.host-grotesk-page {
   width: 100%;
   max-width: 920px;
   margin: 12px auto 32px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .simplicity-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 }
 
 @media (max-width: 767px) {
