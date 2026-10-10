@@ -2950,8 +2950,8 @@ body.host-grotesk-page {
 .custom-modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  background: rgba(12, 30, 61, 0.42);
+  z-index: 99999;
+  background: rgba(12, 30, 61, 0.45);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: flex;
@@ -3083,5 +3083,30 @@ body.host-grotesk-page {
 .modal-action-btn:hover {
   background: #27272a;
   transform: scale(1.01);
+}
+
+/* ==========================================================================
+   INLINE SUBSCRIPTION FEEDBACK & SHAKE ANIMATION
+   ========================================================================== */
+.subscribe-feedback-msg {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #dc2626;
+  margin-top: 6px;
+  text-align: center;
+  transition: all 0.2s ease;
+  pointer-events: auto !important;
+}
+
+.subscribe-input-form.has-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.16) !important;
+  animation: subscribeShake 0.35s ease;
+}
+
+@keyframes subscribeShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
 }
 

@@ -456,10 +456,11 @@
             <div class="download-note">Free to download · Every user earns Monkey Cash</div>
             <div class="download-subscribe-box">
               <div class="subscribe-label">Never miss startup grants, demo days &amp; releases</div>
-              <form class="subscribe-input-form" id="subscribeForm">
-                <input type="email" id="subscribeEmail" class="subscribe-input-field" placeholder="Your email address" required autocomplete="email">
-                <button type="submit" class="btn-simple-black">Subscribe</button>
+              <form class="subscribe-input-form" id="subscribeForm" novalidate>
+                <input type="email" id="subscribeEmail" class="subscribe-input-field" placeholder="Your email address" autocomplete="email">
+                <button type="submit" id="subscribeBtn" class="btn-simple-black">Subscribe</button>
               </form>
+              <div id="subscribeFeedback" class="subscribe-feedback-msg" style="display: none;"></div>
             </div>
           </div>
         </div>
@@ -532,6 +533,28 @@
     <!-- Translucent Watermark Logo -->
     <div class="watermark-logo">mad monkey ai</div>
   </footer>
+
+  <!-- IN-WEBSITE CUSTOM SUCCESS POPUP MODAL (LIQUID GLASS DESIGN) -->
+  <div class="custom-modal-overlay" id="subscribeSuccessModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="custom-modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Close dialog">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <div class="modal-spark-icon-wrap">
+        <i class="bi bi-rocket-takeoff-fill"></i>
+      </div>
+      <h3 class="modal-title" id="modalTitle">Spark Ignited! ⚡</h3>
+      <p class="modal-desc">
+        Welcome to the builder movement. You're officially subscribed with <strong id="modalSubscribedEmail" class="modal-highlight-email">your email</strong>.
+      </p>
+      <div class="modal-perks-badge">
+        <span><i class="bi bi-check-circle-fill text-success me-1"></i> Grant alerts</span>
+        <span><i class="bi bi-check-circle-fill text-success me-1"></i> Demo day invites</span>
+        <span><i class="bi bi-check-circle-fill text-success me-1"></i> Beta releases</span>
+      </div>
+      <button class="modal-action-btn" id="modalDismissBtn" type="button">Back to Building</button>
+    </div>
+  </div>
 
   <!-- BOOTSTRAP & GSAP ANIMATION LOGIC -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -883,72 +906,130 @@
     window.addEventListener('resize', handleOrientationOrResize, { passive: true });
 
     // ─── 11. Custom in-website subscription popup modal ─────────────
-    const subscribeForm = document.getElementById("subscribeForm");
-    const subscribeEmail = document.getElementById("subscribeEmail");
-    const successModal = document.getElementById("subscribeSuccessModal");
-    const modalCloseBtn = document.getElementById("modalCloseBtn");
-    const modalDismissBtn = document.getElementById("modalDismissBtn");
-    const modalSubscribedEmail = document.getElementById("modalSubscribedEmail");
+    const initSubscriptionModal = () => {
+      const subscribeForm = document.getElementById("subscribeForm");
+      const subscribeEmail = document.getElementById("subscribeEmail");
+      const subscribeBtn = document.getElementById("subscribeBtn");
+      const subscribeFeedback = document.getElementById("subscribeFeedback");
+      const successModal = document.getElementById("subscribeSuccessModal");
+      const modalCloseBtn = document.getElementById("modalCloseBtn");
+      const modalDismissBtn = document.getElementById("modalDismissBtn");
+      const modalSubscribedEmail = document.getElementById("modalSubscribedEmail");
 
-    const openSuccessModal = (email) => {
-      if (modalSubscribedEmail) modalSubscribedEmail.textContent = email;
-      if (successModal) {
-        successModal.classList.add("active");
-        successModal.setAttribute("aria-hidden", "false");
-      }
-    };
+      const showFeedback = (msg, isError = true) => {
+        if (subscribeFeedback) {
+          subscribeFeedback.textContent = msg;
+          subscribeFeedback.style.display = "block";
+          subscribeFeedback.style.color = isError ? "#ef4444" : "#10b981";
+        }
+        if (subscribeForm && isError) {
+          subscribeForm.classList.add("has-error");
+          setTimeout(() => subscribeForm.classList.remove("has-error"), 600);
+        }
+      };
 
-    const closeSuccessModal = () => {
-      if (successModal) {
-        successModal.classList.remove("active");
-        successModal.setAttribute("aria-hidden", "true");
-      }
-    };
+      const clearFeedback = () => {
+        if (subscribeFeedback) {
+          subscribeFeedback.style.display = "none";
+          subscribeFeedback.textContent = "";
+        }
+        if (subscribeForm) {
+          subscribeForm.classList.remove("has-error");
+        }
+      };
 
-    if (subscribeForm) {
-      subscribeForm.addEventListener("submit", (e) => {
-        e.preventDefault();
+      const openSuccessModal = (email) => {
+        const modal = successModal || document.getElementById("subscribeSuccessModal");
+        const emailEl = modalSubscribedEmail || document.getElementById("modalSubscribedEmail");
+        if (emailEl) {
+          emailEl.textContent = email || "your email";
+        }
+        if (modal) {
+          modal.classList.add("active");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        }
+      };
+
+      const closeSuccessModal = () => {
+        const modal = successModal || document.getElementById("subscribeSuccessModal");
+        if (modal) {
+          modal.classList.remove("active");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        }
+      };
+
+      const handleSubscribe = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        clearFeedback();
         const emailValue = subscribeEmail ? subscribeEmail.value.trim() : "";
-        if (emailValue) {
-          openSuccessModal(emailValue);
-          subscribeForm.reset();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailValue) {
+          showFeedback("Please enter your email address to join the movement ⚡", true);
+          if (subscribeEmail) subscribeEmail.focus();
+          return;
+        }
+
+        if (!emailRegex.test(emailValue)) {
+          showFeedback("Please enter a valid email address (e.g. name@example.com)", true);
+          if (subscribeEmail) subscribeEmail.focus();
+          return;
+        }
+
+        // Successfully validated: open the in-website success modal
+        openSuccessModal(emailValue);
+        if (subscribeForm) subscribeForm.reset();
+      };
+
+      if (subscribeForm) {
+        subscribeForm.addEventListener("submit", handleSubscribe);
+        // Clicking anywhere inside the form pill focuses the email input
+        subscribeForm.addEventListener("click", (e) => {
+          if (e.target !== subscribeBtn && !subscribeBtn?.contains(e.target)) {
+            clearFeedback();
+            subscribeEmail?.focus();
+          }
+        });
+      }
+
+      if (subscribeBtn) {
+        subscribeBtn.addEventListener("click", (e) => {
+          handleSubscribe(e);
+        });
+      }
+
+      if (subscribeEmail) {
+        subscribeEmail.addEventListener("input", clearFeedback);
+        subscribeEmail.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            handleSubscribe(e);
+          }
+        });
+      }
+
+      modalCloseBtn?.addEventListener("click", closeSuccessModal);
+      modalDismissBtn?.addEventListener("click", closeSuccessModal);
+      successModal?.addEventListener("click", (e) => {
+        if (e.target === successModal) closeSuccessModal();
+      });
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && successModal?.classList.contains("active")) {
+          closeSuccessModal();
         }
       });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initSubscriptionModal);
+    } else {
+      initSubscriptionModal();
     }
-
-    modalCloseBtn?.addEventListener("click", closeSuccessModal);
-    modalDismissBtn?.addEventListener("click", closeSuccessModal);
-    successModal?.addEventListener("click", (e) => {
-      if (e.target === successModal) closeSuccessModal();
-    });
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && successModal?.classList.contains("active")) {
-        closeSuccessModal();
-      }
-    });
   </script>
-
-  <!-- IN-WEBSITE CUSTOM SUCCESS POPUP MODAL (LIQUID GLASS DESIGN) -->
-  <div class="custom-modal-overlay" id="subscribeSuccessModal" aria-hidden="true">
-    <div class="custom-modal-card">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">
-        <i class="bi bi-x-lg"></i>
-      </button>
-      <div class="modal-spark-icon-wrap">
-        <i class="bi bi-rocket-takeoff-fill"></i>
-      </div>
-      <h3 class="modal-title">Spark Ignited! ⚡</h3>
-      <p class="modal-desc">
-        Welcome to the builder movement. You're officially subscribed with <strong id="modalSubscribedEmail" class="modal-highlight-email">your email</strong>.
-      </p>
-      <div class="modal-perks-badge">
-        <span><i class="bi bi-check-circle-fill text-success me-1"></i> Grant alerts</span>
-        <span><i class="bi bi-check-circle-fill text-success me-1"></i> Demo day invites</span>
-        <span><i class="bi bi-check-circle-fill text-success me-1"></i> Beta releases</span>
-      </div>
-      <button class="modal-action-btn" id="modalDismissBtn">Back to Building</button>
-    </div>
-  </div>
 </body>
 
 </html>
