@@ -456,8 +456,8 @@
             <div class="download-note">Free to download · Every user earns Monkey Cash</div>
             <div class="download-subscribe-box">
               <div class="subscribe-label">Never miss startup grants, demo days &amp; releases</div>
-              <form class="subscribe-input-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Mad Monkey AI!');">
-                <input type="email" class="subscribe-input-field" placeholder="Your email address" required>
+              <form class="subscribe-input-form" id="subscribeForm">
+                <input type="email" id="subscribeEmail" class="subscribe-input-field" placeholder="Your email address" required autocomplete="email">
                 <button type="submit" class="btn-simple-black">Subscribe</button>
               </form>
             </div>
@@ -658,13 +658,12 @@
       // D: How Spark Works → Download
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 7.0)
         // Clear the phone before the Download slide enters.
-        .to(phoneContainer, { x: 0, y: 120, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 6.85)
+        .to(phoneContainer, { x: 0, y: 120, scale: 0.72, opacity: 0, autoAlpha: 0, ease: "power3.inOut", duration: 0.9 }, 6.85)
         .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.35 }, 7.1)
         .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 7.35)
         .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 7.3)
-      // E: Hold the independent Download slide, then fade it for the footer handoff.
-        .to(panelFuture, { opacity: 1, duration: 1.1 }, 8.1)
-        .to(panelFuture, { opacity: 0, scale: 0.97, y: -18, ease: "power1.inOut", duration: 1.4 }, 9.2);
+      // E: Hold the independent Download slide — keep visible and interactive above the footer
+        .to(panelFuture, { opacity: 1, duration: 2.3 }, 8.1);
 
       return () => { tl.kill(); };
     });
@@ -734,14 +733,13 @@
 
       // D: How Spark Works → Download
         .to(panelFinance, { opacity: 0, scale: 0.92, y: -40, ease: "power2.in", duration: 0.9 }, 7.0)
-        .to(phoneContainer, { x: 0, y: 110, scale: 0.72, opacity: 0, ease: "power3.inOut", duration: 0.9 }, 6.85)
+        .to(phoneContainer, { x: 0, y: 110, scale: 0.72, opacity: 0, autoAlpha: 0, ease: "power3.inOut", duration: 0.9 }, 6.85)
         .to(screenCrypto,   { opacity: 1, ease: "power1.inOut", duration: 0.35 }, 7.1)
         .to(screenEarning,  { opacity: 0, ease: "power1.inOut", duration: 0.3 }, 7.35)
         .to(panelFuture, { opacity: 1, scale: 1, y: 0, ease: "power3.out", duration: 1.0 }, 7.3)
 
-      // E: Hold Download, then fade out
-        .to(panelFuture, { opacity: 1, duration: 1.1 }, 8.1)
-        .to(panelFuture, { opacity: 0, scale: 0.97, y: -18, ease: "power1.inOut", duration: 1.4 }, 9.2);
+      // E: Hold Download visible above footer
+        .to(panelFuture, { opacity: 1, duration: 2.3 }, 8.1);
 
       return () => { tl.kill(); };
     });
@@ -883,7 +881,74 @@
       setTimeout(() => ScrollTrigger.refresh(), 250);
     });
     window.addEventListener('resize', handleOrientationOrResize, { passive: true });
+
+    // ─── 11. Custom in-website subscription popup modal ─────────────
+    const subscribeForm = document.getElementById("subscribeForm");
+    const subscribeEmail = document.getElementById("subscribeEmail");
+    const successModal = document.getElementById("subscribeSuccessModal");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalDismissBtn = document.getElementById("modalDismissBtn");
+    const modalSubscribedEmail = document.getElementById("modalSubscribedEmail");
+
+    const openSuccessModal = (email) => {
+      if (modalSubscribedEmail) modalSubscribedEmail.textContent = email;
+      if (successModal) {
+        successModal.classList.add("active");
+        successModal.setAttribute("aria-hidden", "false");
+      }
+    };
+
+    const closeSuccessModal = () => {
+      if (successModal) {
+        successModal.classList.remove("active");
+        successModal.setAttribute("aria-hidden", "true");
+      }
+    };
+
+    if (subscribeForm) {
+      subscribeForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const emailValue = subscribeEmail ? subscribeEmail.value.trim() : "";
+        if (emailValue) {
+          openSuccessModal(emailValue);
+          subscribeForm.reset();
+        }
+      });
+    }
+
+    modalCloseBtn?.addEventListener("click", closeSuccessModal);
+    modalDismissBtn?.addEventListener("click", closeSuccessModal);
+    successModal?.addEventListener("click", (e) => {
+      if (e.target === successModal) closeSuccessModal();
+    });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && successModal?.classList.contains("active")) {
+        closeSuccessModal();
+      }
+    });
   </script>
+
+  <!-- IN-WEBSITE CUSTOM SUCCESS POPUP MODAL (LIQUID GLASS DESIGN) -->
+  <div class="custom-modal-overlay" id="subscribeSuccessModal" aria-hidden="true">
+    <div class="custom-modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <div class="modal-spark-icon-wrap">
+        <i class="bi bi-rocket-takeoff-fill"></i>
+      </div>
+      <h3 class="modal-title">Spark Ignited! ⚡</h3>
+      <p class="modal-desc">
+        Welcome to the builder movement. You're officially subscribed with <strong id="modalSubscribedEmail" class="modal-highlight-email">your email</strong>.
+      </p>
+      <div class="modal-perks-badge">
+        <span><i class="bi bi-check-circle-fill text-success me-1"></i> Grant alerts</span>
+        <span><i class="bi bi-check-circle-fill text-success me-1"></i> Demo day invites</span>
+        <span><i class="bi bi-check-circle-fill text-success me-1"></i> Beta releases</span>
+      </div>
+      <button class="modal-action-btn" id="modalDismissBtn">Back to Building</button>
+    </div>
+  </div>
 </body>
 
 </html>
