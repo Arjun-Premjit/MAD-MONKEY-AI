@@ -534,16 +534,16 @@
     <div class="watermark-logo">mad monkey ai</div>
   </footer>
 
-  <!-- IN-WEBSITE CUSTOM SUCCESS POPUP MODAL (LIQUID GLASS DESIGN) -->
+  <!-- IN-WEBSITE CUSTOM SUCCESS POPUP MODAL (TRANSPARENT LIQUID GLASS DESIGN) -->
   <div class="custom-modal-overlay" id="subscribeSuccessModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="custom-modal-card">
       <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Close dialog">
         <i class="bi bi-x-lg"></i>
       </button>
-      <div class="modal-spark-icon-wrap">
-        <i class="bi bi-rocket-takeoff-fill"></i>
+      <div class="modal-brand-badge">
+        <img src="MAD MONKEY LOGO.png" alt="Mad Monkey AI Logo" class="modal-brand-img">
       </div>
-      <h3 class="modal-title" id="modalTitle">Spark Ignited! ⚡</h3>
+      <h3 class="modal-title" id="modalTitle">Spark Ignited</h3>
       <p class="modal-desc">
         Welcome to the builder movement. You're officially subscribed with <strong id="modalSubscribedEmail" class="modal-highlight-email">your email</strong>.
       </p>
@@ -970,7 +970,7 @@
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!emailValue) {
-          showFeedback("Please enter your email address to join the movement ⚡", true);
+          showFeedback("Please enter your email address to join the movement", true);
           if (subscribeEmail) subscribeEmail.focus();
           return;
         }

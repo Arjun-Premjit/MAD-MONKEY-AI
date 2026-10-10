@@ -42,7 +42,7 @@ export default function GlassHeader({ currentView, onNavigate }: GlassHeaderProp
           <img
             src="/MAD MONKEY LOGO.png"
             alt="Mad Monkey AI Logo"
-            className="h-12 sm:h-16 md:h-20 lg:h-[84px] w-auto object-contain select-none"
+            className="h-16 sm:h-20 md:h-20 lg:h-[84px] w-auto object-contain select-none"
             style={{
               mixBlendMode: "multiply",
               filter: "drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08))",
